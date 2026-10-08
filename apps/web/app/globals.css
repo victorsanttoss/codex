@@ -1,0 +1,216 @@
+/*
+ * Tema da Plataforma SDR — design V4 aprovado (M14). Tokens AUTORITATIVOS do
+ * handoff (cores/tipografia/espaçamento/raios/sombras). Fonte: Montserrat (via
+ * next/font/local em layout.tsx → var --font-montserrat). Não inventar estética: estes
+ * valores são finais. Mapeamento design→componentes no ADR do M14.
+ */
+:root {
+  /* ── Marca (vermelho V4) ── */
+  --red-600: #e50914; /* CTA / ativo / acento */
+  --red-700: #b20710; /* hover */
+  --red-800: #80050b; /* gráfico */
+  --red-900: #400306;
+
+  /* ── Erro ── */
+  --error-bg: #fef2f2;
+  --error-border: #f3b5b9;
+  --error-text: #c30811;
+
+  /* ── Neutros (tinta) ── */
+  --ink-900: #1a1a1a; /* sidebar / títulos */
+  --ink-800: #262626; /* item ativo da sidebar */
+  --ink-700: #333333;
+  --black: #000000; /* console staff */
+
+  /* ── Texto ── */
+  --text-body: #333333;
+  --text-muted: #595959;
+  --text-subtle: #8a8a8a;
+
+  /* ── Bordas ── */
+  --border-300: #cccccc; /* input */
+  --border-200: #e5e5e5; /* card */
+
+  /* ── Superfícies ── */
+  --canvas: #f5f5f6;
+  --surface: #ffffff;
+  --surface-subtle: #fafafa;
+
+  /* ── Status ── */
+  --success: #52cc5a;
+  --success-text: #2f8f38;
+  --success-tint: rgba(82, 204, 90, 0.14);
+  --warning: #ffc02a;
+  --warning-text: #9a6b00;
+  --warning-tint: rgba(255, 192, 42, 0.18);
+  --neutral-dot: #b3b3b3; /* lead: novo */
+  --neutral-dark: #595959; /* lead: desqualificado */
+
+  /* Mapa de status do lead (semântico) */
+  --lead-novo: #b3b3b3;
+  --lead-qualificado: #52cc5a;
+  --lead-handoff: #ffc02a;
+  --lead-desqualificado: #595959;
+  --lead-erro: #e50914;
+
+  /* ── Espaçamento (base 4) ── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+
+  /* ── Raios ── */
+  --r-sm: 8px; /* input / botão pequeno */
+  --r-btn: 9px; /* botão / chip */
+  --r-card: 12px;
+  --r-card-lg: 14px;
+  --r-frame: 16px;
+  --r-pill: 999px;
+
+  /* ── Sombras ── */
+  --shadow-float: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 14px rgba(0, 0, 0, 0.07);
+  --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.35);
+
+  /* ── Tipografia ── */
+  --font-sans: var(--font-montserrat), "Montserrat", system-ui, -apple-system, sans-serif;
+
+  /* App shell */
+  --sidebar-w: 228px;
+  --sidebar-w-staff: 236px;
+  --topbar-h: 62px;
+}
+
+/* ── Animações do handoff ── */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(82, 204, 90, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+}
+@keyframes pulseRed {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 9, 20, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+}
+@keyframes typing {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -480px 0;
+  }
+  100% {
+    background-position: 480px 0;
+  }
+}
+@keyframes dotsoft {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-body);
+  background: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font-family: inherit;
+}
+
+/* ── Tipografia utilitária (specs do handoff) ── */
+.h1-page {
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+  margin: 0;
+}
+.h1-hero {
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+}
+.h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink-900);
+  margin: 0;
+}
+.h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink-900);
+  margin: 0;
+}
+.eyebrow {
+  font-size: 10.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-subtle);
+}
+.kpi-num {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ink-900);
+}
+.caption {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-subtle);
+}
+.muted {
+  color: var(--text-muted);
+}
+
+/* Acessibilidade: foco visível AA */
+:focus-visible {
+  outline: 2px solid var(--red-600);
+  outline-offset: 2px;
+}
+
+/* Scroll suave do app shell */
+.app-scroll {
+  overflow-y: auto;
+}

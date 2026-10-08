@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Montserrat', sans-serif; background: #ececef; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  ::selection { background: rgba(229,9,20,0.18); }
+  @keyframes v4pulse { 0% { box-shadow: 0 0 0 0 rgba(82,204,90,0.55); } 70% { box-shadow: 0 0 0 7px rgba(82,204,90,0); } 100% { box-shadow: 0 0 0 0 rgba(82,204,90,0); } }
+  @keyframes v4pulseRed { 0% { box-shadow: 0 0 0 0 rgba(229,9,20,0.55); } 70% { box-shadow: 0 0 0 7px rgba(229,9,20,0); } 100% { box-shadow: 0 0 0 0 rgba(229,9,20,0); } }
+  @keyframes v4typing { 0%,60%,100% { transform: translateY(0); opacity:.4; } 30% { transform: translateY(-3px); opacity:1; } }
+  @keyframes v4shimmer { 0% { background-position: -480px 0; } 100% { background-position: 480px 0; } }
+  @keyframes v4dotsoft { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+</style>
+</helmet>
+
+<div style="min-height:100vh; color:#1a1a1a;">
+
+  <header style="background:#1a1a1a; color:#fff; padding:26px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:3px solid #e50914;">
+    <div style="display:flex; align-items:center; gap:18px;">
+      <div style="display:flex; align-items:center; gap:11px;">
+        <div style="width:46px; height:46px; border-radius:11px; background:#e50914; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:21px; letter-spacing:-0.04em; color:#fff; box-shadow:0 4px 16px rgba(229,9,20,0.4);">V4</div>
+        <div style="line-height:1.15;">
+          <div style="font-weight:800; font-size:15px; letter-spacing:0.01em;">V4 Company</div>
+          <div style="font-size:11px; color:#b3b3b3; font-weight:500;">Plataforma SDR de IA</div>
+        </div>
+      </div>
+      <div style="width:1px; height:34px; background:#333;"></div>
+      <div>
+        <div style="font-weight:800; font-size:18px; letter-spacing:-0.01em;">Design System &amp; Telas-âncora</div>
+        <div style="font-size:12px; color:#8a8a8a; font-weight:500;">Passo 1 de 3 · sistema visual + app shell + 3 telas-âncora para aprovação</div>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <span style="font-size:11px; font-weight:700; color:#b3b3b3; letter-spacing:0.12em; text-transform:uppercase;">Turno 1</span>
+      <span style="font-family:'Montserrat'; font-size:11px; font-weight:800; background:#262626; border:1px solid #333; color:#fff; padding:5px 11px; border-radius:7px; letter-spacing:0.06em;">REFERÊNCIA</span>
+    </div>
+  </header>
+
+  <nav style="position:sticky; top:0; z-index:50; background:rgba(26,26,26,0.94); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid #333; padding:0 40px; display:flex; align-items:center; gap:4px; height:50px; overflow-x:auto;">
+    <a href="#foundations" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">Fundações</a>
+    <a href="#components" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">Componentes</a>
+    <a href="#shell" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">App Shell</a>
+    <span style="width:1px; height:20px; background:#333; margin:0 6px;"></span>
+    <a href="#dash-1a" style="color:#fff; text-decoration:none; font-size:12.5px; font-weight:700; padding:8px 13px; border-radius:8px; white-space:nowrap; background:#e50914;">Dashboard 1a</a>
+    <a href="#dash-1b" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">Dashboard 1b</a>
+    <a href="#onboarding" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">Onboarding</a>
+    <a href="#conversa" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">Conversa</a>
+    <a href="#mobile" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">Mobile</a>
+  </nav>
+
+  <main style="max-width:1380px; margin:0 auto; padding:44px 40px 100px;">
+
+    <!-- ===================== FOUNDATIONS ===================== -->
+    <section id="foundations" style="scroll-margin-top:64px; margin-bottom:64px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914; margin-bottom:7px;">01 · Fundações</div>
+      <h2 style="font-size:28px; font-weight:800; letter-spacing:-0.02em; margin:0 0 6px;">Tokens do sistema</h2>
+      <p style="font-size:14px; color:#595959; max-width:64ch; margin:0 0 28px; line-height:1.6;">Identidade oficial V4 Company. Vermelho de marca usado com intenção (acentos e CTAs); canvas claro para os dados; escuros para navegação. Verde e amarelo reservados para estado.</p>
+
+      <!-- Cores -->
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin:0 0 14px;">Paleta de marca</div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px;">
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; overflow:hidden;"><div style="height:64px; background:#e50914;"></div><div style="padding:12px 14px;"><div style="font-size:13px; font-weight:700;">Vermelho V4</div><div style="font-size:11px; color:#8a8a8a; font-weight:600; letter-spacing:0.02em;">#e50914 · CTA / acento</div></div></div>
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; overflow:hidden;"><div style="height:64px; background:#b20710;"></div><div style="padding:12px 14px;"><div style="font-size:13px; font-weight:700;">Hover / pressed</div><div style="font-size:11px; color:#8a8a8a; font-weight:600;">#b20710</div></div></div>
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; overflow:hidden;"><div style="height:64px; background:#80050b;"></div><div style="padding:12px 14px;"><div style="font-size:13px; font-weight:700;">Vermelho escuro</div><div style="font-size:11px; color:#8a8a8a; font-weight:600;">#80050b</div></div></div>
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; overflow:hidden;"><div style="height:64px; background:#400306;"></div><div style="padding:12px 14px;"><div style="font-size:13px; font-weight:700;">Vinho profundo</div><div style="font-size:11px; color:#8a8a8a; font-weight:600;">#400306</div></div></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px;">
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; overflow:hidden;"><div style="height:54px; background:#1a1a1a;"></div><div style="padding:11px 14px;"><div style="font-size:12.5px; font-weight:700;">Dark 900</div><div style="font-size:11px; color:#8a8a8a; font-weight:600;">#1a1a1a · sidebar</div></div></div>
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; overflow:hidden;"><div style="height:54px; background:#262626;"></div><div style="padding:11px 14px;"><div style="font-size:12.5px; font-weight:700;">Dark 800</div><div style="font-size:11px; color:#8a8a8a; font-weight:600;">#262626</div></div></div>
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; overflow:hidden;"><div style="height:54px; background:#333333;"></div><div style="padding:11px 14px;"><div style="font-size:12.5px; font-weight:700;">Dark 700</div><div style="font-size:11px; color:#8a8a8a; font-weight:600;">#333333 · títulos</div></div></div>
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; overflow:hidden;"><div style="height:54px; background:#000;"></div><div style="padding:11px 14px;"><div style="font-size:12.5px; font-weight:700;">Preto</div><div style="font-size:11px; color:#8a8a8a; font-weight:600;">#000000</div></div></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:12px; margin-bottom:26px;">
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:11px; overflow:hidden;"><div style="height:44px; background:#ffffff; border-bottom:1px solid #eee;"></div><div style="padding:9px 11px;"><div style="font-size:11px; font-weight:700;">White</div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">#ffffff</div></div></div>
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:11px; overflow:hidden;"><div style="height:44px; background:#f5f5f6;"></div><div style="padding:9px 11px;"><div style="font-size:11px; font-weight:700;">Canvas</div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">#f5f5f6</div></div></div>
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:11px; overflow:hidden;"><div style="height:44px; background:#e5e5e5;"></div><div style="padding:9px 11px;"><div style="font-size:11px; font-weight:700;">Border</div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">#e5e5e5</div></div></div>
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:11px; overflow:hidden;"><div style="height:44px; background:#cccccc;"></div><div style="padding:9px 11px;"><div style="font-size:11px; font-weight:700;">300</div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">#cccccc</div></div></div>
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:11px; overflow:hidden;"><div style="height:44px; background:#b3b3b3;"></div><div style="padding:9px 11px;"><div style="font-size:11px; font-weight:700;">Muted</div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">#b3b3b3</div></div></div>
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:11px; overflow:hidden;"><div style="height:44px; background:#52cc5a;"></div><div style="padding:9px 11px;"><div style="font-size:11px; font-weight:700;">Sucesso</div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">#52cc5a</div></div></div>
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:11px; overflow:hidden;"><div style="height:44px; background:#ffc02a;"></div><div style="padding:9px 11px;"><div style="font-size:11px; font-weight:700;">Atenção</div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">#ffc02a</div></div></div>
+      </div>
+
+      <!-- Tipografia + Espaço/raio/elevação lado a lado -->
+      <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:18px; align-items:start;">
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; overflow:hidden;">
+          <div style="padding:14px 22px; border-bottom:1px solid #eee; font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a;">Escala tipográfica · Montserrat</div>
+          <div style="display:flex; align-items:baseline; gap:20px; padding:16px 22px; border-bottom:1px solid #f0f0f0;"><div style="font-size:11px; color:#b3b3b3; font-weight:600; min-width:108px;">H1 · 28 / 800</div><div style="font-size:28px; font-weight:800; letter-spacing:-0.02em;">SDR ao vivo 24/7</div></div>
+          <div style="display:flex; align-items:baseline; gap:20px; padding:16px 22px; border-bottom:1px solid #f0f0f0;"><div style="font-size:11px; color:#b3b3b3; font-weight:600; min-width:108px;">H2 · 20 / 700</div><div style="font-size:20px; font-weight:700; letter-spacing:-0.01em;">Funil de leads</div></div>
+          <div style="display:flex; align-items:baseline; gap:20px; padding:16px 22px; border-bottom:1px solid #f0f0f0;"><div style="font-size:11px; color:#b3b3b3; font-weight:600; min-width:108px;">H3 · 16 / 700</div><div style="font-size:16px; font-weight:700;">Conexão WhatsApp</div></div>
+          <div style="display:flex; align-items:baseline; gap:20px; padding:16px 22px; border-bottom:1px solid #f0f0f0;"><div style="font-size:11px; color:#b3b3b3; font-weight:600; min-width:108px;">Body · 14 / 400</div><div style="font-size:14px; font-weight:400; color:#333;">A IA atende, conversa e qualifica seus leads automaticamente.</div></div>
+          <div style="display:flex; align-items:baseline; gap:20px; padding:16px 22px;"><div style="font-size:11px; color:#b3b3b3; font-weight:600; min-width:108px;">Label · 11 / 700</div><div style="font-size:11px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:#8a8a8a;">Leads qualificados</div></div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:18px 22px;">
+            <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:14px;">Espaçamento · base 4px</div>
+            <div style="display:flex; align-items:flex-end; gap:10px;">
+              <div style="text-align:center;"><div style="width:4px; height:4px; background:#e50914; margin:0 auto 6px;"></div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">4</div></div>
+              <div style="text-align:center;"><div style="width:8px; height:8px; background:#e50914; margin:0 auto 6px;"></div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">8</div></div>
+              <div style="text-align:center;"><div style="width:12px; height:12px; background:#e50914; margin:0 auto 6px;"></div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">12</div></div>
+              <div style="text-align:center;"><div style="width:16px; height:16px; background:#e50914; margin:0 auto 6px;"></div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">16</div></div>
+              <div style="text-align:center;"><div style="width:24px; height:24px; background:#e50914; margin:0 auto 6px;"></div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">24</div></div>
+              <div style="text-align:center;"><div style="width:32px; height:32px; background:#e50914; margin:0 auto 6px;"></div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">32</div></div>
+            </div>
+          </div>
+          <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:18px 22px;">
+            <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:14px;">Raios &amp; elevação</div>
+            <div style="display:flex; gap:14px; align-items:flex-end;">
+              <div style="text-align:center;"><div style="width:52px; height:40px; background:#f5f5f6; border:1px solid #e5e5e5; border-radius:8px; margin-bottom:7px;"></div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">8 · input</div></div>
+              <div style="text-align:center;"><div style="width:52px; height:40px; background:#f5f5f6; border:1px solid #e5e5e5; border-radius:12px; margin-bottom:7px;"></div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">12 · card</div></div>
+              <div style="text-align:center;"><div style="width:52px; height:40px; background:#fff; border:1px solid #eee; border-radius:12px; box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.07); margin-bottom:7px;"></div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">sombra</div></div>
+              <div style="text-align:center;"><div style="width:52px; height:40px; background:#fff; border-radius:999px; box-shadow:0 1px 2px rgba(0,0,0,0.05),0 8px 24px rgba(0,0,0,0.1); margin-bottom:7px;"></div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">pill</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mapa de status -->
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin:26px 0 14px;">Mapa de status do lead</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #e5e5e5; border-radius:10px; padding:10px 14px;"><span style="width:9px; height:9px; border-radius:50%; background:#b3b3b3;"></span><span style="font-size:12.5px; font-weight:600;">Novo</span></div>
+        <div style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #e5e5e5; border-radius:10px; padding:10px 14px;"><span style="width:9px; height:9px; border-radius:50%; background:#52cc5a;"></span><span style="font-size:12.5px; font-weight:600;">Qualificado</span></div>
+        <div style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #e5e5e5; border-radius:10px; padding:10px 14px;"><span style="width:9px; height:9px; border-radius:50%; background:#ffc02a;"></span><span style="font-size:12.5px; font-weight:600;">Atendimento humano</span></div>
+        <div style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #e5e5e5; border-radius:10px; padding:10px 14px;"><span style="width:9px; height:9px; border-radius:50%; background:#595959;"></span><span style="font-size:12.5px; font-weight:600;">Desqualificado</span></div>
+        <div style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #e5e5e5; border-radius:10px; padding:10px 14px;"><span style="width:9px; height:9px; border-radius:50%; background:#e50914;"></span><span style="font-size:12.5px; font-weight:600;">Erro / queda</span></div>
+      </div>
+    </section>
+
+    <!-- ===================== COMPONENTS ===================== -->
+    <section id="components" style="scroll-margin-top:64px; margin-bottom:64px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914; margin-bottom:7px;">02 · Componentes</div>
+      <h2 style="font-size:28px; font-weight:800; letter-spacing:-0.02em; margin:0 0 6px;">Biblioteca de UI</h2>
+      <p style="font-size:14px; color:#595959; max-width:64ch; margin:0 0 28px; line-height:1.6;">Componentes reutilizáveis que se repetem em todas as telas. Mesmos padrões de cor, raio e estado em toda a plataforma.</p>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+        <!-- Botões -->
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:16px;">Botões</div>
+          <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+            <button style="border:0; background:#e50914; color:#fff; font-family:'Montserrat'; font-size:13px; font-weight:700; padding:11px 20px; border-radius:9px; cursor:pointer; box-shadow:0 2px 8px rgba(229,9,20,0.25);" style-hover="background:#b20710;">Primário</button>
+            <button style="background:#fff; color:#1a1a1a; font-family:'Montserrat'; font-size:13px; font-weight:700; padding:11px 20px; border-radius:9px; border:1px solid #cccccc; cursor:pointer;" style-hover="border-color:#1a1a1a;">Secundário</button>
+            <button style="background:transparent; color:#1a1a1a; font-family:'Montserrat'; font-size:13px; font-weight:700; padding:11px 16px; border-radius:9px; border:0; cursor:pointer;" style-hover="background:#f0f0f0;">Fantasma</button>
+            <button style="background:#fff; color:#e50914; font-family:'Montserrat'; font-size:13px; font-weight:700; padding:11px 20px; border-radius:9px; border:1px solid #f3b5b9; cursor:pointer;" style-hover="background:#fef2f2;">Destrutivo</button>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:12px;">
+            <button style="border:0; background:#e50914; color:#fff; font-family:'Montserrat'; font-size:12px; font-weight:700; padding:8px 14px; border-radius:8px; cursor:pointer; display:flex; align-items:center; gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Com ícone</button>
+            <button style="border:0; background:#cccccc; color:#fff; font-family:'Montserrat'; font-size:13px; font-weight:700; padding:11px 20px; border-radius:9px; cursor:not-allowed;">Desabilitado</button>
+          </div>
+        </div>
+
+        <!-- Inputs -->
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:16px;">Campos</div>
+          <div style="display:flex; flex-direction:column; gap:13px;">
+            <div>
+              <label style="display:block; font-size:11px; font-weight:700; color:#595959; margin-bottom:6px;">Nome do negócio</label>
+              <input value="Solar Prime Energia" style="width:100%; font-family:'Montserrat'; font-size:13.5px; padding:10px 13px; border:1px solid #cccccc; border-radius:8px; outline:none;" style-focus="border-color:#e50914;" />
+            </div>
+            <div style="display:flex; gap:12px;">
+              <div style="flex:1;">
+                <label style="display:block; font-size:11px; font-weight:700; color:#595959; margin-bottom:6px;">Segmento</label>
+                <div style="position:relative;"><select style="width:100%; appearance:none; font-family:'Montserrat'; font-size:13.5px; padding:10px 32px 10px 13px; border:1px solid #cccccc; border-radius:8px; outline:none; background:#fff; cursor:pointer;"><option>Energia solar</option><option>Clínica</option></select><svg style="position:absolute; right:11px; top:13px; pointer-events:none;" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="2.6"><path d="M6 9l6 6 6-6"/></svg></div>
+              </div>
+              <div style="flex:1;">
+                <label style="display:block; font-size:11px; font-weight:700; color:#e50914; margin-bottom:6px;">Erro</label>
+                <input value="" placeholder="Obrigatório" style="width:100%; font-family:'Montserrat'; font-size:13.5px; padding:10px 13px; border:1.5px solid #e50914; border-radius:8px; outline:none; background:#fef2f2;" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toggles / tabs -->
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:16px;">Toggle · Checkbox · Tabs</div>
+          <div style="display:flex; align-items:center; gap:22px; margin-bottom:18px;">
+            <div style="display:flex; align-items:center; gap:9px;"><div style="width:40px; height:23px; border-radius:999px; background:#52cc5a; position:relative;"><span style="position:absolute; top:2.5px; right:2.5px; width:18px; height:18px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.25);"></span></div><span style="font-size:12.5px; font-weight:600;">SDR ativa</span></div>
+            <div style="display:flex; align-items:center; gap:9px;"><div style="width:40px; height:23px; border-radius:999px; background:#cccccc; position:relative;"><span style="position:absolute; top:2.5px; left:2.5px; width:18px; height:18px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.25);"></span></div><span style="font-size:12.5px; font-weight:600; color:#8a8a8a;">Pausada</span></div>
+            <div style="display:flex; align-items:center; gap:9px;"><span style="width:19px; height:19px; border-radius:6px; background:#e50914; display:flex; align-items:center; justify-content:center;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span style="font-size:12.5px; font-weight:600;">Marcado</span></div>
+          </div>
+          <div style="display:inline-flex; background:#f0f0f0; border-radius:10px; padding:3px; gap:2px;">
+            <span style="font-size:12.5px; font-weight:700; padding:7px 16px; border-radius:8px; background:#fff; color:#1a1a1a; box-shadow:0 1px 2px rgba(0,0,0,0.08);">Visão geral</span>
+            <span style="font-size:12.5px; font-weight:600; padding:7px 16px; border-radius:8px; color:#8a8a8a; cursor:pointer;">Conversas</span>
+            <span style="font-size:12.5px; font-weight:600; padding:7px 16px; border-radius:8px; color:#8a8a8a; cursor:pointer;">Leads</span>
+          </div>
+        </div>
+
+        <!-- Badges / pills -->
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:16px;">Badges &amp; pills de status</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+            <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; padding:5px 11px; border-radius:999px; background:rgba(82,204,90,0.14); color:#2f8f38;"><span style="width:6px;height:6px;border-radius:50%;background:#52cc5a;"></span>Qualificado</span>
+            <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; padding:5px 11px; border-radius:999px; background:rgba(255,192,42,0.18); color:#9a6b00;"><span style="width:6px;height:6px;border-radius:50%;background:#ffc02a;"></span>Handoff humano</span>
+            <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; padding:5px 11px; border-radius:999px; background:#f0f0f0; color:#595959;"><span style="width:6px;height:6px;border-radius:50%;background:#b3b3b3;"></span>Novo</span>
+            <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; padding:5px 11px; border-radius:999px; background:rgba(229,9,20,0.1); color:#c30811;"><span style="width:6px;height:6px;border-radius:50%;background:#e50914;"></span>Queda</span>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; padding:4px 9px; border-radius:6px; background:#1a1a1a; color:#fff;">NOVO</span>
+            <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; padding:4px 9px; border-radius:6px; background:#e50914; color:#fff;">QUENTE</span>
+            <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; padding:4px 9px; border-radius:6px; background:#fff; border:1px solid #e5e5e5; color:#595959;">FRIO</span>
+            <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; padding:4px 9px; border-radius:6px; background:rgba(82,204,90,0.16); color:#2f8f38;">SCORE 92</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== COMPONENTS pt2 ===================== -->
+    <section style="margin-bottom:64px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start;">
+
+        <!-- KPI cards -->
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:16px;">Cartões de KPI</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div style="border:1px solid #eee; border-radius:12px; padding:16px;">
+              <div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a; margin-bottom:8px;">Leads no mês</div>
+              <div style="font-size:30px; font-weight:800; letter-spacing:-0.02em; line-height:1; font-feature-settings:'tnum';">348</div>
+              <div style="display:flex; align-items:center; gap:5px; margin-top:9px;"><span style="display:inline-flex; align-items:center; gap:3px; font-size:11px; font-weight:700; color:#2f8f38;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2f8f38" stroke-width="3" stroke-linecap="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>18%</span><span style="font-size:11px; color:#8a8a8a; font-weight:500;">vs. mês anterior</span></div>
+            </div>
+            <div style="border:1px solid #eee; border-radius:12px; padding:16px;">
+              <div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a; margin-bottom:8px;">Qualificados</div>
+              <div style="font-size:30px; font-weight:800; letter-spacing:-0.02em; line-height:1; color:#2f8f38; font-feature-settings:'tnum';">132</div>
+              <div style="margin-top:11px; height:6px; border-radius:999px; background:#f0f0f0; overflow:hidden;"><div style="width:38%; height:100%; background:#52cc5a; border-radius:999px;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gráfico de funil -->
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:16px;">Gráfico · funil</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:center; gap:12px;"><div style="width:96px; font-size:11.5px; font-weight:600; color:#595959;">Novos</div><div style="flex:1; height:26px; border-radius:7px; background:#1a1a1a;"></div><div style="font-size:12px; font-weight:700; min-width:34px; text-align:right;">348</div></div>
+            <div style="display:flex; align-items:center; gap:12px;"><div style="width:96px; font-size:11.5px; font-weight:600; color:#595959;">Engajados</div><div style="height:26px; border-radius:7px; background:#80050b; width:74%;"></div><div style="font-size:12px; font-weight:700; min-width:34px; text-align:right;">258</div></div>
+            <div style="display:flex; align-items:center; gap:12px;"><div style="width:96px; font-size:11.5px; font-weight:600; color:#595959;">Qualificados</div><div style="height:26px; border-radius:7px; background:#e50914; width:38%;"></div><div style="font-size:12px; font-weight:700; min-width:34px; text-align:right;">132</div></div>
+            <div style="display:flex; align-items:center; gap:12px;"><div style="width:96px; font-size:11.5px; font-weight:600; color:#595959;">Agendados</div><div style="height:26px; border-radius:7px; background:#52cc5a; width:21%;"></div><div style="font-size:12px; font-weight:700; min-width:34px; text-align:right;">74</div></div>
+          </div>
+        </div>
+
+        <!-- Gráfico de linha + barras -->
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:16px;">Gráfico · linha &amp; barras</div>
+          <svg viewBox="0 0 320 110" style="width:100%; height:96px; display:block;" data-om-raster>
+            <defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e50914" stop-opacity="0.22"/><stop offset="1" stop-color="#e50914" stop-opacity="0"/></linearGradient></defs>
+            <polyline points="0,80 45,62 90,68 135,40 180,48 225,26 270,32 320,14" fill="none" stroke="#e50914" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <polygon points="0,80 45,62 90,68 135,40 180,48 225,26 270,32 320,14 320,110 0,110" fill="url(#lg)"/>
+            <circle cx="320" cy="14" r="3.5" fill="#e50914"/>
+          </svg>
+          <div style="display:flex; align-items:flex-end; gap:7px; height:42px; margin-top:10px;">
+            <div style="flex:1; background:#e5e5e5; border-radius:4px 4px 0 0; height:40%;"></div>
+            <div style="flex:1; background:#e5e5e5; border-radius:4px 4px 0 0; height:62%;"></div>
+            <div style="flex:1; background:#e5e5e5; border-radius:4px 4px 0 0; height:48%;"></div>
+            <div style="flex:1; background:#e50914; border-radius:4px 4px 0 0; height:88%;"></div>
+            <div style="flex:1; background:#e5e5e5; border-radius:4px 4px 0 0; height:54%;"></div>
+            <div style="flex:1; background:#e5e5e5; border-radius:4px 4px 0 0; height:70%;"></div>
+            <div style="flex:1; background:#e5e5e5; border-radius:4px 4px 0 0; height:60%;"></div>
+          </div>
+        </div>
+
+        <!-- Avatar + skeleton -->
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:16px;">Avatar · Skeleton</div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+            <div style="width:38px; height:38px; border-radius:50%; background:#1a1a1a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;">MR</div>
+            <div style="width:38px; height:38px; border-radius:50%; background:#e50914; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;">JS</div>
+            <div style="width:38px; height:38px; border-radius:50%; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;">AL</div>
+            <div style="width:38px; height:38px; border-radius:50%; background:#f0f0f0; color:#595959; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; border:1px solid #e5e5e5;">+5</div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:9px;">
+            <div style="height:11px; width:70%; border-radius:6px; background:linear-gradient(90deg,#eee 25%,#f6f6f6 50%,#eee 75%); background-size:480px 100%; animation:v4shimmer 1.4s infinite linear;"></div>
+            <div style="height:11px; width:100%; border-radius:6px; background:linear-gradient(90deg,#eee 25%,#f6f6f6 50%,#eee 75%); background-size:480px 100%; animation:v4shimmer 1.4s infinite linear;"></div>
+            <div style="height:11px; width:45%; border-radius:6px; background:linear-gradient(90deg,#eee 25%,#f6f6f6 50%,#eee 75%); background-size:480px 100%; animation:v4shimmer 1.4s infinite linear;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabela de leads -->
+      <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; overflow:hidden; margin-top:18px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 22px; border-bottom:1px solid #eee;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a;">Tabela · leads (linha clicável, filtros, paginação)</div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <div style="display:flex; align-items:center; gap:7px; background:#f5f5f6; border:1px solid #e5e5e5; border-radius:8px; padding:7px 11px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span style="font-size:12px; color:#8a8a8a; font-weight:500;">Buscar lead…</span></div>
+            <button style="display:flex; align-items:center; gap:6px; background:#fff; border:1px solid #cccccc; border-radius:8px; padding:7px 12px; font-family:'Montserrat'; font-size:12px; font-weight:700; cursor:pointer;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2.2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filtros</button>
+          </div>
+        </div>
+        <table style="width:100%; border-collapse:collapse;">
+          <thead><tr style="background:#fafafa;">
+            <th style="text-align:left; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:11px 22px;">Lead</th>
+            <th style="text-align:left; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:11px 16px;">Etapa</th>
+            <th style="text-align:left; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:11px 16px;">Conta de luz</th>
+            <th style="text-align:left; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:11px 16px;">Score</th>
+            <th style="text-align:right; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:11px 22px;">Última msg</th>
+          </tr></thead>
+          <tbody>
+            <tr style="border-top:1px solid #f0f0f0; cursor:pointer;" style-hover="background:#fafafa;"><td style="padding:13px 22px;"><div style="display:flex; align-items:center; gap:10px;"><div style="width:30px; height:30px; border-radius:50%; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700;">RC</div><div><div style="font-size:13px; font-weight:600;">Renata Castro</div><div style="font-size:11px; color:#8a8a8a;">Curitiba · PR</div></div></div></td><td style="padding:13px 16px;"><span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; padding:4px 10px; border-radius:999px; background:rgba(82,204,90,0.14); color:#2f8f38;"><span style="width:6px;height:6px;border-radius:50%;background:#52cc5a;"></span>Qualificado</span></td><td style="padding:13px 16px; font-size:13px; font-weight:600;">R$ 1.240/mês</td><td style="padding:13px 16px;"><span style="font-size:11px; font-weight:800; padding:3px 9px; border-radius:6px; background:rgba(82,204,90,0.16); color:#2f8f38;">92</span></td><td style="padding:13px 22px; text-align:right; font-size:12px; color:#8a8a8a;">há 4 min</td></tr>
+            <tr style="border-top:1px solid #f0f0f0; cursor:pointer;" style-hover="background:#fafafa;"><td style="padding:13px 22px;"><div style="display:flex; align-items:center; gap:10px;"><div style="width:30px; height:30px; border-radius:50%; background:#ffc02a; color:#1a1a1a; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700;">PG</div><div><div style="font-size:13px; font-weight:600;">Paulo Guedes</div><div style="font-size:11px; color:#8a8a8a;">Londrina · PR</div></div></div></td><td style="padding:13px 16px;"><span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; padding:4px 10px; border-radius:999px; background:rgba(255,192,42,0.18); color:#9a6b00;"><span style="width:6px;height:6px;border-radius:50%;background:#ffc02a;"></span>Handoff humano</span></td><td style="padding:13px 16px; font-size:13px; font-weight:600;">R$ 870/mês</td><td style="padding:13px 16px;"><span style="font-size:11px; font-weight:800; padding:3px 9px; border-radius:6px; background:#f0f0f0; color:#595959;">68</span></td><td style="padding:13px 22px; text-align:right; font-size:12px; color:#8a8a8a;">há 22 min</td></tr>
+            <tr style="border-top:1px solid #f0f0f0; cursor:pointer;" style-hover="background:#fafafa;"><td style="padding:13px 22px;"><div style="display:flex; align-items:center; gap:10px;"><div style="width:30px; height:30px; border-radius:50%; background:#b3b3b3; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700;">TM</div><div><div style="font-size:13px; font-weight:600;">Thiago Martins</div><div style="font-size:11px; color:#8a8a8a;">Maringá · PR</div></div></div></td><td style="padding:13px 16px;"><span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; padding:4px 10px; border-radius:999px; background:#f0f0f0; color:#595959;"><span style="width:6px;height:6px;border-radius:50%;background:#b3b3b3;"></span>Novo</span></td><td style="padding:13px 16px; font-size:13px; color:#b3b3b3;">—</td><td style="padding:13px 16px;"><span style="font-size:11px; font-weight:800; padding:3px 9px; border-radius:6px; background:#f0f0f0; color:#595959;">—</span></td><td style="padding:13px 22px; text-align:right; font-size:12px; color:#8a8a8a;">há 1 h</td></tr>
+          </tbody>
+        </table>
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:13px 22px; border-top:1px solid #eee;">
+          <div style="font-size:12px; color:#8a8a8a;">Mostrando 1–3 de 348 leads</div>
+          <div style="display:flex; gap:6px;">
+            <span style="width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:8px; border:1px solid #e5e5e5; font-size:12px; font-weight:700; color:#fff; background:#e50914;">1</span>
+            <span style="width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:8px; border:1px solid #e5e5e5; font-size:12px; font-weight:600; color:#595959; cursor:pointer;">2</span>
+            <span style="width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:8px; border:1px solid #e5e5e5; font-size:12px; font-weight:600; color:#595959; cursor:pointer;">3</span>
+            <span style="width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:8px; border:1px solid #e5e5e5; font-size:12px; font-weight:600; color:#595959; cursor:pointer;">›</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== COMPONENTS pt3 — chat, estados, overlays ===================== -->
+    <section style="margin-bottom:64px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start;">
+
+        <!-- Bolhas de chat -->
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:16px;">Bolhas de chat (WhatsApp)</div>
+          <div style="background:#ece5dd; border-radius:12px; padding:16px; display:flex; flex-direction:column; gap:9px;">
+            <div style="align-self:flex-start; max-width:78%; background:#fff; border-radius:10px 10px 10px 2px; padding:8px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08);"><div style="font-size:13px; color:#1a1a1a;">Oi! Vi o anúncio de energia solar. Quanto fica pra minha casa?</div><div style="font-size:9.5px; color:#8a8a8a; text-align:right; margin-top:3px;">09:41</div></div>
+            <div style="align-self:flex-end; max-width:78%; background:#dcf8c6; border-radius:10px 10px 2px 10px; padding:8px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08);"><div style="font-size:13px; color:#1a1a1a;">Olá! 😊 Pra te passar um valor certeiro, me diz: qual o valor médio da sua conta de luz por mês?</div><div style="display:flex; align-items:center; justify-content:flex-end; gap:4px; margin-top:3px;"><span style="font-size:9.5px; color:#7a9b6a;">09:41</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34b7f1" stroke-width="2.4"><path d="M1 13l4 4L13 7M9 15l2 2L23 7"/></svg></div></div>
+            <div style="align-self:flex-start; max-width:78%; background:#fff; border-radius:10px; padding:8px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08); display:flex; align-items:center; gap:9px;"><span style="width:30px; height:30px; border-radius:50%; background:#e50914; display:flex; align-items:center; justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><div style="display:flex; align-items:center; gap:2px; height:18px;"><span style="display:block; width:2.5px; height:7px; background:#b3b3b3; border-radius:2px;"></span><span style="display:block; width:2.5px; height:14px; background:#b3b3b3; border-radius:2px;"></span><span style="display:block; width:2.5px; height:10px; background:#b3b3b3; border-radius:2px;"></span><span style="display:block; width:2.5px; height:16px; background:#b3b3b3; border-radius:2px;"></span><span style="display:block; width:2.5px; height:8px; background:#b3b3b3; border-radius:2px;"></span></div><span style="font-size:11px; color:#8a8a8a; font-weight:600;">0:08</span></div>
+            <div style="align-self:flex-start; max-width:90%; background:#fff; border-left:3px solid #e50914; border-radius:4px 10px 10px 4px; padding:7px 11px;"><div style="font-size:10px; font-weight:700; color:#e50914; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:2px;">Transcrição do áudio</div><div style="font-size:12.5px; color:#595959; font-style:italic;">"É uns mil e duzentos por mês, mais ou menos."</div></div>
+          </div>
+        </div>
+
+        <!-- Empty + error states -->
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+            <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:16px;">Estado vazio (ensina o próximo passo)</div>
+            <div style="border:1.5px dashed #d8d8db; border-radius:12px; padding:26px; text-align:center;">
+              <div style="width:46px; height:46px; border-radius:12px; background:#f5f5f6; display:flex; align-items:center; justify-content:center; margin:0 auto 12px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+              <div style="font-size:14.5px; font-weight:700; margin-bottom:5px;">Nenhuma conversa ainda</div>
+              <div style="font-size:12.5px; color:#8a8a8a; margin-bottom:16px; line-height:1.5;">Assim que sua SDR receber o primeiro lead no WhatsApp, ele aparece aqui.</div>
+              <button style="border:0; background:#e50914; color:#fff; font-family:'Montserrat'; font-size:12.5px; font-weight:700; padding:9px 18px; border-radius:9px; cursor:pointer;">Testar no Playground</button>
+            </div>
+          </div>
+          <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+            <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:14px;">Erro acionável · Tooltip</div>
+            <div style="display:flex; align-items:flex-start; gap:11px; background:#fef2f2; border:1px solid #f3b5b9; border-radius:11px; padding:13px 15px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e50914" stroke-width="2.2" style="flex-shrink:0; margin-top:1px;"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+              <div style="flex:1;"><div style="font-size:13px; font-weight:700; color:#1a1a1a;">Conexão do WhatsApp caiu</div><div style="font-size:12px; color:#595959; margin-top:2px;">A SDR parou de responder há 6 min. Reconecte para retomar.</div></div>
+              <button style="border:0; background:#e50914; color:#fff; font-family:'Montserrat'; font-size:12px; font-weight:700; padding:7px 13px; border-radius:8px; cursor:pointer; white-space:nowrap;">Reconectar</button>
+            </div>
+            <div style="margin-top:14px; display:flex; align-items:center; gap:10px;">
+              <span style="font-size:12px; color:#595959;">Passe o mouse:</span>
+              <div style="position:relative; display:inline-block;">
+                <span style="display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border-radius:50%; background:#1a1a1a; color:#fff; font-size:11px; font-weight:700; cursor:help;">?</span>
+              </div>
+              <div style="position:relative; background:#1a1a1a; color:#fff; font-size:11.5px; font-weight:500; padding:7px 11px; border-radius:8px; max-width:230px;">Score = probabilidade do lead virar cliente, calculada pela IA.
+                <span style="position:absolute; left:-5px; top:50%; transform:translateY(-50%) rotate(45deg); width:10px; height:10px; background:#1a1a1a;"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stepper + modal + toast -->
+      <div style="display:grid; grid-template-columns:1.1fr 1fr; gap:18px; margin-top:18px; align-items:start;">
+        <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:18px;">Stepper / progresso</div>
+          <div style="display:flex; align-items:center;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:7px;"><span style="width:30px; height:30px; border-radius:50%; background:#e50914; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></span><span style="font-size:10.5px; font-weight:700; color:#1a1a1a;">Conectar</span></div>
+            <div style="flex:1; height:2.5px; background:#e50914; margin:0 6px; margin-bottom:24px;"></div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:7px;"><span style="width:30px; height:30px; border-radius:50%; background:#e50914; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;">2</span><span style="font-size:10.5px; font-weight:700; color:#1a1a1a;">Nicho</span></div>
+            <div style="flex:1; height:2.5px; background:#e5e5e5; margin:0 6px; margin-bottom:24px;"></div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:7px;"><span style="width:30px; height:30px; border-radius:50%; background:#fff; border:2px solid #e5e5e5; color:#b3b3b3; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;">3</span><span style="font-size:10.5px; font-weight:600; color:#b3b3b3;">Negócio</span></div>
+            <div style="flex:1; height:2.5px; background:#e5e5e5; margin:0 6px; margin-bottom:24px;"></div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:7px;"><span style="width:30px; height:30px; border-radius:50%; background:#fff; border:2px solid #e5e5e5; color:#b3b3b3; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;">4</span><span style="font-size:10.5px; font-weight:600; color:#b3b3b3;">Ativar</span></div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px;">
+            <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin-bottom:14px;">Toasts</div>
+            <div style="display:flex; align-items:center; gap:10px; background:#1a1a1a; border-radius:10px; padding:11px 14px; margin-bottom:9px;"><span style="width:20px;height:20px;border-radius:50%;background:#52cc5a;display:flex;align-items:center;justify-content:center;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></span><span style="font-size:12.5px; color:#fff; font-weight:500;">SDR ativada com sucesso.</span></div>
+            <div style="display:flex; align-items:center; gap:10px; background:#1a1a1a; border-radius:10px; padding:11px 14px;"><span style="width:20px;height:20px;border-radius:50%;background:#ffc02a;display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:800;color:#1a1a1a;">!</span></span><span style="font-size:12.5px; color:#fff; font-weight:500;">Template aguardando aprovação da Meta.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div style="background:#262626; border-radius:14px; padding:30px; margin-top:18px; display:flex; align-items:center; justify-content:center;">
+        <div style="width:420px; max-width:100%; background:#fff; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,0.35); overflow:hidden;">
+          <div style="padding:22px 24px 0;">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+              <div style="width:42px; height:42px; border-radius:11px; background:#fef2f2; display:flex; align-items:center; justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e50914" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
+              <span style="font-size:11px; font-weight:700; color:#b3b3b3; cursor:pointer;">ESC</span>
+            </div>
+            <div style="font-size:17px; font-weight:700; margin-top:14px;">Pausar a SDR?</div>
+            <div style="font-size:13px; color:#595959; margin-top:6px; line-height:1.55;">Enquanto pausada, novos leads não serão atendidos automaticamente. Você pode reativar a qualquer momento.</div>
+          </div>
+          <div style="display:flex; gap:10px; padding:20px 24px 22px;">
+            <button style="flex:1; background:#fff; border:1px solid #cccccc; border-radius:9px; padding:10px; font-family:'Montserrat'; font-size:13px; font-weight:700; cursor:pointer;">Cancelar</button>
+            <button style="flex:1; background:#e50914; border:0; color:#fff; border-radius:9px; padding:10px; font-family:'Montserrat'; font-size:13px; font-weight:700; cursor:pointer;">Pausar SDR</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== APP SHELL ===================== -->
+    <section id="shell" style="scroll-margin-top:64px; margin-bottom:64px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914; margin-bottom:7px;">03 · App Shell</div>
+      <h2 style="font-size:28px; font-weight:800; letter-spacing:-0.02em; margin:0 0 6px;">Estrutura &amp; indicador da SDR</h2>
+      <p style="font-size:14px; color:#595959; max-width:64ch; margin:0 0 24px; line-height:1.6;">Sidebar escura para navegação, topbar clara com seletor de tenant e o <strong>indicador de estado da SDR</strong> sempre visível. Linguagem do cliente: nada de termos técnicos.</p>
+
+      <!-- 3 estados da SDR -->
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#8a8a8a; margin:0 0 14px;">Indicador de estado da SDR · 3 estados</div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:26px;">
+        <div style="background:#1a1a1a; border-radius:13px; padding:18px;">
+          <div style="display:inline-flex; align-items:center; gap:9px; background:#262626; border:1px solid #333; border-radius:999px; padding:7px 14px;"><span style="width:9px; height:9px; border-radius:50%; background:#52cc5a;"></span><span style="font-size:12.5px; font-weight:700; color:#fff;">SDR conectada</span></div>
+          <div style="font-size:12px; color:#8a8a8a; margin-top:11px; line-height:1.5;">Ligada e pronta. Aguardando novas mensagens dos leads.</div>
+        </div>
+        <div style="background:#1a1a1a; border-radius:13px; padding:18px;">
+          <div style="display:inline-flex; align-items:center; gap:9px; background:#262626; border:1px solid #3a2a00; border-radius:999px; padding:7px 14px;"><span style="width:9px; height:9px; border-radius:50%; background:#52cc5a; animation:v4pulse 1.4s infinite;"></span><span style="font-size:12.5px; font-weight:700; color:#fff;">Respondendo agora</span><span style="display:flex; gap:2px; margin-left:1px;"><span style="width:3px;height:3px;border-radius:50%;background:#52cc5a;animation:v4typing 1s infinite;"></span><span style="width:3px;height:3px;border-radius:50%;background:#52cc5a;animation:v4typing 1s infinite .15s;"></span><span style="width:3px;height:3px;border-radius:50%;background:#52cc5a;animation:v4typing 1s infinite .3s;"></span></span></div>
+          <div style="font-size:12px; color:#8a8a8a; margin-top:11px; line-height:1.5;">A IA está digitando uma resposta para um lead neste momento.</div>
+        </div>
+        <div style="background:#1a1a1a; border-radius:13px; padding:18px;">
+          <div style="display:inline-flex; align-items:center; gap:9px; background:rgba(229,9,20,0.14); border:1px solid rgba(229,9,20,0.4); border-radius:999px; padding:7px 14px;"><span style="width:9px; height:9px; border-radius:50%; background:#e50914; animation:v4pulseRed 1.4s infinite;"></span><span style="font-size:12.5px; font-weight:700; color:#ff6b73;">Conexão caída</span></div>
+          <div style="font-size:12px; color:#8a8a8a; margin-top:11px; line-height:1.5;">A SDR parou de responder. Botão de <strong style="color:#ff6b73;">reconectar</strong> em destaque.</div>
+        </div>
+      </div>
+
+      <!-- Shell isolado -->
+      <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 12px 40px rgba(0,0,0,0.08); display:flex; height:440px; background:#f5f5f6;">
+        <!-- sidebar -->
+        <aside style="width:240px; background:#1a1a1a; flex-shrink:0; display:flex; flex-direction:column; padding:18px 14px;">
+          <div style="display:flex; align-items:center; gap:10px; padding:4px 8px 18px;">
+            <div style="width:34px; height:34px; border-radius:9px; background:#e50914; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:15px; color:#fff;">V4</div>
+            <div style="font-size:13.5px; font-weight:700; color:#fff;">SDR de IA</div>
+          </div>
+          <div style="font-size:9.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#666; padding:0 8px 8px;">Operação</div>
+          <a href="#shell" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; background:#262626; color:#fff; position:relative; margin-bottom:3px;"><span style="position:absolute; left:0; top:8px; bottom:8px; width:3px; border-radius:0 3px 3px 0; background:#e50914;"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg><span style="font-size:13px; font-weight:600;">Início</span></a>
+          <a href="#shell" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3; margin-bottom:3px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg><span style="font-size:13px; font-weight:600;">Conversas</span><span style="margin-left:auto; font-size:10px; font-weight:800; background:#e50914; color:#fff; border-radius:999px; padding:2px 7px;">4</span></a>
+          <a href="#shell" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3; margin-bottom:3px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span style="font-size:13px; font-weight:600;">Leads</span></a>
+          <a href="#shell" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3; margin-bottom:3px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M8 5v14l11-7z"/></svg><span style="font-size:13px; font-weight:600;">Playground</span></a>
+          <div style="font-size:9.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#666; padding:14px 8px 8px;">Ajustes</div>
+          <a href="#shell" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3; margin-bottom:3px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span style="font-size:13px; font-weight:600;">Configuração</span></a>
+          <a href="#shell" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span style="font-size:13px; font-weight:600;">Conta &amp; uso</span></a>
+          <div style="margin-top:auto; background:#262626; border-radius:11px; padding:13px; display:flex; align-items:center; gap:11px;">
+            <div style="width:40px; height:23px; border-radius:999px; background:#52cc5a; position:relative; flex-shrink:0;"><span style="position:absolute; top:2.5px; right:2.5px; width:18px; height:18px; border-radius:50%; background:#fff;"></span></div>
+            <div><div style="font-size:12px; font-weight:700; color:#fff;">SDR ativa</div><div style="font-size:10.5px; color:#8a8a8a;">atendendo 24/7</div></div>
+          </div>
+        </aside>
+        <!-- main -->
+        <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+          <header style="height:62px; background:#fff; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; justify-content:space-between; padding:0 22px; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:9px; background:#f5f5f6; border:1px solid #e5e5e5; border-radius:10px; padding:7px 12px; cursor:pointer;">
+              <div style="width:24px; height:24px; border-radius:6px; background:#ffc02a; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#1a1a1a;">SP</div>
+              <div style="line-height:1.1;"><div style="font-size:12.5px; font-weight:700;">Solar Prime Energia</div><div style="font-size:10px; color:#8a8a8a;">Curitiba · PR</div></div>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="2.4" style="margin-left:4px;"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(82,204,90,0.12); border:1px solid rgba(82,204,90,0.35); border-radius:999px; padding:6px 13px;"><span style="width:8px; height:8px; border-radius:50%; background:#52cc5a; animation:v4pulse 1.6s infinite;"></span><span style="font-size:12px; font-weight:700; color:#2f8f38;">Respondendo agora</span></div>
+              <div style="width:1px; height:24px; background:#e5e5e5;"></div>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+              <div style="position:relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9zM13.7 21a2 2 0 0 1-3.4 0"/></svg><span style="position:absolute; top:-3px; right:-3px; width:8px; height:8px; border-radius:50%; background:#e50914; border:1.5px solid #fff;"></span></div>
+              <div style="width:32px; height:32px; border-radius:50%; background:#1a1a1a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">MR</div>
+            </div>
+          </header>
+          <div style="flex:1; padding:22px; display:flex; align-items:center; justify-content:center;">
+            <div style="text-align:center; color:#b3b3b3;">
+              <div style="font-size:13px; font-weight:600;">↑ Sidebar escura + topbar com indicador SDR + seletor de tenant</div>
+              <div style="font-size:12px; margin-top:6px;">O canvas claro (esta área) recebe o conteúdo de cada tela.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DASHBOARD 1a ===================== -->
+    <section id="dash-1a" style="scroll-margin-top:64px; margin-bottom:30px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+        <span style="font-size:13px; font-weight:800; background:#e50914; color:#fff; padding:4px 11px; border-radius:8px; letter-spacing:0.02em;">1a</span>
+        <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914;">Tela-âncora · Dashboard do cliente</div>
+      </div>
+      <h2 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 4px;">Variação A — KPIs no topo, funil + atividade</h2>
+      <p style="font-size:13.5px; color:#595959; margin:0 0 18px;">Visão clássica: o cliente bate o olho e vê números, estado da conexão e o funil.</p>
+
+      <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 18px 50px rgba(0,0,0,0.1); display:flex; min-height:760px; background:#f5f5f6;">
+        <!-- SIDEBAR -->
+        <aside style="width:228px; background:#1a1a1a; flex-shrink:0; display:flex; flex-direction:column; padding:18px 13px;">
+          <div style="display:flex; align-items:center; gap:10px; padding:4px 8px 18px;"><div style="width:32px; height:32px; border-radius:8px; background:#e50914; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; color:#fff;">V4</div><div style="font-size:13px; font-weight:700; color:#fff;">SDR de IA</div></div>
+          <a href="#dash-1a" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; background:#262626; color:#fff; position:relative; margin-bottom:3px;"><span style="position:absolute; left:0; top:8px; bottom:8px; width:3px; border-radius:0 3px 3px 0; background:#e50914;"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg><span style="font-size:13px; font-weight:600;">Início</span></a>
+          <a href="#dash-1a" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3; margin-bottom:3px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg><span style="font-size:13px; font-weight:600;">Conversas</span><span style="margin-left:auto; font-size:10px; font-weight:800; background:#e50914; color:#fff; border-radius:999px; padding:2px 7px;">4</span></a>
+          <a href="#dash-1a" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3; margin-bottom:3px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg><span style="font-size:13px; font-weight:600;">Leads</span></a>
+          <a href="#dash-1a" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3; margin-bottom:3px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M8 5v14l11-7z"/></svg><span style="font-size:13px; font-weight:600;">Playground</span></a>
+          <div style="font-size:9.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#666; padding:14px 8px 8px;">Ajustes</div>
+          <a href="#dash-1a" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3; margin-bottom:3px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span style="font-size:13px; font-weight:600;">Configuração</span></a>
+          <a href="#dash-1a" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span style="font-size:13px; font-weight:600;">Conta &amp; uso</span></a>
+          <div style="margin-top:auto; background:#262626; border-radius:11px; padding:13px; display:flex; align-items:center; gap:11px;"><div style="width:40px; height:23px; border-radius:999px; background:#52cc5a; position:relative; flex-shrink:0;"><span style="position:absolute; top:2.5px; right:2.5px; width:18px; height:18px; border-radius:50%; background:#fff;"></span></div><div><div style="font-size:12px; font-weight:700; color:#fff;">SDR ativa</div><div style="font-size:10.5px; color:#8a8a8a;">atendendo 24/7</div></div></div>
+        </aside>
+        <!-- MAIN -->
+        <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+          <header style="height:62px; background:#fff; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; justify-content:space-between; padding:0 24px; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:9px; background:#f5f5f6; border:1px solid #e5e5e5; border-radius:10px; padding:7px 12px; cursor:pointer;"><div style="width:24px; height:24px; border-radius:6px; background:#ffc02a; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#1a1a1a;">SP</div><div style="line-height:1.1;"><div style="font-size:12.5px; font-weight:700;">Solar Prime Energia</div><div style="font-size:10px; color:#8a8a8a;">Curitiba · PR</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="2.4" style="margin-left:4px;"><path d="M6 9l6 6 6-6"/></svg></div>
+            <div style="display:flex; align-items:center; gap:14px;"><div style="display:inline-flex; align-items:center; gap:8px; background:rgba(82,204,90,0.12); border:1px solid rgba(82,204,90,0.35); border-radius:999px; padding:6px 13px;"><span style="width:8px; height:8px; border-radius:50%; background:#52cc5a;"></span><span style="font-size:12px; font-weight:700; color:#2f8f38;">SDR conectada</span></div><div style="width:1px; height:24px; background:#e5e5e5;"></div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><div style="position:relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9zM13.7 21a2 2 0 0 1-3.4 0"/></svg><span style="position:absolute; top:-3px; right:-3px; width:8px; height:8px; border-radius:50%; background:#e50914; border:1.5px solid #fff;"></span></div><div style="width:32px; height:32px; border-radius:50%; background:#1a1a1a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">MR</div></div>
+          </header>
+          <!-- CONTENT -->
+          <div style="flex:1; padding:26px; overflow:hidden;">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:20px;">
+              <div><h1 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0;">Olá, Marina 👋</h1><div style="font-size:13px; color:#8a8a8a; margin-top:3px;">Sexta, 30 de junho · sua SDR atendeu 41 leads esta semana</div></div>
+              <div style="display:flex; gap:9px;"><button style="background:#fff; border:1px solid #cccccc; border-radius:9px; padding:9px 14px; font-family:'Montserrat'; font-size:12.5px; font-weight:700; cursor:pointer;">Últimos 30 dias ▾</button><button style="background:#e50914; border:0; color:#fff; border-radius:9px; padding:9px 16px; font-family:'Montserrat'; font-size:12.5px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>Testar SDR</button></div>
+            </div>
+            <!-- KPI strip -->
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:18px;">
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; padding:17px 18px;"><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a; margin-bottom:9px;">Leads recebidos</div><div style="font-size:30px; font-weight:800; letter-spacing:-0.02em; line-height:1;">348</div><div style="display:flex; align-items:center; gap:5px; margin-top:9px;"><span style="display:inline-flex; align-items:center; gap:3px; font-size:11px; font-weight:700; color:#2f8f38;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2f8f38" stroke-width="3" stroke-linecap="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>18%</span><span style="font-size:11px; color:#8a8a8a;">vs. mês ant.</span></div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; padding:17px 18px;"><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a; margin-bottom:9px;">Qualificados</div><div style="font-size:30px; font-weight:800; letter-spacing:-0.02em; line-height:1; color:#2f8f38;">132</div><div style="font-size:11px; color:#8a8a8a; margin-top:9px;">38% dos leads</div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; padding:17px 18px;"><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a; margin-bottom:9px;">Agendamentos</div><div style="font-size:30px; font-weight:800; letter-spacing:-0.02em; line-height:1;">74</div><div style="font-size:11px; color:#8a8a8a; margin-top:9px;">21% de conversão</div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; padding:17px 18px;"><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a; margin-bottom:9px;">Uso no mês</div><div style="font-size:30px; font-weight:800; letter-spacing:-0.02em; line-height:1;">R$ 412</div><div style="font-size:11px; color:#8a8a8a; margin-top:9px;">de R$ 600 do plano</div></div>
+            </div>
+            <!-- 2 cols -->
+            <div style="display:grid; grid-template-columns:1.5fr 1fr; gap:16px;">
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:20px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;"><div style="font-size:15px; font-weight:700;">Funil de leads</div><span style="font-size:11px; color:#8a8a8a;">últimos 30 dias</span></div>
+                <div style="display:flex; flex-direction:column; gap:11px;">
+                  <div style="display:flex; align-items:center; gap:14px;"><div style="width:104px; font-size:12px; font-weight:600; color:#595959;">Novos</div><div style="flex:1; background:#f0f0f0; border-radius:8px; overflow:hidden;"><div style="height:30px; border-radius:8px; background:#1a1a1a; width:100%; display:flex; align-items:center; padding:0 12px; color:#fff; font-size:12px; font-weight:700;">348</div></div></div>
+                  <div style="display:flex; align-items:center; gap:14px;"><div style="width:104px; font-size:12px; font-weight:600; color:#595959;">Engajados</div><div style="flex:1; background:#f0f0f0; border-radius:8px; overflow:hidden;"><div style="height:30px; border-radius:8px; background:#80050b; width:74%; display:flex; align-items:center; padding:0 12px; color:#fff; font-size:12px; font-weight:700;">258</div></div></div>
+                  <div style="display:flex; align-items:center; gap:14px;"><div style="width:104px; font-size:12px; font-weight:600; color:#595959;">Qualificados</div><div style="flex:1; background:#f0f0f0; border-radius:8px; overflow:hidden;"><div style="height:30px; border-radius:8px; background:#e50914; width:38%; display:flex; align-items:center; padding:0 12px; color:#fff; font-size:12px; font-weight:700;">132</div></div></div>
+                  <div style="display:flex; align-items:center; gap:14px;"><div style="width:104px; font-size:12px; font-weight:600; color:#595959;">Agendados</div><div style="flex:1; background:#f0f0f0; border-radius:8px; overflow:hidden;"><div style="height:30px; border-radius:8px; background:#52cc5a; width:21%; display:flex; align-items:center; padding:0 12px; color:#fff; font-size:12px; font-weight:700;">74</div></div></div>
+                </div>
+                <div style="border-top:1px solid #f0f0f0; margin-top:18px; padding-top:16px; display:flex; gap:24px;">
+                  <div><div style="font-size:11px; color:#8a8a8a; font-weight:600;">Tempo médio de 1ª resposta</div><div style="font-size:18px; font-weight:800; margin-top:3px;">8 seg</div></div>
+                  <div><div style="font-size:11px; color:#8a8a8a; font-weight:600;">Conversas ativas agora</div><div style="font-size:18px; font-weight:800; margin-top:3px; color:#2f8f38;">3</div></div>
+                </div>
+              </div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:20px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;"><div style="font-size:15px; font-weight:700;">Atividade recente</div><a href="#dash-1a" style="font-size:12px; font-weight:700; color:#e50914; text-decoration:none;">Ver tudo</a></div>
+                <div style="display:flex; flex-direction:column; gap:2px;">
+                  <div style="display:flex; align-items:center; gap:11px; padding:9px 0; border-bottom:1px solid #f4f4f4;"><div style="width:32px; height:32px; border-radius:50%; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0;">RC</div><div style="flex:1; min-width:0;"><div style="font-size:12.5px; font-weight:600;">Renata Castro</div><div style="font-size:11px; color:#8a8a8a;">Qualificada · R$ 1.240/mês</div></div><span style="font-size:10.5px; color:#b3b3b3;">4 min</span></div>
+                  <div style="display:flex; align-items:center; gap:11px; padding:9px 0; border-bottom:1px solid #f4f4f4;"><div style="width:32px; height:32px; border-radius:50%; background:#ffc02a; color:#1a1a1a; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0;">PG</div><div style="flex:1; min-width:0;"><div style="font-size:12.5px; font-weight:600;">Paulo Guedes</div><div style="font-size:11px; color:#9a6b00;">Pediu falar com humano</div></div><span style="font-size:10.5px; color:#b3b3b3;">22 min</span></div>
+                  <div style="display:flex; align-items:center; gap:11px; padding:9px 0; border-bottom:1px solid #f4f4f4;"><div style="width:32px; height:32px; border-radius:50%; background:#1a1a1a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0;">AL</div><div style="flex:1; min-width:0;"><div style="font-size:12.5px; font-weight:600;">Ana Lima</div><div style="font-size:11px; color:#8a8a8a;">Agendou visita · 02/07 14h</div></div><span style="font-size:10.5px; color:#b3b3b3;">1 h</span></div>
+                  <div style="display:flex; align-items:center; gap:11px; padding:9px 0;"><div style="width:32px; height:32px; border-radius:50%; background:#b3b3b3; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0;">TM</div><div style="flex:1; min-width:0;"><div style="font-size:12.5px; font-weight:600;">Thiago Martins</div><div style="font-size:11px; color:#8a8a8a;">Novo lead recebido</div></div><span style="font-size:10.5px; color:#b3b3b3;">1 h</span></div>
+                </div>
+              </div>
+            </div>
+            <!-- banner ao vivo (compacto) -->
+            <div style="background:#1a1a1a; border-radius:14px; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; gap:20px; margin-top:16px; position:relative; overflow:hidden;">
+              <div style="position:absolute; right:-30px; top:-30px; width:150px; height:150px; background:radial-gradient(circle, rgba(229,9,20,0.22), transparent 70%);"></div>
+              <div style="position:relative;">
+                <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(82,204,90,0.14); border:1px solid rgba(82,204,90,0.4); border-radius:999px; padding:4px 11px; margin-bottom:9px;"><span style="width:7px; height:7px; border-radius:50%; background:#52cc5a; animation:v4pulse 1.4s infinite;"></span><span style="font-size:11px; font-weight:700; color:#52cc5a;">Respondendo agora</span><span style="display:flex; gap:2px; margin-left:1px;"><span style="width:3px;height:3px;border-radius:50%;background:#52cc5a;animation:v4typing 1s infinite;"></span><span style="width:3px;height:3px;border-radius:50%;background:#52cc5a;animation:v4typing 1s infinite .15s;"></span><span style="width:3px;height:3px;border-radius:50%;background:#52cc5a;animation:v4typing 1s infinite .3s;"></span></span></div>
+                <div style="font-size:16px; font-weight:800; color:#fff; letter-spacing:-0.01em;">Sua SDR está atendendo <span style="color:#52cc5a;">3 conversas</span> agora</div>
+                <div style="font-size:12px; color:#b3b3b3; margin-top:4px;">41 leads atendidos hoje · tempo médio de resposta: 8 segundos</div>
+              </div>
+              <div style="position:relative; display:flex; gap:20px; flex-shrink:0;">
+                <div style="text-align:center;"><div style="font-size:26px; font-weight:800; color:#fff; line-height:1;">41</div><div style="font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a; margin-top:5px;">leads hoje</div></div>
+                <div style="width:1px; background:#333;"></div>
+                <div style="text-align:center;"><div style="font-size:26px; font-weight:800; color:#52cc5a; line-height:1;">16</div><div style="font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a; margin-top:5px;">qualificados</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DASHBOARD 1b ===================== -->
+    <section id="dash-1b" style="scroll-margin-top:64px; margin-bottom:30px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+        <span style="font-size:13px; font-weight:800; background:#1a1a1a; color:#fff; padding:4px 11px; border-radius:8px; letter-spacing:0.02em;">1b</span>
+        <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914;">Tela-âncora · Dashboard do cliente</div>
+      </div>
+      <h2 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 4px;">Variação B — centro de comando ao vivo</h2>
+      <p style="font-size:13.5px; color:#595959; margin:0 0 18px;">Foco no "agora": estado da SDR em destaque, conversas ao vivo e conversão. Mesmo sistema, hierarquia diferente.</p>
+
+      <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 18px 50px rgba(0,0,0,0.1); display:flex; min-height:760px; background:#f5f5f6;">
+        <!-- SIDEBAR -->
+        <aside style="width:228px; background:#1a1a1a; flex-shrink:0; display:flex; flex-direction:column; padding:18px 13px;">
+          <div style="display:flex; align-items:center; gap:10px; padding:4px 8px 18px;"><div style="width:32px; height:32px; border-radius:8px; background:#e50914; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; color:#fff;">V4</div><div style="font-size:13px; font-weight:700; color:#fff;">SDR de IA</div></div>
+          <a href="#dash-1b" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; background:#262626; color:#fff; position:relative; margin-bottom:3px;"><span style="position:absolute; left:0; top:8px; bottom:8px; width:3px; border-radius:0 3px 3px 0; background:#e50914;"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg><span style="font-size:13px; font-weight:600;">Início</span></a>
+          <a href="#dash-1b" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3; margin-bottom:3px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg><span style="font-size:13px; font-weight:600;">Conversas</span><span style="margin-left:auto; font-size:10px; font-weight:800; background:#e50914; color:#fff; border-radius:999px; padding:2px 7px;">4</span></a>
+          <a href="#dash-1b" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3; margin-bottom:3px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg><span style="font-size:13px; font-weight:600;">Leads</span></a>
+          <a href="#dash-1b" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3; margin-bottom:3px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M8 5v14l11-7z"/></svg><span style="font-size:13px; font-weight:600;">Playground</span></a>
+          <div style="font-size:9.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#666; padding:14px 8px 8px;">Ajustes</div>
+          <a href="#dash-1b" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3; margin-bottom:3px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span style="font-size:13px; font-weight:600;">Configuração</span></a>
+          <a href="#dash-1b" style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; color:#b3b3b3;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span style="font-size:13px; font-weight:600;">Conta &amp; uso</span></a>
+          <div style="margin-top:auto; background:#262626; border-radius:11px; padding:13px; display:flex; align-items:center; gap:11px;"><div style="width:40px; height:23px; border-radius:999px; background:#52cc5a; position:relative; flex-shrink:0;"><span style="position:absolute; top:2.5px; right:2.5px; width:18px; height:18px; border-radius:50%; background:#fff;"></span></div><div><div style="font-size:12px; font-weight:700; color:#fff;">SDR ativa</div><div style="font-size:10.5px; color:#8a8a8a;">atendendo 24/7</div></div></div>
+        </aside>
+        <!-- MAIN -->
+        <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+          <header style="height:62px; background:#fff; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; justify-content:space-between; padding:0 24px; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:9px; background:#f5f5f6; border:1px solid #e5e5e5; border-radius:10px; padding:7px 12px; cursor:pointer;"><div style="width:24px; height:24px; border-radius:6px; background:#ffc02a; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#1a1a1a;">SP</div><div style="line-height:1.1;"><div style="font-size:12.5px; font-weight:700;">Solar Prime Energia</div><div style="font-size:10px; color:#8a8a8a;">Curitiba · PR</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="2.4" style="margin-left:4px;"><path d="M6 9l6 6 6-6"/></svg></div>
+            <div style="display:flex; align-items:center; gap:14px;"><div style="display:inline-flex; align-items:center; gap:8px; background:rgba(82,204,90,0.12); border:1px solid rgba(82,204,90,0.35); border-radius:999px; padding:6px 13px;"><span style="width:8px; height:8px; border-radius:50%; background:#52cc5a; animation:v4pulse 1.6s infinite;"></span><span style="font-size:12px; font-weight:700; color:#2f8f38;">Respondendo agora</span></div><div style="width:1px; height:24px; background:#e5e5e5;"></div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><div style="position:relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9zM13.7 21a2 2 0 0 1-3.4 0"/></svg><span style="position:absolute; top:-3px; right:-3px; width:8px; height:8px; border-radius:50%; background:#e50914; border:1.5px solid #fff;"></span></div><div style="width:32px; height:32px; border-radius:50%; background:#1a1a1a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">MR</div></div>
+          </header>
+          <!-- CONTENT -->
+          <div style="flex:1; padding:26px;">
+            <!-- HERO dark -->
+            <div style="background:#1a1a1a; border-radius:16px; padding:22px 24px; display:flex; align-items:center; justify-content:space-between; gap:24px; margin-bottom:18px; position:relative; overflow:hidden;">
+              <div style="position:absolute; right:-40px; top:-40px; width:200px; height:200px; background:radial-gradient(circle, rgba(229,9,20,0.25), transparent 70%);"></div>
+              <div style="position:relative;">
+                <div style="display:inline-flex; align-items:center; gap:9px; background:rgba(82,204,90,0.14); border:1px solid rgba(82,204,90,0.4); border-radius:999px; padding:6px 13px; margin-bottom:13px;"><span style="width:8px; height:8px; border-radius:50%; background:#52cc5a; animation:v4pulse 1.4s infinite;"></span><span style="font-size:12px; font-weight:700; color:#52cc5a;">Respondendo agora</span><span style="display:flex; gap:2px; margin-left:2px;"><span style="width:3px;height:3px;border-radius:50%;background:#52cc5a;animation:v4typing 1s infinite;"></span><span style="width:3px;height:3px;border-radius:50%;background:#52cc5a;animation:v4typing 1s infinite .15s;"></span><span style="width:3px;height:3px;border-radius:50%;background:#52cc5a;animation:v4typing 1s infinite .3s;"></span></span></div>
+                <div style="font-size:22px; font-weight:800; color:#fff; letter-spacing:-0.02em;">Sua SDR está atendendo <span style="color:#52cc5a;">3 conversas</span> agora</div>
+                <div style="font-size:13px; color:#b3b3b3; margin-top:5px;">41 leads atendidos hoje · tempo médio de resposta: 8 segundos</div>
+              </div>
+              <div style="position:relative; display:flex; gap:26px;">
+                <div style="text-align:center;"><div style="font-size:34px; font-weight:800; color:#fff; line-height:1;">41</div><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a; margin-top:6px;">leads hoje</div></div>
+                <div style="width:1px; background:#333;"></div>
+                <div style="text-align:center;"><div style="font-size:34px; font-weight:800; color:#52cc5a; line-height:1;">16</div><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a; margin-top:6px;">qualificados</div></div>
+              </div>
+            </div>
+            <!-- grid -->
+            <div style="display:grid; grid-template-columns:1.55fr 1fr; gap:16px;">
+              <!-- conversas ao vivo -->
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:20px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;"><div style="font-size:15px; font-weight:700;">Conversas ao vivo</div><a href="#dash-1b" style="font-size:12px; font-weight:700; color:#e50914; text-decoration:none;">Abrir inbox</a></div>
+                <div style="display:flex; flex-direction:column;">
+                  <div style="display:flex; align-items:center; gap:12px; padding:11px 0; border-bottom:1px solid #f4f4f4;"><div style="width:36px; height:36px; border-radius:50%; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0;">RC</div><div style="flex:1; min-width:0;"><div style="font-size:13px; font-weight:600;">Renata Castro</div><div style="font-size:11.5px; color:#8a8a8a; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Perfeito! Pode me passar mais detalhes do orçamento?</div></div><div style="display:flex; flex-direction:column; align-items:flex-end; gap:5px;"><span style="display:flex; gap:2px;"><span style="width:4px;height:4px;border-radius:50%;background:#52cc5a;animation:v4typing 1s infinite;"></span><span style="width:4px;height:4px;border-radius:50%;background:#52cc5a;animation:v4typing 1s infinite .15s;"></span><span style="width:4px;height:4px;border-radius:50%;background:#52cc5a;animation:v4typing 1s infinite .3s;"></span></span><span style="font-size:10px; color:#b3b3b3;">agora</span></div></div>
+                  <div style="display:flex; align-items:center; gap:12px; padding:11px 0; border-bottom:1px solid #f4f4f4;"><div style="width:36px; height:36px; border-radius:50%; background:#ffc02a; color:#1a1a1a; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0;">PG</div><div style="flex:1; min-width:0;"><div style="font-size:13px; font-weight:600;">Paulo Guedes <span style="font-size:10px; font-weight:800; background:rgba(255,192,42,0.2); color:#9a6b00; border-radius:5px; padding:2px 6px; margin-left:4px;">HANDOFF</span></div><div style="font-size:11.5px; color:#9a6b00; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Pediu para falar com um atendente humano</div></div><span style="font-size:10px; color:#b3b3b3;">2 min</span></div>
+                  <div style="display:flex; align-items:center; gap:12px; padding:11px 0; border-bottom:1px solid #f4f4f4;"><div style="width:36px; height:36px; border-radius:50%; background:#1a1a1a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0;">JF</div><div style="flex:1; min-width:0;"><div style="font-size:13px; font-weight:600;">Júlia Ferraz</div><div style="font-size:11.5px; color:#8a8a8a; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Qual o prazo de instalação depois de fechar?</div></div><span style="font-size:10px; color:#b3b3b3;">5 min</span></div>
+                  <div style="display:flex; align-items:center; gap:12px; padding:11px 0;"><div style="width:36px; height:36px; border-radius:50%; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0;">AL</div><div style="flex:1; min-width:0;"><div style="font-size:13px; font-weight:600;">Ana Lima <span style="font-size:10px; font-weight:800; background:rgba(82,204,90,0.16); color:#2f8f38; border-radius:5px; padding:2px 6px; margin-left:4px;">AGENDOU</span></div><div style="font-size:11.5px; color:#8a8a8a; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Visita técnica confirmada para 02/07 às 14h</div></div><span style="font-size:10px; color:#b3b3b3;">12 min</span></div>
+                </div>
+              </div>
+              <!-- conversão donut -->
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:20px; display:flex; flex-direction:column;">
+                <div style="font-size:15px; font-weight:700; margin-bottom:6px;">Conversão do mês</div>
+                <div style="display:flex; align-items:center; justify-content:center; padding:8px 0 14px;">
+                  <div style="position:relative; width:140px; height:140px;" data-om-raster>
+                    <svg viewBox="0 0 36 36" style="width:140px; height:140px; transform:rotate(-90deg);"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#f0f0f0" stroke-width="3.4"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#e50914" stroke-width="3.4" stroke-dasharray="38 100" stroke-linecap="round"/></svg>
+                    <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;"><div style="font-size:28px; font-weight:800; line-height:1;">38%</div><div style="font-size:10px; color:#8a8a8a; font-weight:600;">qualificação</div></div>
+                  </div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:9px; border-top:1px solid #f0f0f0; padding-top:14px;">
+                  <div style="display:flex; align-items:center; justify-content:space-between;"><span style="display:flex; align-items:center; gap:8px; font-size:12px; color:#595959;"><span style="width:9px;height:9px;border-radius:3px;background:#e50914;"></span>Qualificados</span><span style="font-size:12.5px; font-weight:700;">132</span></div>
+                  <div style="display:flex; align-items:center; justify-content:space-between;"><span style="display:flex; align-items:center; gap:8px; font-size:12px; color:#595959;"><span style="width:9px;height:9px;border-radius:3px;background:#52cc5a;"></span>Agendados</span><span style="font-size:12.5px; font-weight:700;">74</span></div>
+                  <div style="display:flex; align-items:center; justify-content:space-between;"><span style="display:flex; align-items:center; gap:8px; font-size:12px; color:#595959;"><span style="width:9px;height:9px;border-radius:3px;background:#cccccc;"></span>Desqualificados</span><span style="font-size:12.5px; font-weight:700;">142</span></div>
+                </div>
+              </div>
+            </div>
+            <!-- KPI strip com sparkline -->
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:16px;">
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:18px 20px; display:flex; align-items:center; justify-content:space-between;"><div><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a;">Leads no mês</div><div style="font-size:26px; font-weight:800; margin-top:6px; line-height:1;">348</div></div><svg width="74" height="38" viewBox="0 0 74 38" fill="none"><polyline points="0,30 12,24 24,28 37,16 49,20 61,9 74,5" stroke="#e50914" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:18px 20px; display:flex; align-items:center; justify-content:space-between;"><div><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a;">Tempo de resposta</div><div style="font-size:26px; font-weight:800; margin-top:6px; line-height:1;">8 seg</div></div><svg width="74" height="38" viewBox="0 0 74 38" fill="none"><polyline points="0,12 12,16 24,10 37,20 49,18 61,26 74,28" stroke="#52cc5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:18px 20px; display:flex; align-items:center; justify-content:space-between;"><div><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a;">Uso do plano</div><div style="font-size:26px; font-weight:800; margin-top:6px; line-height:1;">R$ 412</div></div><div style="width:74px;"><div style="height:7px; border-radius:999px; background:#f0f0f0; overflow:hidden;"><div style="width:69%; height:100%; background:#1a1a1a;"></div></div><div style="font-size:10px; color:#8a8a8a; margin-top:6px; text-align:right;">de R$ 600</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ONBOARDING 2 ===================== -->
+    <section id="onboarding" style="scroll-margin-top:64px; margin-bottom:30px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+        <span style="font-size:13px; font-weight:800; background:#e50914; color:#fff; padding:4px 11px; border-radius:8px; letter-spacing:0.02em;">2</span>
+        <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914;">Tela-âncora · Onboarding (wizard)</div>
+      </div>
+      <h2 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 4px;">Conectar WhatsApp · escolher nicho · testar</h2>
+      <p style="font-size:13.5px; color:#595959; margin:0 0 18px;">Salvar-e-continuar, barra de progresso e estados visuais de conexão. Linguagem do cliente: "Conectar", não "webhook".</p>
+
+      <!-- main wizard frame -->
+      <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 18px 50px rgba(0,0,0,0.1); background:#fff; display:flex; flex-direction:column; min-height:600px;">
+        <!-- top bar -->
+        <div style="height:60px; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; justify-content:space-between; padding:0 24px;">
+          <div style="display:flex; align-items:center; gap:10px;"><div style="width:30px; height:30px; border-radius:8px; background:#e50914; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#fff;">V4</div><div style="font-size:13.5px; font-weight:700;">Configuração inicial</div></div>
+          <div style="display:flex; align-items:center; gap:16px;"><div style="display:flex; align-items:center; gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#52cc5a" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span style="font-size:11.5px; color:#8a8a8a; font-weight:600;">Salvo automaticamente</span></div><span style="font-size:12.5px; font-weight:700; color:#8a8a8a; cursor:pointer;">Sair</span></div>
+        </div>
+        <div style="flex:1; display:flex; min-height:0;">
+          <!-- step rail -->
+          <div style="width:262px; background:#fafafa; border-right:1px solid #e5e5e5; padding:22px 18px; flex-shrink:0;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;"><span style="font-size:11px; font-weight:700; color:#8a8a8a; text-transform:uppercase; letter-spacing:0.08em;">Etapa 1 de 8</span><span style="font-size:11px; font-weight:700; color:#e50914;">13%</span></div>
+            <div style="height:5px; border-radius:999px; background:#e5e5e5; overflow:hidden; margin-bottom:20px;"><div style="width:13%; height:100%; background:#e50914; border-radius:999px;"></div></div>
+            <div style="display:flex; flex-direction:column; gap:3px;">
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:9px; background:#fff; border:1px solid #f0d4d6;"><span style="width:22px; height:22px; border-radius:50%; background:#e50914; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0;">1</span><span style="font-size:12.5px; font-weight:700; color:#1a1a1a;">Conectar WhatsApp</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:9px;"><span style="width:22px; height:22px; border-radius:50%; background:#e5e5e5; color:#8a8a8a; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0;">2</span><span style="font-size:12.5px; font-weight:600; color:#595959;">Escolher nicho</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:9px;"><span style="width:22px; height:22px; border-radius:50%; background:#e5e5e5; color:#8a8a8a; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0;">3</span><span style="font-size:12.5px; font-weight:600; color:#595959;">Ensinar o negócio</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:9px;"><span style="width:22px; height:22px; border-radius:50%; background:#e5e5e5; color:#8a8a8a; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0;">4</span><span style="font-size:12.5px; font-weight:600; color:#595959;">Qualificação</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:9px;"><span style="width:22px; height:22px; border-radius:50%; background:#e5e5e5; color:#8a8a8a; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0;">5</span><span style="font-size:12.5px; font-weight:600; color:#595959;">Cadência &amp; follow-up</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:9px;"><span style="width:22px; height:22px; border-radius:50%; background:#e5e5e5; color:#8a8a8a; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0;">6</span><span style="font-size:12.5px; font-weight:600; color:#595959;">Base de conhecimento</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:9px;"><span style="width:22px; height:22px; border-radius:50%; background:#e5e5e5; color:#8a8a8a; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0;">7</span><span style="font-size:12.5px; font-weight:600; color:#595959;">Testar no Playground</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:9px;"><span style="width:22px; height:22px; border-radius:50%; background:#e5e5e5; color:#8a8a8a; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0;">8</span><span style="font-size:12.5px; font-weight:600; color:#595959;">Ativar</span></div>
+            </div>
+          </div>
+          <!-- step content -->
+          <div style="flex:1; padding:32px 38px; min-width:0; display:flex; flex-direction:column;">
+            <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#e50914; margin-bottom:7px;">Passo 1</div>
+            <h3 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 6px;">Conecte o WhatsApp do seu negócio</h3>
+            <p style="font-size:13.5px; color:#595959; margin:0 0 22px; max-width:60ch; line-height:1.6;">É a partir daqui que sua SDR vai conversar com os leads. Escolha como prefere conectar — leva menos de 2 minutos.</p>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:22px;">
+              <!-- método oficial -->
+              <div style="border:2px solid #e50914; border-radius:14px; padding:20px; position:relative;">
+                <span style="position:absolute; top:14px; right:14px; font-size:9.5px; font-weight:800; background:#e50914; color:#fff; padding:3px 8px; border-radius:6px; letter-spacing:0.04em;">RECOMENDADO</span>
+                <div style="width:42px; height:42px; border-radius:11px; background:rgba(82,204,90,0.14); display:flex; align-items:center; justify-content:center; margin-bottom:13px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.8-1.4.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.4 3.2.6 1.5 1.6 2.9 3.5 4.3 2.4 1.8 3.6 1.8 4.8 1.6.7-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.1-1.4 0-.1-.2-.2-.5-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg></div>
+                <div style="font-size:15px; font-weight:700; margin-bottom:5px;">WhatsApp Oficial</div>
+                <div style="font-size:12.5px; color:#8a8a8a; line-height:1.55; margin-bottom:16px;">Conecte em poucos cliques pela API oficial, com selo verificado de negócio.</div>
+                <button style="width:100%; border:0; background:#e50914; color:#fff; font-family:'Montserrat'; font-size:13px; font-weight:700; padding:11px; border-radius:9px; cursor:pointer;">Conectar agora</button>
+              </div>
+              <!-- método QR -->
+              <div style="border:1px solid #e5e5e5; border-radius:14px; padding:20px;">
+                <div style="width:42px; height:42px; border-radius:11px; background:#f5f5f6; display:flex; align-items:center; justify-content:center; margin-bottom:13px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 14v.01M17 21h4v-4M14 21h.01"/></svg></div>
+                <div style="font-size:15px; font-weight:700; margin-bottom:5px;">Ler QR Code</div>
+                <div style="font-size:12.5px; color:#8a8a8a; line-height:1.55; margin-bottom:14px;">Abra o WhatsApp no celular e escaneie o código abaixo.</div>
+                <div style="display:flex; align-items:center; gap:14px;">
+                  <div style="width:78px; height:78px; border-radius:10px; border:1px solid #e5e5e5; padding:7px; flex-shrink:0;" data-om-raster><svg viewBox="0 0 100 100" style="width:100%; height:100%;"><rect width="100" height="100" fill="#fff"/><g fill="#1a1a1a"><rect x="6" y="6" width="26" height="26"/><rect x="12" y="12" width="14" height="14" fill="#fff"/><rect x="68" y="6" width="26" height="26"/><rect x="74" y="12" width="14" height="14" fill="#fff"/><rect x="6" y="68" width="26" height="26"/><rect x="12" y="74" width="14" height="14" fill="#fff"/><rect x="42" y="6" width="6" height="6"/><rect x="52" y="6" width="6" height="6"/><rect x="42" y="18" width="6" height="6"/><rect x="42" y="42" width="6" height="6"/><rect x="54" y="42" width="10" height="6"/><rect x="42" y="54" width="6" height="10"/><rect x="68" y="42" width="6" height="6"/><rect x="80" y="48" width="6" height="6"/><rect x="68" y="60" width="6" height="6"/><rect x="80" y="68" width="14" height="6"/><rect x="68" y="80" width="6" height="14"/><rect x="86" y="86" width="8" height="8"/></g></svg></div>
+                  <div style="display:inline-flex; align-items:center; gap:7px; background:rgba(255,192,42,0.16); border-radius:8px; padding:7px 11px;"><span style="width:8px; height:8px; border-radius:50%; background:#ffc02a; animation:v4dotsoft 1.2s infinite;"></span><span style="font-size:11.5px; font-weight:700; color:#9a6b00;">Aguardando leitura…</span></div>
+                </div>
+              </div>
+            </div>
+            <!-- connection states -->
+            <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#8a8a8a; margin-bottom:11px;">Estados da conexão</div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:auto;">
+              <div style="border:1px solid #e5e5e5; border-radius:11px; padding:13px 15px; display:flex; align-items:center; gap:11px;"><span style="width:10px; height:10px; border-radius:50%; background:#ffc02a; animation:v4dotsoft 1.2s infinite;"></span><div><div style="font-size:12.5px; font-weight:700;">Conectando…</div><div style="font-size:11px; color:#8a8a8a;">estabelecendo</div></div></div>
+              <div style="border:1px solid rgba(82,204,90,0.4); background:rgba(82,204,90,0.06); border-radius:11px; padding:13px 15px; display:flex; align-items:center; gap:11px;"><span style="width:10px; height:10px; border-radius:50%; background:#52cc5a;"></span><div><div style="font-size:12.5px; font-weight:700; color:#2f8f38;">Conectado</div><div style="font-size:11px; color:#8a8a8a;">+55 41 99876-5432</div></div></div>
+              <div style="border:1px solid rgba(229,9,20,0.4); background:rgba(229,9,20,0.04); border-radius:11px; padding:13px 15px; display:flex; align-items:center; gap:11px;"><span style="width:10px; height:10px; border-radius:50%; background:#e50914;"></span><div style="flex:1;"><div style="font-size:12.5px; font-weight:700; color:#c30811;">Caiu</div><div style="font-size:11px; color:#8a8a8a;">tentar de novo</div></div></div>
+            </div>
+          </div>
+        </div>
+        <!-- footer nav -->
+        <div style="border-top:1px solid #e5e5e5; padding:16px 24px; display:flex; align-items:center; justify-content:space-between;">
+          <button style="background:#fff; border:1px solid #cccccc; border-radius:9px; padding:10px 18px; font-family:'Montserrat'; font-size:13px; font-weight:700; color:#8a8a8a; cursor:pointer;">Voltar</button>
+          <button style="background:#e50914; border:0; color:#fff; border-radius:9px; padding:10px 22px; font-family:'Montserrat'; font-size:13px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:8px;">Continuar<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+
+      <!-- secondary previews -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px;">
+        <!-- escolher nicho -->
+        <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 10px 30px rgba(0,0,0,0.07); background:#fff; padding:24px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#e50914; margin-bottom:6px;">Passo 2</div>
+          <h3 style="font-size:18px; font-weight:800; margin:0 0 4px;">Escolha o nicho do negócio</h3>
+          <p style="font-size:12.5px; color:#8a8a8a; margin:0 0 16px;">A IA já vem treinada para o seu mercado.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div style="border:2px solid #e50914; border-radius:11px; padding:14px; display:flex; align-items:center; gap:11px;"><div style="width:36px; height:36px; border-radius:9px; background:rgba(255,192,42,0.16); display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffb300" stroke-width="2"><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg></div><div><div style="font-size:13px; font-weight:700;">Energia solar</div><div style="font-size:10.5px; color:#8a8a8a;">selecionado</div></div></div>
+            <div style="border:1px solid #e5e5e5; border-radius:11px; padding:14px; display:flex; align-items:center; gap:11px;"><div style="width:36px; height:36px; border-radius:9px; background:#f5f5f6; display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 12 5 5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg></div><div><div style="font-size:13px; font-weight:700;">Clínica</div><div style="font-size:10.5px; color:#8a8a8a;">estética / saúde</div></div></div>
+            <div style="border:1px solid #e5e5e5; border-radius:11px; padding:14px; display:flex; align-items:center; gap:11px;"><div style="width:36px; height:36px; border-radius:9px; background:#f5f5f6; display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg></div><div><div style="font-size:13px; font-weight:700;">Imobiliária</div><div style="font-size:10.5px; color:#8a8a8a;">vendas / locação</div></div></div>
+            <div style="border:1px solid #e5e5e5; border-radius:11px; padding:14px; display:flex; align-items:center; gap:11px;"><div style="width:36px; height:36px; border-radius:9px; background:#f5f5f6; display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><path d="M12 20h9M4 20h2M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div><div><div style="font-size:13px; font-weight:700;">Educação</div><div style="font-size:10.5px; color:#8a8a8a;">cursos / matrículas</div></div></div>
+          </div>
+        </div>
+        <!-- playground -->
+        <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 10px 30px rgba(0,0,0,0.07); background:#fff; padding:24px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#e50914; margin-bottom:6px;">Passo 7</div>
+          <h3 style="font-size:18px; font-weight:800; margin:0 0 4px;">Teste antes de ativar</h3>
+          <p style="font-size:12.5px; color:#8a8a8a; margin:0 0 16px;">Converse com sua SDR como se fosse um lead.</p>
+          <div style="background:#ece5dd; border-radius:12px; padding:14px; display:flex; flex-direction:column; gap:8px; min-height:150px;">
+            <div style="align-self:flex-end; max-width:80%; background:#dcf8c6; border-radius:10px 10px 2px 10px; padding:8px 11px;"><div style="font-size:12.5px;">Oi, quero saber sobre energia solar</div></div>
+            <div style="align-self:flex-start; max-width:82%; background:#fff; border-radius:10px 10px 10px 2px; padding:8px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08);"><div style="font-size:12.5px;">Que ótimo! 🌞 Pra eu calcular sua economia, qual o valor médio da sua conta de luz?</div></div>
+            <div style="align-self:flex-start; background:#fff; border-radius:10px; padding:8px 12px; box-shadow:0 1px 1px rgba(0,0,0,0.08); display:flex; gap:3px; width:fit-content;"><span style="width:5px;height:5px;border-radius:50%;background:#b3b3b3;animation:v4typing 1s infinite;"></span><span style="width:5px;height:5px;border-radius:50%;background:#b3b3b3;animation:v4typing 1s infinite .15s;"></span><span style="width:5px;height:5px;border-radius:50%;background:#b3b3b3;animation:v4typing 1s infinite .3s;"></span></div>
+          </div>
+          <div style="display:flex; gap:8px; margin-top:12px;"><div style="flex:1; border:1px solid #cccccc; border-radius:9px; padding:9px 12px; font-size:12.5px; color:#b3b3b3;">Digite uma mensagem de teste…</div><button style="border:0; background:#e50914; width:40px; border-radius:9px; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONVERSA 3 ===================== -->
+    <section id="conversa" style="scroll-margin-top:64px; margin-bottom:30px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+        <span style="font-size:13px; font-weight:800; background:#e50914; color:#fff; padding:4px 11px; border-radius:8px; letter-spacing:0.02em;">3</span>
+        <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914;">Tela-âncora · Conversa</div>
+      </div>
+      <h2 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 4px;">Transcrição WhatsApp + assumir do humano</h2>
+      <p style="font-size:13.5px; color:#595959; margin:0 0 18px;">Lista · transcrição (entrega, áudio com transcrição, ações da IA) · contexto do lead. O humano assume em 1 clique.</p>
+
+      <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 18px 50px rgba(0,0,0,0.1); display:flex; height:740px; background:#f5f5f6;">
+        <!-- slim icon rail -->
+        <aside style="width:66px; background:#1a1a1a; flex-shrink:0; display:flex; flex-direction:column; align-items:center; padding:18px 0; gap:6px;">
+          <div style="width:36px; height:36px; border-radius:9px; background:#e50914; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; color:#fff; margin-bottom:10px;">V4</div>
+          <a href="#conversa" style="width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; text-decoration:none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></a>
+          <a href="#conversa" style="width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; text-decoration:none; background:#262626; position:relative;"><span style="position:absolute; left:0; top:9px; bottom:9px; width:3px; border-radius:0 3px 3px 0; background:#e50914;"></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg></a>
+          <a href="#conversa" style="width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; text-decoration:none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg></a>
+          <a href="#conversa" style="width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; text-decoration:none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M8 5v14l11-7z"/></svg></a>
+          <div style="margin-top:auto; width:32px; height:32px; border-radius:50%; background:#262626; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700;">MR</div>
+        </aside>
+
+        <!-- conversation list -->
+        <div style="width:290px; background:#fff; border-right:1px solid #e5e5e5; flex-shrink:0; display:flex; flex-direction:column;">
+          <div style="padding:16px 16px 12px;">
+            <div style="font-size:16px; font-weight:800; margin-bottom:12px;">Conversas</div>
+            <div style="display:flex; align-items:center; gap:8px; background:#f5f5f6; border:1px solid #e5e5e5; border-radius:9px; padding:8px 11px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span style="font-size:12.5px; color:#b3b3b3;">Buscar…</span></div>
+          </div>
+          <div style="display:flex; gap:6px; padding:0 16px 10px;">
+            <span style="font-size:11px; font-weight:700; padding:5px 11px; border-radius:999px; background:#1a1a1a; color:#fff;">Todas</span>
+            <span style="font-size:11px; font-weight:700; padding:5px 11px; border-radius:999px; background:#f0f0f0; color:#595959;">Handoff</span>
+            <span style="font-size:11px; font-weight:700; padding:5px 11px; border-radius:999px; background:#f0f0f0; color:#595959;">Qualificados</span>
+          </div>
+          <div style="flex:1; overflow:hidden;">
+            <div style="display:flex; align-items:flex-start; gap:11px; padding:13px 16px; background:#fef2f3; border-left:3px solid #e50914; cursor:pointer;"><div style="width:40px; height:40px; border-radius:50%; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">RC</div><div style="flex:1; min-width:0;"><div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-size:13px; font-weight:700;">Renata Castro</span><span style="font-size:10px; color:#e50914; font-weight:700;">agora</span></div><div style="font-size:11.5px; color:#595959; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px;">Pode me passar mais detalhes?</div><span style="display:inline-flex; align-items:center; gap:5px; margin-top:5px; font-size:10px; font-weight:700; color:#2f8f38;"><span style="width:5px;height:5px;border-radius:50%;background:#52cc5a;"></span>Qualificado · 92</span></div></div>
+            <div style="display:flex; align-items:flex-start; gap:11px; padding:13px 16px; cursor:pointer;" style-hover="background:#fafafa;"><div style="width:40px; height:40px; border-radius:50%; background:#ffc02a; color:#1a1a1a; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">PG</div><div style="flex:1; min-width:0;"><div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-size:13px; font-weight:700;">Paulo Guedes</span><span style="font-size:10px; color:#b3b3b3; font-weight:600;">22min</span></div><div style="font-size:11.5px; color:#9a6b00; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px;">Quero falar com uma pessoa</div><span style="display:inline-flex; align-items:center; gap:5px; margin-top:5px; font-size:10px; font-weight:700; color:#9a6b00;"><span style="width:5px;height:5px;border-radius:50%;background:#ffc02a;"></span>Handoff humano</span></div></div>
+            <div style="display:flex; align-items:flex-start; gap:11px; padding:13px 16px; cursor:pointer;" style-hover="background:#fafafa;"><div style="width:40px; height:40px; border-radius:50%; background:#1a1a1a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">JF</div><div style="flex:1; min-width:0;"><div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-size:13px; font-weight:600;">Júlia Ferraz</span><span style="font-size:10px; color:#b3b3b3; font-weight:600;">5min</span></div><div style="font-size:11.5px; color:#595959; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px;">Qual o prazo de instalação?</div><span style="display:inline-flex; align-items:center; gap:5px; margin-top:5px; font-size:10px; font-weight:700; color:#8a8a8a;"><span style="width:5px;height:5px;border-radius:50%;background:#b3b3b3;"></span>Em conversa</span></div></div>
+            <div style="display:flex; align-items:flex-start; gap:11px; padding:13px 16px; cursor:pointer;" style-hover="background:#fafafa;"><div style="width:40px; height:40px; border-radius:50%; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">AL</div><div style="flex:1; min-width:0;"><div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-size:13px; font-weight:600;">Ana Lima</span><span style="font-size:10px; color:#b3b3b3; font-weight:600;">12min</span></div><div style="font-size:11.5px; color:#595959; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px;">Visita confirmada 02/07 14h</div><span style="display:inline-flex; align-items:center; gap:5px; margin-top:5px; font-size:10px; font-weight:700; color:#2f8f38;"><span style="width:5px;height:5px;border-radius:50%;background:#52cc5a;"></span>Agendado</span></div></div>
+          </div>
+        </div>
+
+        <!-- transcript -->
+        <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+          <!-- conv header -->
+          <div style="height:64px; background:#fff; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; justify-content:space-between; padding:0 20px; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:11px;"><div style="width:40px; height:40px; border-radius:50%; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;">RC</div><div><div style="font-size:14px; font-weight:700;">Renata Castro</div><div style="display:flex; align-items:center; gap:6px;"><span style="width:7px; height:7px; border-radius:50%; background:#52cc5a; animation:v4pulse 1.6s infinite;"></span><span style="font-size:11px; color:#8a8a8a;">IA respondendo · +55 41 99876-5432</span></div></div></div>
+            <div style="display:flex; align-items:center; gap:9px;"><button style="background:#fff; border:1px solid #cccccc; border-radius:9px; padding:8px 12px; font-family:'Montserrat'; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2.2"><path d="M12 20h9M3 20h2M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Ver lead</button><button style="background:#ffc02a; border:0; color:#1a1a1a; border-radius:9px; padding:8px 14px; font-family:'Montserrat'; font-size:12px; font-weight:800; cursor:pointer; display:flex; align-items:center; gap:6px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2.4"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>Assumir conversa</button></div>
+          </div>
+          <!-- messages -->
+          <div style="flex:1; background:#ece5dd; padding:20px 26px; overflow:hidden; display:flex; flex-direction:column; gap:9px;">
+            <div style="align-self:center; background:rgba(255,255,255,0.7); border-radius:8px; padding:4px 12px; font-size:10.5px; color:#5c6b5c; font-weight:600;">Hoje · 09:41</div>
+            <div style="align-self:flex-start; max-width:62%; background:#fff; border-radius:10px 10px 10px 2px; padding:8px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08);"><div style="font-size:13px;">Oi! Vi o anúncio de energia solar. Quanto fica pra minha casa?</div><div style="font-size:9.5px; color:#8a8a8a; text-align:right; margin-top:3px;">09:41</div></div>
+            <div style="align-self:flex-end; max-width:62%; background:#dcf8c6; border-radius:10px 10px 2px 10px; padding:8px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08);"><div style="font-size:13px;">Olá, Renata! 😊 Pra te passar um valor certeiro, me diz: qual o valor médio da sua conta de luz por mês?</div><div style="display:flex; align-items:center; justify-content:flex-end; gap:4px; margin-top:3px;"><span style="font-size:9.5px; color:#7a9b6a;">09:41</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34b7f1" stroke-width="2.4"><path d="M1 13l4 4L13 7M9 15l2 2L23 7"/></svg></div></div>
+            <!-- audio inbound -->
+            <div style="align-self:flex-start; max-width:62%; background:#fff; border-radius:10px; padding:9px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08);"><div style="display:flex; align-items:center; gap:9px;"><span style="width:32px; height:32px; border-radius:50%; background:#e50914; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><div style="display:flex; align-items:center; gap:2px; height:20px;"><span style="display:block; width:2.5px; height:8px; background:#b3b3b3; border-radius:2px;"></span><span style="display:block; width:2.5px; height:15px; background:#b3b3b3; border-radius:2px;"></span><span style="display:block; width:2.5px; height:11px; background:#b3b3b3; border-radius:2px;"></span><span style="display:block; width:2.5px; height:18px; background:#b3b3b3; border-radius:2px;"></span><span style="display:block; width:2.5px; height:9px; background:#b3b3b3; border-radius:2px;"></span><span style="display:block; width:2.5px; height:14px; background:#b3b3b3; border-radius:2px;"></span><span style="display:block; width:2.5px; height:7px; background:#b3b3b3; border-radius:2px;"></span></div><span style="font-size:11px; color:#8a8a8a; font-weight:600;">0:08</span></div><div style="margin-top:7px; padding-top:7px; border-top:1px solid #f0f0f0; font-size:11.5px; color:#595959; font-style:italic;">"É uns mil e duzentos por mês, mais ou menos."</div></div>
+            <div style="align-self:flex-end; max-width:62%; background:#dcf8c6; border-radius:10px; padding:8px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08);"><div style="font-size:13px;">Com uma conta de R$ 1.200 você economiza cerca de <strong>R$ 1.020/mês</strong> com energia solar. ☀️ Você é o dono do imóvel?</div><div style="display:flex; align-items:center; justify-content:flex-end; gap:4px; margin-top:3px;"><span style="font-size:9.5px; color:#7a9b6a;">09:43</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34b7f1" stroke-width="2.4"><path d="M1 13l4 4L13 7M9 15l2 2L23 7"/></svg></div></div>
+            <!-- agent action chip -->
+            <div style="align-self:center; display:flex; align-items:center; gap:8px; background:rgba(82,204,90,0.16); border:1px solid rgba(82,204,90,0.3); border-radius:999px; padding:5px 13px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2f8f38" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span style="font-size:11px; font-weight:700; color:#2f8f38;">Lead qualificado pela IA · score 92 · conta R$ 1.200</span></div>
+            <div style="align-self:flex-start; max-width:62%; background:#fff; border-radius:10px 10px 10px 2px; padding:8px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08);"><div style="font-size:13px;">Sou sim! Pode me passar mais detalhes do orçamento?</div><div style="font-size:9.5px; color:#8a8a8a; text-align:right; margin-top:3px;">09:44</div></div>
+            <div style="align-self:flex-start; background:#fff; border-radius:10px; padding:9px 13px; box-shadow:0 1px 1px rgba(0,0,0,0.08); display:flex; gap:3px; width:fit-content;"><span style="width:5px;height:5px;border-radius:50%;background:#b3b3b3;animation:v4typing 1s infinite;"></span><span style="width:5px;height:5px;border-radius:50%;background:#b3b3b3;animation:v4typing 1s infinite .15s;"></span><span style="width:5px;height:5px;border-radius:50%;background:#b3b3b3;animation:v4typing 1s infinite .3s;"></span></div>
+          </div>
+          <!-- composer with handoff banner -->
+          <div style="background:#fff; border-top:1px solid #e5e5e5; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:11px; padding:11px 20px; background:rgba(82,204,90,0.08); border-bottom:1px solid #eee;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f8f38" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg><div style="flex:1;"><span style="font-size:12.5px; font-weight:700; color:#1a1a1a;">A IA está conduzindo esta conversa.</span> <span style="font-size:12.5px; color:#595959;">Assuma a qualquer momento para responder você mesma.</span></div><button style="background:#ffc02a; border:0; color:#1a1a1a; border-radius:8px; padding:8px 14px; font-family:'Montserrat'; font-size:12px; font-weight:800; cursor:pointer; white-space:nowrap;">Assumir conversa</button></div>
+            <div style="display:flex; align-items:center; gap:11px; padding:13px 20px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M21.4 11.1 12 20.5a5 5 0 0 1-7-7l9-9a3 3 0 0 1 4 4l-9 9a1 1 0 0 1-1.5-1.5l8-8"/></svg><div style="flex:1; border:1px solid #e5e5e5; background:#f5f5f6; border-radius:10px; padding:10px 14px; font-size:12.5px; color:#b3b3b3;">Mensagens são enviadas pela IA enquanto você não assume…</div><span style="width:42px; height:42px; border-radius:50%; background:#cccccc; display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></span></div>
+          </div>
+        </div>
+
+        <!-- context panel -->
+        <div style="width:296px; background:#fff; border-left:1px solid #e5e5e5; flex-shrink:0; padding:20px; overflow:hidden;">
+          <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding-bottom:18px; border-bottom:1px solid #f0f0f0;">
+            <div style="width:58px; height:58px; border-radius:50%; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:700; margin-bottom:10px;">RC</div>
+            <div style="font-size:15px; font-weight:700;">Renata Castro</div>
+            <div style="font-size:11.5px; color:#8a8a8a; margin-top:2px;">Curitiba · PR</div>
+            <div style="display:inline-flex; align-items:center; gap:6px; margin-top:9px; font-size:11px; font-weight:700; padding:5px 12px; border-radius:999px; background:rgba(82,204,90,0.14); color:#2f8f38;"><span style="width:6px;height:6px;border-radius:50%;background:#52cc5a;"></span>Qualificado · score 92</div>
+          </div>
+          <div style="padding:16px 0; border-bottom:1px solid #f0f0f0;">
+            <div style="font-size:10.5px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#8a8a8a; margin-bottom:11px;">Dados qualificados</div>
+            <div style="display:flex; flex-direction:column; gap:9px;">
+              <div style="display:flex; justify-content:space-between;"><span style="font-size:12px; color:#8a8a8a;">Conta de luz</span><span style="font-size:12.5px; font-weight:700;">R$ 1.200/mês</span></div>
+              <div style="display:flex; justify-content:space-between;"><span style="font-size:12px; color:#8a8a8a;">Imóvel</span><span style="font-size:12.5px; font-weight:700;">Próprio · casa</span></div>
+              <div style="display:flex; justify-content:space-between;"><span style="font-size:12px; color:#8a8a8a;">Economia estimada</span><span style="font-size:12.5px; font-weight:700; color:#2f8f38;">R$ 1.020/mês</span></div>
+              <div style="display:flex; justify-content:space-between;"><span style="font-size:12px; color:#8a8a8a;">Telefone</span><span style="font-size:12.5px; font-weight:700;">41 99876-5432</span></div>
+            </div>
+          </div>
+          <div style="padding:16px 0; border-bottom:1px solid #f0f0f0;">
+            <div style="font-size:10.5px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#8a8a8a; margin-bottom:13px;">Linha do tempo</div>
+            <div style="display:flex; flex-direction:column; gap:0;">
+              <div style="display:flex; gap:11px;"><div style="display:flex; flex-direction:column; align-items:center;"><span style="width:9px; height:9px; border-radius:50%; background:#52cc5a;"></span><span style="width:1.5px; flex:1; background:#e5e5e5;"></span></div><div style="padding-bottom:13px;"><div style="font-size:12px; font-weight:700;">Lead qualificado</div><div style="font-size:10.5px; color:#8a8a8a;">há 1 min · pela IA</div></div></div>
+              <div style="display:flex; gap:11px;"><div style="display:flex; flex-direction:column; align-items:center;"><span style="width:9px; height:9px; border-radius:50%; background:#e50914;"></span><span style="width:1.5px; flex:1; background:#e5e5e5;"></span></div><div style="padding-bottom:13px;"><div style="font-size:12px; font-weight:700;">Respondeu áudio</div><div style="font-size:10.5px; color:#8a8a8a;">há 3 min</div></div></div>
+              <div style="display:flex; gap:11px;"><div style="display:flex; flex-direction:column; align-items:center;"><span style="width:9px; height:9px; border-radius:50%; background:#b3b3b3;"></span></div><div><div style="font-size:12px; font-weight:700;">Primeiro contato</div><div style="font-size:10.5px; color:#8a8a8a;">há 4 min · via anúncio</div></div></div>
+            </div>
+          </div>
+          <div style="padding-top:16px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; background:#f5f5f6; border-radius:10px; padding:11px 13px; margin-bottom:9px;"><div style="display:flex; align-items:center; gap:9px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span style="font-size:12px; font-weight:600;">Agendar visita</span></div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; background:#f5f5f6; border-radius:10px; padding:11px 13px;"><div style="display:flex; align-items:center; gap:9px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span style="font-size:12px; font-weight:600;">No CRM · Negociação</span></div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MOBILE ===================== -->
+    <section id="mobile" style="scroll-margin-top:64px; margin-bottom:40px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914; margin-bottom:7px;">Responsivo</div>
+      <h2 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 4px;">Mobile — Dashboard &amp; Conversa</h2>
+      <p style="font-size:13.5px; color:#595959; margin:0 0 22px;">Desktop é primário, mas dashboard, conversas e leads também funcionam no celular. Mesmo sistema, navegação por abas embaixo.</p>
+
+      <div style="display:flex; gap:48px; flex-wrap:wrap; justify-content:center;">
+
+        <!-- PHONE 1: dashboard -->
+        <div style="width:344px;">
+          <div style="text-align:center; font-size:12px; font-weight:700; color:#8a8a8a; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.1em;">Dashboard</div>
+          <div style="background:#1a1a1a; border-radius:42px; padding:11px; box-shadow:0 24px 60px rgba(0,0,0,0.22);">
+            <div style="background:#f5f5f6; border-radius:32px; overflow:hidden; height:712px; display:flex; flex-direction:column; position:relative;">
+              <!-- status bar -->
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 22px 6px; font-size:12px; font-weight:700;"><span>9:41</span><div style="width:96px; height:24px; background:#1a1a1a; border-radius:0 0 16px 16px; position:absolute; left:50%; transform:translateX(-50%); top:0;"></div><span style="display:flex; gap:5px; align-items:center;"><svg width="15" height="11" viewBox="0 0 18 12" fill="#1a1a1a"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4" width="3" height="8" rx="1"/><rect x="10" y="1" width="3" height="11" rx="1"/></svg><svg width="22" height="11" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="2.5" stroke="#1a1a1a"/><rect x="2.5" y="2.5" width="13" height="7" rx="1" fill="#1a1a1a"/><rect x="21" y="4" width="2" height="4" rx="1" fill="#1a1a1a"/></svg></span></div>
+              <!-- app top -->
+              <div style="background:#fff; padding:10px 18px 12px; border-bottom:1px solid #eee;">
+                <div style="display:flex; align-items:center; justify-content:space-between;"><div style="display:flex; align-items:center; gap:8px;"><div style="width:26px; height:26px; border-radius:7px; background:#e50914; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#fff;">V4</div><div style="font-size:13px; font-weight:700;">Solar Prime</div></div><div style="position:relative;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9z"/></svg><span style="position:absolute; top:-2px; right:-2px; width:7px; height:7px; border-radius:50%; background:#e50914; border:1.5px solid #fff;"></span></div></div>
+                <div style="display:inline-flex; align-items:center; gap:7px; background:rgba(82,204,90,0.12); border:1px solid rgba(82,204,90,0.3); border-radius:999px; padding:5px 11px; margin-top:10px;"><span style="width:7px; height:7px; border-radius:50%; background:#52cc5a; animation:v4pulse 1.6s infinite;"></span><span style="font-size:11px; font-weight:700; color:#2f8f38;">SDR respondendo agora</span></div>
+              </div>
+              <!-- scroll content -->
+              <div style="flex:1; overflow:hidden; padding:16px 16px 0;">
+                <div style="font-size:18px; font-weight:800; letter-spacing:-0.02em;">Olá, Marina 👋</div>
+                <div style="font-size:11.5px; color:#8a8a8a; margin-bottom:14px;">41 leads atendidos esta semana</div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
+                  <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; padding:13px;"><div style="font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a;">Leads</div><div style="font-size:24px; font-weight:800; margin-top:4px; line-height:1;">348</div><div style="font-size:10px; color:#2f8f38; font-weight:700; margin-top:4px;">↑ 18%</div></div>
+                  <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; padding:13px;"><div style="font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a;">Qualificados</div><div style="font-size:24px; font-weight:800; margin-top:4px; line-height:1; color:#2f8f38;">132</div><div style="font-size:10px; color:#8a8a8a; font-weight:600; margin-top:4px;">38%</div></div>
+                </div>
+                <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; padding:15px; margin-bottom:12px;">
+                  <div style="font-size:13px; font-weight:700; margin-bottom:12px;">Funil</div>
+                  <div style="display:flex; flex-direction:column; gap:7px;">
+                    <div style="display:flex; align-items:center; gap:9px;"><span style="font-size:10.5px; color:#595959; width:62px;">Novos</span><div style="flex:1; height:16px; border-radius:5px; background:#1a1a1a;"></div></div>
+                    <div style="display:flex; align-items:center; gap:9px;"><span style="font-size:10.5px; color:#595959; width:62px;">Qualif.</span><div style="height:16px; border-radius:5px; background:#e50914; width:42%;"></div></div>
+                    <div style="display:flex; align-items:center; gap:9px;"><span style="font-size:10.5px; color:#595959; width:62px;">Agend.</span><div style="height:16px; border-radius:5px; background:#52cc5a; width:24%;"></div></div>
+                  </div>
+                </div>
+                <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; padding:13px 15px;">
+                  <div style="font-size:13px; font-weight:700; margin-bottom:10px;">Atividade</div>
+                  <div style="display:flex; align-items:center; gap:9px; padding-bottom:9px; border-bottom:1px solid #f4f4f4;"><div style="width:28px;height:28px;border-radius:50%;background:#52cc5a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;">RC</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;">Renata Castro</div><div style="font-size:10px;color:#8a8a8a;">Qualificada</div></div><span style="font-size:9.5px;color:#b3b3b3;">4m</span></div>
+                  <div style="display:flex; align-items:center; gap:9px; padding-top:9px;"><div style="width:28px;height:28px;border-radius:50%;background:#ffc02a;color:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;">PG</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;">Paulo Guedes</div><div style="font-size:10px;color:#9a6b00;">Pediu humano</div></div><span style="font-size:9.5px;color:#b3b3b3;">22m</span></div>
+                </div>
+              </div>
+              <!-- tab bar -->
+              <div style="background:#fff; border-top:1px solid #e5e5e5; display:flex; justify-content:space-around; padding:9px 0 20px;">
+                <div style="display:flex; flex-direction:column; align-items:center; gap:3px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e50914" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg><span style="font-size:9px; font-weight:700; color:#e50914;">Início</span></div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:3px; position:relative;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg><span style="font-size:9px; font-weight:600; color:#b3b3b3;">Conversas</span><span style="position:absolute; top:-3px; right:10px; width:6px; height:6px; border-radius:50%; background:#e50914;"></span></div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:3px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg><span style="font-size:9px; font-weight:600; color:#b3b3b3;">Leads</span></div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:3px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="2"><path d="M8 5v14l11-7z"/></svg><span style="font-size:9px; font-weight:600; color:#b3b3b3;">Testar</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHONE 2: conversa -->
+        <div style="width:344px;">
+          <div style="text-align:center; font-size:12px; font-weight:700; color:#8a8a8a; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.1em;">Conversa</div>
+          <div style="background:#1a1a1a; border-radius:42px; padding:11px; box-shadow:0 24px 60px rgba(0,0,0,0.22);">
+            <div style="background:#ece5dd; border-radius:32px; overflow:hidden; height:712px; display:flex; flex-direction:column; position:relative;">
+              <!-- header -->
+              <div style="background:#1a1a1a; padding:12px 16px 12px; position:relative;">
+                <div style="width:96px; height:24px; background:#000; border-radius:0 0 16px 16px; position:absolute; left:50%; transform:translateX(-50%); top:0;"></div>
+                <div style="display:flex; align-items:center; gap:10px; margin-top:18px;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+                  <div style="width:36px; height:36px; border-radius:50%; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">RC</div>
+                  <div style="flex:1;"><div style="font-size:13.5px; font-weight:700; color:#fff;">Renata Castro</div><div style="display:flex; align-items:center; gap:5px;"><span style="width:6px; height:6px; border-radius:50%; background:#52cc5a; animation:v4pulse 1.6s infinite;"></span><span style="font-size:10.5px; color:#b3b3b3;">IA respondendo</span></div></div>
+                </div>
+              </div>
+              <!-- handoff banner -->
+              <div style="background:rgba(255,192,42,0.16); padding:8px 14px; display:flex; align-items:center; gap:8px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9a6b00" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg><span style="font-size:10.5px; font-weight:700; color:#9a6b00; flex:1;">IA conduzindo a conversa</span><button style="background:#ffc02a; border:0; color:#1a1a1a; border-radius:7px; padding:5px 10px; font-family:'Montserrat'; font-size:10px; font-weight:800; cursor:pointer;">Assumir</button></div>
+              <!-- messages -->
+              <div style="flex:1; overflow:hidden; padding:16px 14px; display:flex; flex-direction:column; gap:8px;">
+                <div style="align-self:flex-start; max-width:80%; background:#fff; border-radius:10px 10px 10px 2px; padding:8px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08);"><div style="font-size:12.5px;">Quanto fica energia solar pra minha casa?</div><div style="font-size:9px; color:#8a8a8a; text-align:right; margin-top:2px;">09:41</div></div>
+                <div style="align-self:flex-end; max-width:82%; background:#dcf8c6; border-radius:10px 10px 2px 10px; padding:8px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08);"><div style="font-size:12.5px;">Olá, Renata! 😊 Qual o valor médio da sua conta de luz?</div><div style="display:flex; align-items:center; justify-content:flex-end; gap:3px; margin-top:2px;"><span style="font-size:9px; color:#7a9b6a;">09:41</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#34b7f1" stroke-width="2.4"><path d="M1 13l4 4L13 7M9 15l2 2L23 7"/></svg></div></div>
+                <div style="align-self:flex-start; max-width:80%; background:#fff; border-radius:10px; padding:8px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08); display:flex; align-items:center; gap:8px;"><span style="width:28px;height:28px;border-radius:50%;background:#e50914;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><div style="display:flex; align-items:center; gap:2px;"><span style="width:2px;height:8px;background:#b3b3b3;border-radius:2px;"></span><span style="width:2px;height:13px;background:#b3b3b3;border-radius:2px;"></span><span style="width:2px;height:9px;background:#b3b3b3;border-radius:2px;"></span><span style="width:2px;height:15px;background:#b3b3b3;border-radius:2px;"></span><span style="width:2px;height:7px;background:#b3b3b3;border-radius:2px;"></span></div><span style="font-size:10px; color:#8a8a8a; font-weight:600;">0:08</span></div>
+                <div style="align-self:center; display:flex; align-items:center; gap:6px; background:rgba(82,204,90,0.18); border-radius:999px; padding:4px 11px;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2f8f38" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg><span style="font-size:9.5px; font-weight:700; color:#2f8f38;">Qualificado · score 92</span></div>
+                <div style="align-self:flex-end; max-width:82%; background:#dcf8c6; border-radius:10px; padding:8px 11px; box-shadow:0 1px 1px rgba(0,0,0,0.08);"><div style="font-size:12.5px;">Você economiza ~<strong>R$ 1.020/mês</strong>. ☀️ É o dono do imóvel?</div><div style="display:flex; align-items:center; justify-content:flex-end; gap:3px; margin-top:2px;"><span style="font-size:9px; color:#7a9b6a;">09:43</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#34b7f1" stroke-width="2.4"><path d="M1 13l4 4L13 7M9 15l2 2L23 7"/></svg></div></div>
+              </div>
+              <!-- composer -->
+              <div style="background:#fff; padding:10px 14px 22px; display:flex; align-items:center; gap:9px;"><div style="flex:1; border:1px solid #e5e5e5; background:#f5f5f6; border-radius:999px; padding:9px 14px; font-size:11.5px; color:#b3b3b3;">Assuma para responder…</div><span style="width:38px; height:38px; border-radius:50%; background:#cccccc; display:flex; align-items:center; justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- closing note -->
+      <div style="background:#1a1a1a; border-radius:16px; padding:26px 30px; margin-top:44px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+        <div>
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.16em; text-transform:uppercase; color:#ffc02a; margin-bottom:8px;">Fim do Passo 1</div>
+          <div style="font-size:19px; font-weight:800; color:#fff; letter-spacing:-0.01em; margin-bottom:6px;">Aprovou a linguagem visual?</div>
+          <div style="font-size:13px; color:#b3b3b3; max-width:62ch; line-height:1.6;">Com seu aval, sigo para o Passo 2 — toda a Área do Cliente (wizard completo, conversas, leads, playground, configuração e conta) herdando este sistema. Quer ajustar algo nas âncoras <a href="#dash-1a" style="color:#ff6b73; font-weight:700; text-decoration:none;">1a</a> / <a href="#dash-1b" style="color:#ff6b73; font-weight:700; text-decoration:none;">1b</a> antes?</div>
+        </div>
+        <div style="display:flex; gap:24px; flex-shrink:0;">
+          <div style="text-align:center;"><div style="font-size:30px; font-weight:800; color:#fff; line-height:1;">3</div><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a; margin-top:6px;">telas-âncora</div></div>
+          <div style="text-align:center;"><div style="font-size:30px; font-weight:800; color:#fff; line-height:1;">+25</div><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8a8a8a; margin-top:6px;">componentes</div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<template id="__bundler_thumbnail" data-bg-color="#1a1a1a">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#1a1a1a"/>
+    <rect x="470" y="300" width="260" height="200" rx="40" fill="#e50914"/>
+    <text x="600" y="440" font-family="Montserrat, sans-serif" font-size="150" font-weight="800" fill="#ffffff" text-anchor="middle">V4</text>
+  </svg>
+</template></x-dc>
+</body>
+</html>

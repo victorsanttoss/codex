@@ -1,0 +1,30 @@
+{
+  "name": "@sdr/db",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "echo \"(lint placeholder)\"",
+    "migrate": "tsx src/migrate.ts",
+    "seed": "tsx src/seed.ts",
+    "seed:leads": "tsx src/seed-demo-leads.ts",
+    "seed:imob": "tsx src/seed-imob.ts"
+  },
+  "dependencies": {
+    "@sdr/core": "workspace:*",
+    "@sdr/config": "workspace:*",
+    "drizzle-orm": "^0.45.2",
+    "postgres": "^3.4.5",
+    "argon2": "^0.41.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4",
+    "tsx": "^4.19.2",
+    "@types/node": "^22.8.6"
+  }
+}

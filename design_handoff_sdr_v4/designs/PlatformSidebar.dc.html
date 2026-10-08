@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<aside style="width:236px; background:#000; flex-shrink:0; display:flex; flex-direction:column; padding:18px 13px; height:100%;">
+  <div style="display:flex; align-items:center; gap:10px; padding:4px 8px 6px;"><div style="width:32px; height:32px; border-radius:8px; background:#e50914; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; color:#fff;">V4</div><div><div style="font-size:13px; font-weight:700; color:#fff; line-height:1.1;">Plataforma</div><div style="font-size:10px; color:#666; font-weight:600;">Console interno</div></div></div>
+  <div style="display:flex; align-items:center; gap:7px; background:#1a1a1a; border:1px solid #262626; border-radius:9px; padding:7px 11px; margin:10px 4px 14px;"><span style="width:7px; height:7px; border-radius:50%; background:#52cc5a;"></span><span style="font-size:11px; font-weight:700; color:#b3b3b3;">Sistema operacional</span></div>
+
+  <a href="{{ link }}" style="{{ styleVisao }}"><span style="{{ accentVisao }}"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ strokeVisao }}" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg><span style="font-size:13px; font-weight:600;">Visão global</span></a>
+  <a href="{{ link }}" style="{{ styleTenants }}"><span style="{{ accentTenants }}"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ strokeTenants }}" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg><span style="font-size:13px; font-weight:600;">Tenants</span><span style="margin-left:auto; font-size:10px; font-weight:800; background:#262626; color:#b3b3b3; border-radius:999px; padding:2px 7px;">214</span></a>
+  <a href="{{ link }}" style="{{ styleNichos }}"><span style="{{ accentNichos }}"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ strokeNichos }}" stroke-width="2"><path d="M2 7l10-4 10 4-10 4z"/><path d="M2 7v10l10 4 10-4V7"/></svg><span style="font-size:13px; font-weight:600;">Nichos</span></a>
+
+  <div style="font-size:9.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#555; padding:14px 8px 8px;">Conhecimento</div>
+  <a href="{{ link }}" style="{{ styleCuradoria }}"><span style="{{ accentCuradoria }}"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ strokeCuradoria }}" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4 2 7L12 17l-6.5 3 2-7L2 9h7z"/></svg><span style="font-size:13px; font-weight:600;">Curadoria</span><span style="margin-left:auto; font-size:10px; font-weight:800; background:#e50914; color:#fff; border-radius:999px; padding:2px 7px;">18</span></a>
+  <a href="{{ link }}" style="{{ styleHsm }}"><span style="{{ accentHsm }}"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ strokeHsm }}" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span style="font-size:13px; font-weight:600;">Templates HSM</span></a>
+
+  <div style="font-size:9.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#555; padding:14px 8px 8px;">Operação</div>
+  <a href="{{ link }}" style="{{ styleOps }}"><span style="{{ accentOps }}"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ strokeOps }}" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span style="font-size:13px; font-weight:600;">Operação &amp; alertas</span><span style="margin-left:auto; font-size:10px; font-weight:800; background:rgba(255,192,42,0.2); color:#ffc02a; border-radius:999px; padding:2px 7px;">3</span></a>
+  <a href="{{ link }}" style="{{ styleStaff }}"><span style="{{ accentStaff }}"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ strokeStaff }}" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span style="font-size:13px; font-weight:600;">Staff &amp; permissões</span></a>
+
+  <div style="margin-top:auto; background:#1a1a1a; border-radius:11px; padding:13px; display:flex; align-items:center; gap:11px;"><div style="width:32px; height:32px; border-radius:50%; background:#e50914; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0;">VF</div><div style="min-width:0;"><div style="font-size:12px; font-weight:700; color:#fff;">Vitor Franco</div><div style="font-size:10.5px; color:#666;">Staff · Curadoria</div></div></div>
+</aside>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:236,&quot;height&quot;:620},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;visao&quot;,&quot;tenants&quot;,&quot;nichos&quot;,&quot;curadoria&quot;,&quot;hsm&quot;,&quot;ops&quot;,&quot;staff&quot;],&quot;default&quot;:&quot;visao&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;link&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const active = this.props.active || 'visao';
+    const link = this.props.link || '#';
+    const base = 'display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:9px; text-decoration:none; position:relative; margin-bottom:3px;';
+    const keys = { visao:'Visao', tenants:'Tenants', nichos:'Nichos', curadoria:'Curadoria', hsm:'Hsm', ops:'Ops', staff:'Staff' };
+    const out = { link };
+    Object.keys(keys).forEach(k => {
+      const on = active === k;
+      const C = keys[k];
+      out['style' + C] = base + (on ? 'background:#1a1a1a; color:#fff;' : 'color:#b3b3b3;');
+      out['accent' + C] = on ? 'position:absolute; left:0; top:8px; bottom:8px; width:3px; border-radius:0 3px 3px 0; background:#e50914;' : 'display:none;';
+      out['stroke' + C] = on ? '#fff' : '#b3b3b3';
+    });
+    return out;
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+# Segredos / ambiente
+.env
+.env.*
+!.env.example
+*.key
+secrets/
+
+# Dependências
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build / cache
+dist/
+build/
+.cache/
+.pnpm-store/
+.npm-cache/
+*.tsbuildinfo
+
+# Next.js
+.next/
+out/
+next-env.d.ts
+
+# Logs
+*.log
+logs/
+
+# Sistema operacional / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Pacote de design V4 (referência local; não versionar os protótipos)
+design_handoff_sdr_v4/

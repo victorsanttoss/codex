@@ -1,0 +1,39 @@
+{
+  "name": "sdr-ia-imob",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=24.19.0 <25"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r --parallel dev",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "build:server": "pnpm -r --filter './packages/**' build && pnpm --filter @sdr/api build",
+    "build:web": "pnpm --filter @sdr/web build",
+    "test:ci": "node scripts/ci/with-test-env.mjs pnpm -r --workspace-concurrency=1 test",
+    "test:http": "node scripts/ci/with-test-env.mjs pnpm --filter @sdr/api exec vitest run --config vitest.e2e.config.ts",
+    "db:generate": "pnpm --filter @sdr/db generate",
+    "db:migrate": "./with-imob-env.sh pnpm --filter @sdr/db migrate",
+    "db:migrate:env": "pnpm --filter @sdr/db migrate",
+    "db:migrate:ci": "node scripts/ci/with-test-env.mjs pnpm db:migrate:env",
+    "db:seed": "./with-imob-env.sh pnpm --filter @sdr/db seed",
+    "db:seed:imob": "./with-imob-env.sh pnpm --filter @sdr/db seed:imob",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4",
+    "@types/node": "^22.8.6",
+    "prettier": "^3.3.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "multer": "^2.2.0"
+    }
+  }
+}

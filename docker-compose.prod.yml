@@ -1,0 +1,130 @@
+# Produção do FORK IMOBILIÁRIO — desenhado para CONVIVER na mesma VPS com o
+# projeto original (sdr.v4souzasantos.com.br) sem colisão (revisão Codex final):
+#   - SEM Caddy próprio: o Caddy já existente na VPS faz o proxy/TLS apontando
+#     para as portas loopback publicadas aqui (127.0.0.1:3101 api, :3100 web);
+#     a Central (PM2 no host) também consome a API por 127.0.0.1:3101.
+#   - project name, imagens, containers e volumes EXCLUSIVOS (sdr-imob-*).
+#   - banco default sdr_imob (nunca o 'sdr' do original).
+#   docker compose -f docker-compose.prod.yml up -d --build
+# Pré: .env.prod na VPS (gitignored) com segredos + DOMAIN/ACME no Caddy da VPS.
+name: sdr-imob
+
+x-app-logging: &logging
+  driver: json-file
+  options: { max-size: "10m", max-file: "5" } # log infinito enche o disco e mata a VPS
+
+# CRÍTICO: dentro dos containers, PG/Redis são os NOMES DE SERVIÇO (não localhost).
+# Sobrescreve o env_file — o .env com localhost serve só para dev/CI.
+x-app-env: &app-env
+  DATABASE_URL: postgres://${APP_DB_USER:-sdr_app}:${APP_DB_PASSWORD}@postgres:5432/${POSTGRES_DB:-sdr_imob}
+  MIGRATION_DATABASE_URL: postgres://${MIGRATOR_DB_USER:-sdr_migrator}:${MIGRATOR_DB_PASSWORD}@postgres:5432/${POSTGRES_DB:-sdr_imob}
+  REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379
+
+x-app-build: &app-build
+  build: { context: ., dockerfile: apps/api/Dockerfile.prod }
+  image: sdr-imob-app:latest # tag exclusiva — NÃO sobrescreve sdr-app do original
+  env_file: .env
+  restart: always
+  logging: *logging
+  depends_on:
+    postgres: { condition: service_healthy }
+    redis: { condition: service_healthy }
+
+services:
+  api: # HTTP (webhooks + admin/platform API). Caddy da VPS faz proxy p/ cá.
+    <<: *app-build
+    environment: { <<: *app-env, APP_ROLE: api }
+    ports:
+      - "127.0.0.1:3101:3001" # loopback only — exposição pública é do Caddy da VPS
+    stop_grace_period: 25s
+    mem_limit: 512m
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3001/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+
+  web: # Painel Next.js. Caddy da VPS publica no DOMAIN.
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      # NEXT_PUBLIC_API_URL é BAKED no build (browser chama a API por aqui) —
+      # exige DOMAIN correto ANTES do build (revisão Codex).
+      args:
+        NEXT_PUBLIC_API_URL: https://api.${DOMAIN}
+    image: sdr-imob-web:latest
+    restart: always
+    logging: *logging
+    ports:
+      - "127.0.0.1:3100:3000"
+    mem_limit: 512m
+    depends_on: [api]
+
+  worker: # consumidores BullMQ (pipeline inbound, crm-sync, knowledge)
+    <<: *app-build
+    environment: { <<: *app-env, APP_ROLE: worker }
+    stop_grace_period: 40s # drenar jobs em voo
+    mem_limit: 768m
+
+  scheduler: # cron/scans: cadência, outbox, SLA imobiliário, alertas
+    <<: *app-build
+    environment: { <<: *app-env, APP_ROLE: scheduler }
+    stop_grace_period: 25s
+    mem_limit: 384m
+
+  # Canal Baileys (piloto imobiliário usa não-oficial; ToS: número pode ser
+  # banido — decisão consciente do piloto, go-live oficial é Cloud API).
+  # Liga com BAILEYS_ENABLED=true no .env; desligado o container fica ocioso.
+  session-worker-0:
+    <<: *app-build
+    environment:
+      <<: *app-env
+      APP_ROLE: session-worker
+      BAILEYS_ENABLED: ${BAILEYS_ENABLED:-false}
+      SESSION_WORKER_INDEX: "0"
+      SESSION_WORKER_TOTAL: "1"
+    stop_grace_period: 30s # fecha sockets graciosamente
+    mem_limit: 768m
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    restart: always
+    logging: *logging
+    environment:
+      POSTGRES_USER: ${POSTGRES_SUPERUSER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_SUPERUSER_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-sdr_imob}
+      APP_DB_USER: ${APP_DB_USER:-sdr_app}
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD}
+      MIGRATOR_DB_USER: ${MIGRATOR_DB_USER:-sdr_migrator}
+      MIGRATOR_DB_PASSWORD: ${MIGRATOR_DB_PASSWORD}
+    # SEM `ports:` — Postgres NUNCA exposto fora da rede interna do Docker.
+    volumes:
+      - sdrimob_prod_pgdata:/var/lib/postgresql/data
+      - ./packages/db/sql/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_SUPERUSER:-postgres} -d ${POSTGRES_DB:-sdr_imob}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    mem_limit: 1g
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    logging: *logging
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${REDIS_PASSWORD}"]
+    # SEM `ports:` — Redis NUNCA exposto fora da rede interna.
+    volumes:
+      - sdrimob_prod_redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    mem_limit: 512m
+
+volumes:
+  sdrimob_prod_pgdata:
+  sdrimob_prod_redisdata:

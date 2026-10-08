@@ -1,0 +1,265 @@
+.wrap {
+  display: grid;
+  grid-template-columns: 262px 1fr;
+  min-height: 100vh;
+  background: var(--surface);
+}
+@media (max-width: 760px) {
+  .wrap {
+    grid-template-columns: 1fr;
+  }
+  .rail {
+    display: none;
+  }
+}
+
+/* Trilho esquerdo (progresso + 8 passos) */
+.rail {
+  background: var(--surface-subtle);
+  border-right: 1px solid var(--border-200);
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+}
+.railBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.railMark {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--red-600);
+  color: #fff;
+  font-weight: 800;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progressTrack {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--border-200);
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+.progressFill {
+  height: 100%;
+  background: var(--red-600);
+  transition: width 0.25s ease;
+}
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.step {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 10px;
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.step:hover:not(:disabled):not(.stepCurrent) {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--ink-900);
+}
+.step:disabled {
+  cursor: default;
+}
+.stepCurrent {
+  background: var(--surface);
+  border: 1px solid var(--border-200);
+  color: var(--ink-900);
+  box-shadow: var(--shadow-float);
+}
+.stepNum {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  flex: none;
+  background: var(--border-200);
+  color: var(--text-muted);
+}
+.stepNumCurrent {
+  background: var(--red-600);
+  color: #fff;
+}
+.stepNumDone {
+  background: var(--success);
+  color: #fff;
+}
+
+/* Conteúdo */
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.contentTop {
+  height: 56px;
+  border-bottom: 1px solid var(--border-200);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 28px;
+  color: var(--text-subtle);
+  font-size: 12px;
+  font-weight: 600;
+  gap: 7px;
+}
+.savedDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+}
+.body {
+  flex: 1;
+  padding: 34px 40px;
+  max-width: 760px;
+  width: 100%;
+}
+.footer {
+  border-top: 1px solid var(--border-200);
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Elementos de etapa */
+.cardGrid {
+  display: grid;
+  gap: 14px;
+}
+.choice {
+  border: 1.5px solid var(--border-200);
+  border-radius: var(--r-card);
+  padding: 18px;
+  cursor: pointer;
+  background: var(--surface);
+  text-align: left;
+  width: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.choice:hover:not(.choiceOn) {
+  border-color: var(--border-300);
+  box-shadow: var(--shadow-float);
+  transform: translateY(-1px);
+}
+.choiceOn {
+  border-color: var(--red-600);
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.1);
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-300);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--surface);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.chip:hover:not(.chipOn) {
+  background: var(--surface-subtle);
+  border-color: var(--text-subtle);
+}
+.chipOn {
+  background: var(--red-600);
+  color: #fff;
+  border-color: var(--red-600);
+}
+.seg {
+  display: inline-flex;
+  background: #f0f0f0;
+  border-radius: var(--r-sm);
+  padding: 3px;
+  gap: 3px;
+}
+.segBtn {
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 12.5px;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+.segBtnOn {
+  background: var(--surface);
+  color: var(--ink-900);
+  box-shadow: var(--shadow-float);
+}
+.promiseGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 620px) {
+  .promiseGrid {
+    grid-template-columns: 1fr;
+  }
+}
+.promiseBox {
+  border-radius: var(--r-card);
+  padding: 16px;
+}
+.promiseYes {
+  border: 1px solid rgba(82, 204, 90, 0.5);
+  background: var(--success-tint);
+}
+.promiseNo {
+  border: 1px solid var(--error-border);
+  background: var(--error-bg);
+}
+.warnBox {
+  /* Bloco de texto CORRIDO — display:flex aqui fatiava o conteúdo (texto +
+     <strong> + texto) em "colunas" no responsivo. */
+  display: block;
+  padding: 13px 15px;
+  border-radius: var(--r-sm);
+  background: var(--warning-tint);
+  color: var(--warning-text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+.successCard {
+  background: var(--ink-900);
+  color: #fff;
+  border-radius: var(--r-frame);
+  padding: 40px;
+  text-align: center;
+}
+.successCheck {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--success);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}

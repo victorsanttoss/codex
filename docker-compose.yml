@@ -1,0 +1,88 @@
+# Compose EXCLUSIVO do fork imobiliário. Portas/banco fixos de propósito:
+# o .env é compartilhado com o projeto padrão (5432/6379/sdr) e NÃO manda aqui —
+# defaults interpoláveis permitiriam o fork colidir com (ou conectar em) o original.
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: sdrimob_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_SUPERUSER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_SUPERUSER_PASSWORD:-postgres}
+      POSTGRES_DB: sdr_imob
+      # consumidos pelo script de init para criar as roles sem BYPASSRLS
+      APP_DB_USER: ${APP_DB_USER:-sdr_app}
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD:-sdr_app_pw}
+      MIGRATOR_DB_USER: ${MIGRATOR_DB_USER:-sdr_migrator}
+      MIGRATOR_DB_PASSWORD: ${MIGRATOR_DB_PASSWORD:-sdr_migrator_pw}
+    ports:
+      - "5433:5432"
+    volumes:
+      - sdrimob_pgdata:/var/lib/postgresql/data
+      - ./packages/db/sql/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_SUPERUSER:-postgres} -d sdr_imob"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: sdrimob_redis
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6380:6379"
+    volumes:
+      - sdrimob_redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: sdrimob_api
+    env_file: .env
+    # environment vence o env_file: as URLs do .env compartilhado apontariam
+    # para o runtime do projeto ORIGINAL — aqui forçamos a rede interna do fork.
+    environment:
+      DATABASE_URL: postgres://${APP_DB_USER:-sdr_app}:${APP_DB_PASSWORD:-sdr_app_pw}@postgres:5432/sdr_imob
+      MIGRATION_DATABASE_URL: postgres://${MIGRATOR_DB_USER:-sdr_migrator}:${MIGRATOR_DB_PASSWORD:-sdr_migrator_pw}@postgres:5432/sdr_imob
+      REDIS_URL: redis://redis:6379
+      # browser acessa o web do fork em :3100 — CORS precisa casar (o .env
+      # compartilhado aponta :3000, que é o projeto original)
+      WEB_ORIGIN: http://localhost:3100
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    # container ouve 3001 (imagem); só o mapeamento do host muda
+    ports:
+      - "3101:3001"
+    profiles: ["full"]
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      # NEXT_PUBLIC_* é inlined no BUILD do Next: sem isto o bundle cai no
+      # fallback e o browser chamaria a API do projeto ORIGINAL em :3001
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:3101
+    container_name: sdrimob_web
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://${APP_DB_USER:-sdr_app}:${APP_DB_PASSWORD:-sdr_app_pw}@postgres:5432/sdr_imob
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - api
+    ports:
+      - "3100:3000"
+    profiles: ["full"]
+
+volumes:
+  sdrimob_pgdata:
+  sdrimob_redisdata:

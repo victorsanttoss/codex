@@ -1,0 +1,41 @@
+# Caddy — reverse proxy com HTTPS AUTOMÁTICO (ACME). Único ponto público.
+#   {$DOMAIN}       → painel web (Next.js, apps/web)
+#   api.{$DOMAIN}   → API/NestJS (webhook do WhatsApp + admin), com LB entre réplicas
+# Aponte AMBOS os DNS (raiz + `api.`) para o IP da VPS; o Caddy emite o TLS dos dois.
+
+{
+	email {$ACME_EMAIL}
+}
+
+# ── Painel (cliente + plataforma) ──
+{$DOMAIN} {
+	encode gzip
+	reverse_proxy web:3000
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		# Anti-clickjacking na borda (o Next também envia via next.config; CSP
+		# frame-ancestors 'none' complementa). Referrer mínimo.
+		X-Frame-Options "DENY"
+		Referrer-Policy "no-referrer"
+		-Server
+	}
+}
+
+# ── API + webhook (público em https://api.SEU-DOMINIO) ──
+api.{$DOMAIN} {
+	encode gzip
+	# Docker resolve `api` para TODAS as réplicas; Caddy balanceia entre elas.
+	reverse_proxy api:3001 {
+		lb_policy round_robin
+		health_uri /health
+		health_interval 10s
+		health_timeout 3s
+		# tira da rotação a réplica em restart (deploy uma-a-uma) → quase sem downtime.
+	}
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		-Server
+	}
+}

@@ -1,0 +1,233 @@
+/* App shell — sidebars (cliente/staff). Valores EXATOS de Sidebar.dc.html /
+ * PlatformSidebar.dc.html (handoff V4). */
+
+.sidebar {
+  width: var(--sidebar-w);
+  flex: none;
+  background: var(--ink-900);
+  color: #fff;
+  padding: 18px 13px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+.sidebarStaff {
+  width: var(--sidebar-w-staff);
+  background: var(--black);
+}
+
+/* Logo */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px 18px;
+}
+.sidebarStaff .brand {
+  padding: 4px 8px 6px;
+}
+.brandMark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--red-600);
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+.brandText {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+.brandSub {
+  font-size: 10px;
+  font-weight: 600;
+  color: #666;
+}
+
+/* Pílula "Sistema operacional" (staff) — retangular, raio 9px */
+.statusPill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 10px 4px 14px;
+  padding: 7px 11px;
+  border-radius: 9px;
+  background: var(--ink-900);
+  border: 1px solid var(--ink-800);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--neutral-dot);
+}
+
+/* Grupos / itens */
+.nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+}
+.groupLabel {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #666;
+  padding: 14px 8px 8px;
+}
+.sidebarStaff .groupLabel {
+  color: #555;
+}
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 11px;
+  border-radius: 9px;
+  margin-bottom: 3px;
+  color: var(--neutral-dot);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+.itemActive {
+  background: var(--ink-800);
+  color: #fff;
+}
+.sidebarStaff .itemActive {
+  background: var(--ink-900);
+}
+.itemActive::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--red-600);
+}
+.itemLabel {
+  flex: 1;
+}
+.navBadge {
+  margin-left: auto;
+  padding: 2px 7px;
+  border-radius: var(--r-pill);
+  font-size: 10px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.badgeRed {
+  background: var(--red-600);
+  color: #fff;
+}
+.badgeGray {
+  background: var(--ink-800);
+  color: var(--neutral-dot);
+}
+.badgeAmber {
+  background: rgba(255, 192, 42, 0.2);
+  color: var(--warning);
+}
+
+/* Rodapé cliente: cartão com toggle "SDR ativa" */
+.footerCard {
+  margin-top: auto;
+  padding: 13px;
+  border-radius: 11px;
+  background: var(--ink-800);
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.toggle {
+  width: 40px;
+  height: 23px;
+  border-radius: var(--r-pill);
+  background: var(--success);
+  position: relative;
+  flex: none;
+}
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 2.5px;
+  right: 2.5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+}
+.footerTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+}
+.footerSub {
+  font-size: 10.5px;
+  color: var(--text-subtle);
+}
+
+/* Rodapé staff: usuário (avatar vermelho) */
+.footerUser {
+  margin-top: auto;
+  background: var(--ink-900);
+  border-radius: 11px;
+  padding: 13px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--red-600);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+/* Sair da conta (rodapé da sidebar do cliente) */
+.logoutBtn {
+  margin-top: 9px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 9px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: none;
+  color: var(--text-subtle);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.12s ease, background 0.12s ease;
+}
+.logoutBtn:hover {
+  color: #fff;
+  background: var(--ink-800);
+}

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Montserrat', sans-serif; background: #ececef; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  ::selection { background: rgba(229,9,20,0.18); }
+  @keyframes v4pulse { 0% { box-shadow: 0 0 0 0 rgba(82,204,90,0.55); } 70% { box-shadow: 0 0 0 7px rgba(82,204,90,0); } 100% { box-shadow: 0 0 0 0 rgba(82,204,90,0); } }
+  @keyframes v4pulseRed { 0% { box-shadow: 0 0 0 0 rgba(229,9,20,0.55); } 70% { box-shadow: 0 0 0 6px rgba(229,9,20,0); } 100% { box-shadow: 0 0 0 0 rgba(229,9,20,0); } }
+  @keyframes v4shimmer { 0% { background-position: -480px 0; } 100% { background-position: 480px 0; } }
+  @keyframes v4dotsoft { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+</style>
+</helmet>
+
+<div style="min-height:100vh; color:#1a1a1a;">
+
+  <header style="background:#000; color:#fff; padding:26px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:3px solid #e50914;">
+    <div style="display:flex; align-items:center; gap:18px;">
+      <div style="display:flex; align-items:center; gap:11px;">
+        <div style="width:46px; height:46px; border-radius:11px; background:#e50914; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:21px; letter-spacing:-0.04em; color:#fff; box-shadow:0 4px 16px rgba(229,9,20,0.4);">V4</div>
+        <div style="line-height:1.15;"><div style="font-weight:800; font-size:15px;">V4 Company</div><div style="font-size:11px; color:#b3b3b3; font-weight:500;">Console interno · Staff</div></div>
+      </div>
+      <div style="width:1px; height:34px; background:#333;"></div>
+      <div><div style="font-weight:800; font-size:18px; letter-spacing:-0.01em;">Área da Plataforma</div><div style="font-size:12px; color:#8a8a8a; font-weight:500;">Passo 3 de 3 · operação multi-tenant e curadoria do conhecimento</div></div>
+    </div>
+    <div style="display:flex; align-items:center; gap:10px;"><span style="font-size:11px; font-weight:700; color:#b3b3b3; letter-spacing:0.12em; text-transform:uppercase;">Turno 3</span><span style="font-size:11px; font-weight:800; background:#1a1a1a; border:1px solid #333; color:#fff; padding:5px 11px; border-radius:7px; letter-spacing:0.06em;">REFERÊNCIA</span></div>
+  </header>
+
+  <nav style="position:sticky; top:0; z-index:50; background:rgba(0,0,0,0.94); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid #262626; padding:0 40px; display:flex; align-items:center; gap:4px; height:50px; overflow-x:auto;">
+    <a href="#visao" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">Visão global</a>
+    <a href="#tenants" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">Tenants</a>
+    <a href="#nichos" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">Nichos</a>
+    <a href="#curadoria" style="color:#fff; text-decoration:none; font-size:12.5px; font-weight:700; padding:8px 13px; border-radius:8px; white-space:nowrap; background:#e50914;">Curadoria</a>
+    <a href="#hsm" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">Templates HSM</a>
+    <a href="#ops" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">Operação</a>
+    <a href="#staff" style="color:#cccccc; text-decoration:none; font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:8px; white-space:nowrap;">Staff</a>
+  </nav>
+
+  <main style="max-width:1380px; margin:0 auto; padding:44px 40px 100px;">
+
+    <!-- ===================== VISÃO GLOBAL ===================== -->
+    <section id="visao" style="scroll-margin-top:64px; margin-bottom:56px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914; margin-bottom:7px;">Visão global</div>
+      <h2 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 4px;">Saúde do sistema &amp; todos os tenants</h2>
+      <p style="font-size:13.5px; color:#595959; margin:0 0 18px;">Mais densidade de informação. Staff vê uso/custo agregado e conexões caídas num relance.</p>
+
+      <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 18px 50px rgba(0,0,0,0.1); display:flex; min-height:720px; background:#f5f5f6;">
+        <dc-import name="PlatformSidebar" active="visao" link="#visao" hint-size="236px,720px"></dc-import>
+        <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+          <header style="height:60px; background:#fff; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; justify-content:space-between; padding:0 24px; flex-shrink:0;">
+            <h1 style="font-size:17px; font-weight:800; margin:0;">Visão global</h1>
+            <div style="display:flex; align-items:center; gap:12px;"><div style="display:flex; align-items:center; gap:8px; background:#f5f5f6; border:1px solid #e5e5e5; border-radius:9px; padding:7px 11px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span style="font-size:12px; color:#b3b3b3;">Buscar tenant…</span></div><div style="width:30px; height:30px; border-radius:50%; background:#e50914; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700;">VF</div></div>
+          </header>
+          <div style="flex:1; padding:24px; overflow:hidden;">
+            <!-- KPI dense row -->
+            <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:16px;">
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:15px 16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:7px;">Tenants ativos</div><div style="font-size:24px; font-weight:800; line-height:1;">214</div><div style="font-size:10.5px; color:#2f8f38; font-weight:700; margin-top:6px;">↑ 9 no mês</div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:15px 16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:7px;">Leads hoje</div><div style="font-size:24px; font-weight:800; line-height:1;">8.412</div><div style="font-size:10.5px; color:#8a8a8a; font-weight:600; margin-top:6px;">todos os tenants</div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:15px 16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:7px;">Custo agregado</div><div style="font-size:24px; font-weight:800; line-height:1;">R$ 38k</div><div style="font-size:10.5px; color:#8a8a8a; font-weight:600; margin-top:6px;">mês corrente</div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:15px 16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:7px;">Uptime</div><div style="font-size:24px; font-weight:800; line-height:1; color:#2f8f38;">99,8%</div><div style="font-size:10.5px; color:#8a8a8a; font-weight:600; margin-top:6px;">30 dias</div></div>
+              <div style="background:#1a1a1a; border:1px solid #1a1a1a; border-radius:12px; padding:15px 16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#ff6b73; margin-bottom:7px;">Conexões caídas</div><div style="font-size:24px; font-weight:800; line-height:1; color:#fff;">3</div><div style="font-size:10.5px; color:#ff6b73; font-weight:700; margin-top:6px; display:flex; align-items:center; gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:#e50914; animation:v4pulseRed 1.4s infinite;"></span>requer ação</div></div>
+            </div>
+            <div style="display:grid; grid-template-columns:1.5fr 1fr; gap:16px;">
+              <!-- chart -->
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:20px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;"><div style="font-size:14px; font-weight:700;">Volume de mensagens · 14 dias</div><div style="display:flex; gap:14px;"><span style="display:flex; align-items:center; gap:6px; font-size:11px; color:#595959;"><span style="width:9px;height:9px;border-radius:2px;background:#e50914;"></span>Inbound</span><span style="display:flex; align-items:center; gap:6px; font-size:11px; color:#595959;"><span style="width:9px;height:9px;border-radius:2px;background:#1a1a1a;"></span>IA</span></div></div>
+                <svg viewBox="0 0 480 150" style="width:100%; height:150px;" data-om-raster>
+                  <g>
+                    <line x1="0" y1="37" x2="480" y2="37" stroke="#f0f0f0"/><line x1="0" y1="75" x2="480" y2="75" stroke="#f0f0f0"/><line x1="0" y1="113" x2="480" y2="113" stroke="#f0f0f0"/>
+                  </g>
+                  <polyline points="0,110 37,95 74,100 110,80 147,88 184,62 221,70 258,55 295,60 332,42 369,50 406,30 443,38 480,22" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="0,125 37,118 74,120 110,108 147,112 184,98 221,104 258,92 295,96 332,84 369,90 406,76 443,82 480,70" fill="none" stroke="#e50914" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <!-- downed connections -->
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:20px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;"><div style="font-size:14px; font-weight:700;">Conexões caídas</div><span style="font-size:11px; font-weight:800; background:rgba(229,9,20,0.1); color:#c30811; border-radius:6px; padding:3px 9px;">3 ATIVAS</span></div>
+                <div style="display:flex; flex-direction:column; gap:9px;">
+                  <div style="display:flex; align-items:center; gap:11px; border:1px solid #f3b5b9; background:#fffafa; border-radius:10px; padding:11px 13px;"><div style="width:30px; height:30px; border-radius:7px; background:#ffc02a; color:#1a1a1a; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800;">SP</div><div style="flex:1; min-width:0;"><div style="font-size:12.5px; font-weight:700;">Solar Prime</div><div style="font-size:10.5px; color:#c30811;">caiu há 6 min · oficial</div></div><button style="background:#e50914; border:0; color:#fff; border-radius:7px; padding:6px 10px; font-family:'Montserrat'; font-size:10.5px; font-weight:700; cursor:pointer;">Avisar</button></div>
+                  <div style="display:flex; align-items:center; gap:11px; border:1px solid #f3b5b9; background:#fffafa; border-radius:10px; padding:11px 13px;"><div style="width:30px; height:30px; border-radius:7px; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800;">CL</div><div style="flex:1; min-width:0;"><div style="font-size:12.5px; font-weight:700;">Clínica Lumi</div><div style="font-size:10.5px; color:#c30811;">caiu há 34 min · QR</div></div><button style="background:#e50914; border:0; color:#fff; border-radius:7px; padding:6px 10px; font-family:'Montserrat'; font-size:10.5px; font-weight:700; cursor:pointer;">Avisar</button></div>
+                  <div style="display:flex; align-items:center; gap:11px; border:1px solid #f3b5b9; background:#fffafa; border-radius:10px; padding:11px 13px;"><div style="width:30px; height:30px; border-radius:7px; background:#1a1a1a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800;">IH</div><div style="flex:1; min-width:0;"><div style="font-size:12.5px; font-weight:700;">Imob House</div><div style="font-size:10.5px; color:#c30811;">caiu há 1 h · oficial</div></div><button style="background:#e50914; border:0; color:#fff; border-radius:7px; padding:6px 10px; font-family:'Montserrat'; font-size:10.5px; font-weight:700; cursor:pointer;">Avisar</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TENANTS ===================== -->
+    <section id="tenants" style="scroll-margin-top:64px; margin-bottom:56px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914; margin-bottom:7px;">Tenants</div>
+      <h2 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 4px;">Lista + detalhe (impersonar)</h2>
+      <p style="font-size:13.5px; color:#595959; margin:0 0 18px;">Todos os clientes. Staff abre o detalhe e pode impersonar para dar suporte.</p>
+
+      <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 18px 50px rgba(0,0,0,0.1); display:flex; min-height:660px; background:#f5f5f6;">
+        <dc-import name="PlatformSidebar" active="tenants" link="#tenants" hint-size="236px,660px"></dc-import>
+        <div style="flex:1; display:flex; min-width:0;">
+          <!-- list -->
+          <div style="width:420px; background:#fff; border-right:1px solid #e5e5e5; flex-shrink:0; display:flex; flex-direction:column;">
+            <div style="padding:18px 20px 12px; border-bottom:1px solid #eee;"><div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;"><h1 style="font-size:17px; font-weight:800; margin:0;">Tenants</h1><span style="font-size:12px; color:#8a8a8a;">214 ativos</span></div><div style="display:flex; align-items:center; gap:8px; background:#f5f5f6; border:1px solid #e5e5e5; border-radius:9px; padding:8px 11px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span style="font-size:12px; color:#b3b3b3;">Buscar por nome ou nicho…</span></div></div>
+            <div style="flex:1; overflow:hidden;">
+              <div style="display:flex; align-items:center; gap:12px; padding:13px 20px; background:#fef2f3; border-left:3px solid #e50914; cursor:pointer;"><div style="width:36px; height:36px; border-radius:9px; background:#ffc02a; color:#1a1a1a; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;">SP</div><div style="flex:1; min-width:0;"><div style="font-size:13px; font-weight:700;">Solar Prime Energia</div><div style="font-size:11px; color:#8a8a8a;">Energia solar · Curitiba</div></div><span style="display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:700; color:#c30811;"><span style="width:6px;height:6px;border-radius:50%;background:#e50914;"></span>Caiu</span></div>
+              <div style="display:flex; align-items:center; gap:12px; padding:13px 20px; cursor:pointer;" style-hover="background:#fafafa;"><div style="width:36px; height:36px; border-radius:9px; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;">CL</div><div style="flex:1; min-width:0;"><div style="font-size:13px; font-weight:700;">Clínica Lumi</div><div style="font-size:11px; color:#8a8a8a;">Clínica · São Paulo</div></div><span style="display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:700; color:#2f8f38;"><span style="width:6px;height:6px;border-radius:50%;background:#52cc5a;"></span>Ativo</span></div>
+              <div style="display:flex; align-items:center; gap:12px; padding:13px 20px; cursor:pointer;" style-hover="background:#fafafa;"><div style="width:36px; height:36px; border-radius:9px; background:#1a1a1a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;">IH</div><div style="flex:1; min-width:0;"><div style="font-size:13px; font-weight:700;">Imob House</div><div style="font-size:11px; color:#8a8a8a;">Imobiliária · Belo Horizonte</div></div><span style="display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:700; color:#2f8f38;"><span style="width:6px;height:6px;border-radius:50%;background:#52cc5a;"></span>Ativo</span></div>
+              <div style="display:flex; align-items:center; gap:12px; padding:13px 20px; cursor:pointer;" style-hover="background:#fafafa;"><div style="width:36px; height:36px; border-radius:9px; background:#595959; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;">ES</div><div style="flex:1; min-width:0;"><div style="font-size:13px; font-weight:700;">EduSmart Cursos</div><div style="font-size:11px; color:#8a8a8a;">Educação · Recife</div></div><span style="display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:700; color:#9a6b00;"><span style="width:6px;height:6px;border-radius:50%;background:#ffc02a;"></span>Trial</span></div>
+              <div style="display:flex; align-items:center; gap:12px; padding:13px 20px; cursor:pointer;" style-hover="background:#fafafa;"><div style="width:36px; height:36px; border-radius:9px; background:#80050b; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;">VS</div><div style="flex:1; min-width:0;"><div style="font-size:13px; font-weight:700;">Vida Saúde Odonto</div><div style="font-size:11px; color:#8a8a8a;">Clínica · Porto Alegre</div></div><span style="display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:700; color:#2f8f38;"><span style="width:6px;height:6px;border-radius:50%;background:#52cc5a;"></span>Ativo</span></div>
+            </div>
+          </div>
+          <!-- detail -->
+          <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+            <header style="height:60px; background:#fff; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; justify-content:space-between; padding:0 22px; flex-shrink:0;">
+              <div style="display:flex; align-items:center; gap:11px;"><div style="width:34px; height:34px; border-radius:9px; background:#ffc02a; color:#1a1a1a; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;">SP</div><div><div style="font-size:14px; font-weight:800;">Solar Prime Energia</div><div style="font-size:11px; color:#8a8a8a;">tenant #1042 · cliente desde mar/2026</div></div></div>
+              <button style="background:#1a1a1a; border:0; color:#fff; border-radius:9px; padding:9px 16px; font-family:'Montserrat'; font-size:12.5px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>Impersonar</button>
+            </header>
+            <div style="flex:1; padding:22px; overflow:hidden;">
+              <!-- alert: down -->
+              <div style="display:flex; align-items:center; gap:11px; background:#fef2f2; border:1px solid #f3b5b9; border-radius:11px; padding:12px 15px; margin-bottom:16px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e50914" stroke-width="2.2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><div style="flex:1;"><div style="font-size:12.5px; font-weight:700;">Conexão do WhatsApp caiu há 6 min</div><div style="font-size:11.5px; color:#595959;">A SDR deste tenant parou de responder.</div></div><button style="background:#e50914; border:0; color:#fff; border-radius:8px; padding:8px 13px; font-family:'Montserrat'; font-size:12px; font-weight:700; cursor:pointer;">Notificar cliente</button></div>
+              <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px;">
+                <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:15px 16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:7px;">Leads / mês</div><div style="font-size:22px; font-weight:800; line-height:1;">348</div></div>
+                <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:15px 16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:7px;">Qualif.</div><div style="font-size:22px; font-weight:800; line-height:1; color:#2f8f38;">132</div></div>
+                <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:15px 16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:7px;">Custo / mês</div><div style="font-size:22px; font-weight:800; line-height:1;">R$ 412</div></div>
+                <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:15px 16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:7px;">Plano</div><div style="font-size:15px; font-weight:800; line-height:1.4;">Growth</div></div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+                <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:18px;">
+                  <div style="font-size:13px; font-weight:800; margin-bottom:13px;">Configuração</div>
+                  <div style="display:flex; flex-direction:column; gap:10px;">
+                    <div style="display:flex; justify-content:space-between;"><span style="font-size:12px; color:#8a8a8a;">Nicho</span><span style="font-size:12.5px; font-weight:700;">Energia solar</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="font-size:12px; color:#8a8a8a;">Número</span><span style="font-size:12.5px; font-weight:700;">+55 41 99876-5432</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="font-size:12px; color:#8a8a8a;">Tipo de conexão</span><span style="font-size:12.5px; font-weight:700;">Oficial (API)</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="font-size:12px; color:#8a8a8a;">Base de conhecimento</span><span style="font-size:12.5px; font-weight:700;">24 trechos</span></div>
+                  </div>
+                </div>
+                <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:18px;">
+                  <div style="font-size:13px; font-weight:800; margin-bottom:13px;">Atividade do tenant</div>
+                  <div style="display:flex; flex-direction:column; gap:11px;">
+                    <div style="display:flex; gap:10px;"><span style="width:8px; height:8px; border-radius:50%; background:#e50914; margin-top:4px;"></span><div><div style="font-size:12px; font-weight:600;">Conexão caiu</div><div style="font-size:10.5px; color:#8a8a8a;">há 6 min</div></div></div>
+                    <div style="display:flex; gap:10px;"><span style="width:8px; height:8px; border-radius:50%; background:#52cc5a; margin-top:4px;"></span><div><div style="font-size:12px; font-weight:600;">Aprovou template "Lembrete D1"</div><div style="font-size:10.5px; color:#8a8a8a;">há 2 h</div></div></div>
+                    <div style="display:flex; gap:10px;"><span style="width:8px; height:8px; border-radius:50%; background:#b3b3b3; margin-top:4px;"></span><div><div style="font-size:12px; font-weight:600;">Subiu Catálogo-2026.pdf</div><div style="font-size:10.5px; color:#8a8a8a;">ontem</div></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== NICHOS ===================== -->
+    <section id="nichos" style="scroll-margin-top:64px; margin-bottom:56px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914; margin-bottom:7px;">Nichos</div>
+      <h2 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 4px;">Lista + criar/editar</h2>
+      <p style="font-size:13.5px; color:#595959; margin:0 0 18px;">Vertical × motion, guidance e kit de vertical aplicável aos tenants.</p>
+
+      <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 18px 50px rgba(0,0,0,0.1); display:flex; min-height:640px; background:#f5f5f6;">
+        <dc-import name="PlatformSidebar" active="nichos" link="#nichos" hint-size="236px,640px"></dc-import>
+        <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+          <header style="height:60px; background:#fff; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; justify-content:space-between; padding:0 24px; flex-shrink:0;"><h1 style="font-size:17px; font-weight:800; margin:0;">Nichos</h1><button style="background:#e50914; border:0; color:#fff; border-radius:9px; padding:9px 16px; font-family:'Montserrat'; font-size:12.5px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Novo nicho</button></header>
+          <div style="flex:1; padding:24px; overflow:hidden; display:grid; grid-template-columns:1fr 1.25fr; gap:18px;">
+            <!-- list -->
+            <div style="display:flex; flex-direction:column; gap:11px;">
+              <div style="background:#fff; border:2px solid #e50914; border-radius:13px; padding:16px;"><div style="display:flex; align-items:center; gap:12px;"><div style="width:40px; height:40px; border-radius:10px; background:rgba(255,192,42,0.16); display:flex; align-items:center; justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffb300" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M2 12h2M20 12h2"/></svg></div><div style="flex:1;"><div style="font-size:14px; font-weight:700;">Energia solar</div><div style="font-size:11px; color:#8a8a8a;">42 tenants · 1.240 trechos curados</div></div></div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; padding:16px;"><div style="display:flex; align-items:center; gap:12px;"><div style="width:40px; height:40px; border-radius:10px; background:#f5f5f6; display:flex; align-items:center; justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 12 5 5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg></div><div style="flex:1;"><div style="font-size:14px; font-weight:700;">Clínica estética</div><div style="font-size:11px; color:#8a8a8a;">68 tenants · 980 trechos</div></div></div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; padding:16px;"><div style="display:flex; align-items:center; gap:12px;"><div style="width:40px; height:40px; border-radius:10px; background:#f5f5f6; display:flex; align-items:center; justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg></div><div style="flex:1;"><div style="font-size:14px; font-weight:700;">Imobiliária</div><div style="font-size:11px; color:#8a8a8a;">53 tenants · 1.110 trechos</div></div></div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:13px; padding:16px;"><div style="display:flex; align-items:center; gap:12px;"><div style="width:40px; height:40px; border-radius:10px; background:#f5f5f6; display:flex; align-items:center; justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2"><path d="M12 20h9M4 20h2M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div><div style="flex:1;"><div style="font-size:14px; font-weight:700;">Educação</div><div style="font-size:11px; color:#8a8a8a;">31 tenants · 760 trechos</div></div></div></div>
+            </div>
+            <!-- editor -->
+            <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:22px; overflow:hidden;">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;"><div style="font-size:15px; font-weight:800;">Editar · Energia solar</div><span style="font-size:11px; font-weight:700; color:#2f8f38; display:flex; align-items:center; gap:5px;"><span style="width:6px;height:6px;border-radius:50%;background:#52cc5a;"></span>Publicado</span></div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:18px;">
+                <div><label style="display:block; font-size:11px; font-weight:700; color:#595959; margin-bottom:7px;">Vertical</label><div style="position:relative;"><div style="width:100%; font-size:13px; padding:10px 13px; border:1px solid #cccccc; border-radius:8px; background:#f5f5f6; font-weight:600;">Energia solar</div></div></div>
+                <div><label style="display:block; font-size:11px; font-weight:700; color:#595959; margin-bottom:7px;">Motion (objetivo)</label><div style="display:inline-flex; background:#f0f0f0; border-radius:9px; padding:3px; gap:2px;"><span style="font-size:11.5px; font-weight:700; padding:6px 12px; border-radius:7px; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,0.08);">Agendar visita</span><span style="font-size:11.5px; font-weight:600; padding:6px 12px; border-radius:7px; color:#8a8a8a;">Orçamento</span></div></div>
+              </div>
+              <label style="display:block; font-size:11px; font-weight:700; color:#595959; margin-bottom:7px;">Guidance da IA</label>
+              <div style="border:1px solid #e5e5e5; border-radius:9px; padding:13px 15px; font-size:12.5px; color:#595959; line-height:1.6; min-height:96px; background:#fafafa; margin-bottom:18px;">Sempre coletar valor da conta de luz e tipo de imóvel antes de qualificar. Reforçar economia em R$/mês. Nunca prometer prazo de instalação. Conduzir para agendamento de visita técnica gratuita.</div>
+              <label style="display:block; font-size:11px; font-weight:700; color:#595959; margin-bottom:9px;">Kit de vertical</label>
+              <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
+                <span style="display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; background:#f5f5f6; border:1px solid #e5e5e5; border-radius:8px; padding:7px 11px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2f8f38" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Schema de qualificação</span>
+                <span style="display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; background:#f5f5f6; border:1px solid #e5e5e5; border-radius:8px; padding:7px 11px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2f8f38" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>3 templates HSM</span>
+                <span style="display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; background:#f5f5f6; border:1px solid #e5e5e5; border-radius:8px; padding:7px 11px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2f8f38" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>FAQ base · 24 itens</span>
+              </div>
+              <div style="display:flex; gap:10px;"><button style="flex:1; background:#e50914; border:0; color:#fff; border-radius:9px; padding:11px; font-family:'Montserrat'; font-size:13px; font-weight:700; cursor:pointer;">Salvar &amp; publicar</button><button style="background:#fff; border:1px solid #cccccc; border-radius:9px; padding:11px 18px; font-family:'Montserrat'; font-size:13px; font-weight:700; cursor:pointer;">Aplicar a 42 tenants</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CURADORIA ===================== -->
+    <section id="curadoria" style="scroll-margin-top:64px; margin-bottom:56px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;"><span style="font-size:13px; font-weight:800; background:#e50914; color:#fff; padding:4px 11px; border-radius:8px;">★</span><div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914;">Curadoria de conhecimento · tela-chave</div></div>
+      <h2 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 4px;">Fila de candidatos → revisar, editar, aprovar</h2>
+      <p style="font-size:13.5px; color:#595959; margin:0 0 18px;">O diferencial do produto. Staff cura o conhecimento que alimenta a IA, com versões/rollback e verificação de zero PII.</p>
+
+      <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 18px 50px rgba(0,0,0,0.1); display:flex; min-height:760px; background:#f5f5f6;">
+        <dc-import name="PlatformSidebar" active="curadoria" link="#curadoria" hint-size="236px,760px"></dc-import>
+        <div style="flex:1; display:flex; min-width:0;">
+          <!-- queue -->
+          <div style="width:360px; background:#fff; border-right:1px solid #e5e5e5; flex-shrink:0; display:flex; flex-direction:column;">
+            <div style="padding:18px 20px 12px; border-bottom:1px solid #eee;"><div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;"><h1 style="font-size:16px; font-weight:800; margin:0;">Fila de candidatos</h1><span style="font-size:11px; font-weight:800; background:#e50914; color:#fff; border-radius:999px; padding:3px 9px;">18</span></div><div style="display:flex; gap:6px;"><span style="font-size:11px; font-weight:700; padding:5px 11px; border-radius:999px; background:#1a1a1a; color:#fff;">Pendentes</span><span style="font-size:11px; font-weight:700; padding:5px 11px; border-radius:999px; background:#f0f0f0; color:#595959;">Energia solar</span></div></div>
+            <div style="flex:1; overflow:hidden;">
+              <div style="display:flex; flex-direction:column; gap:6px; padding:13px 20px; background:#fef2f3; border-left:3px solid #e50914; cursor:pointer;"><div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:10px; font-weight:800; letter-spacing:0.06em; color:#e50914;">ENERGIA SOLAR</span><span style="font-size:10px; color:#8a8a8a;">há 8 min</span></div><div style="font-size:12.5px; font-weight:600; line-height:1.4;">"Vocês fazem instalação em telhado de fibrocimento?"</div><div style="display:flex; align-items:center; gap:7px;"><span style="font-size:10px; font-weight:700; background:rgba(82,204,90,0.16); color:#2f8f38; border-radius:5px; padding:2px 7px;">Zero PII</span><span style="font-size:10.5px; color:#8a8a8a;">3 tenants</span></div></div>
+              <div style="display:flex; flex-direction:column; gap:6px; padding:13px 20px; cursor:pointer;" style-hover="background:#fafafa;"><div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:10px; font-weight:800; letter-spacing:0.06em; color:#8a8a8a;">ENERGIA SOLAR</span><span style="font-size:10px; color:#8a8a8a;">há 22 min</span></div><div style="font-size:12.5px; font-weight:600; line-height:1.4;">"Qual a garantia dos painéis?"</div><div style="display:flex; align-items:center; gap:7px;"><span style="font-size:10px; font-weight:700; background:rgba(82,204,90,0.16); color:#2f8f38; border-radius:5px; padding:2px 7px;">Zero PII</span><span style="font-size:10.5px; color:#8a8a8a;">7 tenants</span></div></div>
+              <div style="display:flex; flex-direction:column; gap:6px; padding:13px 20px; cursor:pointer;" style-hover="background:#fafafa;"><div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:10px; font-weight:800; letter-spacing:0.06em; color:#8a8a8a;">CLÍNICA</span><span style="font-size:10px; color:#8a8a8a;">há 1 h</span></div><div style="font-size:12.5px; font-weight:600; line-height:1.4;">"Atende convênio Unimed?"</div><div style="display:flex; align-items:center; gap:7px;"><span style="font-size:10px; font-weight:700; background:rgba(255,192,42,0.18); color:#9a6b00; border-radius:5px; padding:2px 7px;">Revisar PII</span><span style="font-size:10.5px; color:#8a8a8a;">12 tenants</span></div></div>
+              <div style="display:flex; flex-direction:column; gap:6px; padding:13px 20px; cursor:pointer;" style-hover="background:#fafafa;"><div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:10px; font-weight:800; letter-spacing:0.06em; color:#8a8a8a;">IMOBILIÁRIA</span><span style="font-size:10px; color:#8a8a8a;">há 2 h</span></div><div style="font-size:12.5px; font-weight:600; line-height:1.4;">"Aceitam FGTS na entrada?"</div><div style="display:flex; align-items:center; gap:7px;"><span style="font-size:10px; font-weight:700; background:rgba(82,204,90,0.16); color:#2f8f38; border-radius:5px; padding:2px 7px;">Zero PII</span><span style="font-size:10.5px; color:#8a8a8a;">5 tenants</span></div></div>
+            </div>
+          </div>
+          <!-- review -->
+          <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+            <header style="height:60px; background:#fff; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; justify-content:space-between; padding:0 22px; flex-shrink:0;">
+              <div style="display:flex; align-items:center; gap:10px;"><span style="font-size:10px; font-weight:800; letter-spacing:0.06em; background:#1a1a1a; color:#fff; border-radius:5px; padding:3px 8px;">ENERGIA SOLAR</span><span style="font-size:13px; font-weight:700;">Candidato #4821</span></div>
+              <div style="display:flex; align-items:center; gap:8px;"><span style="font-size:11px; color:#8a8a8a;">3 de 18</span><button style="width:30px; height:30px; border-radius:8px; border:1px solid #e5e5e5; background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg></button><button style="width:30px; height:30px; border-radius:8px; border:1px solid #e5e5e5; background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg></button></div>
+            </header>
+            <div style="flex:1; padding:24px; overflow:hidden;">
+              <!-- PII banner -->
+              <div style="display:flex; align-items:center; gap:11px; background:rgba(82,204,90,0.08); border:1px solid rgba(82,204,90,0.35); border-radius:11px; padding:12px 15px; margin-bottom:18px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2f8f38" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><div style="flex:1;"><div style="font-size:12.5px; font-weight:700; color:#1a1a1a;">Zero PII detectado</div><div style="font-size:11.5px; color:#595959;">Nenhum dado pessoal (nome, telefone, e-mail) encontrado neste candidato.</div></div><span style="font-size:10.5px; font-weight:800; color:#2f8f38; background:#fff; border:1px solid rgba(82,204,90,0.4); border-radius:6px; padding:4px 9px;">VERIFICADO</span></div>
+              <!-- question + sources -->
+              <div style="display:grid; grid-template-columns:1fr 280px; gap:18px;">
+                <div>
+                  <div style="font-size:10.5px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#8a8a8a; margin-bottom:8px;">Pergunta capturada</div>
+                  <div style="background:#ece5dd; border-radius:10px; padding:11px 14px; margin-bottom:18px;"><div style="background:#fff; border-radius:8px 8px 8px 2px; padding:9px 12px; font-size:13px; display:inline-block; box-shadow:0 1px 1px rgba(0,0,0,0.08);">Vocês fazem instalação em telhado de fibrocimento?</div></div>
+                  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;"><div style="font-size:10.5px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#8a8a8a;">Resposta proposta pela IA</div><span style="font-size:11px; font-weight:700; color:#e50914; cursor:pointer;">Editar</span></div>
+                  <div style="border:1px solid #cccccc; border-radius:10px; padding:14px 16px; font-size:13px; line-height:1.6; color:#1a1a1a; background:#fff; min-height:120px;">Sim! Instalamos em telhados de fibrocimento, cerâmico, metálico e laje. Nossa equipe avalia a estrutura na visita técnica gratuita e indica a melhor fixação para o seu caso. Quer que eu agende uma visita?</div>
+                  <div style="display:flex; align-items:center; gap:7px; margin-top:10px; font-size:11.5px; color:#8a8a8a;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/></svg>Apareceu em 3 tenants · 9 conversas nos últimos 7 dias</div>
+                </div>
+                <div>
+                  <div style="font-size:10.5px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#8a8a8a; margin-bottom:10px;">Versões</div>
+                  <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:20px;">
+                    <div style="border:1px solid #e5e5e5; border-left:3px solid #e50914; border-radius:8px; padding:10px 12px;"><div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-size:11.5px; font-weight:700;">v3 · atual</span><span style="font-size:10px; color:#8a8a8a;">agora</span></div><div style="font-size:10.5px; color:#8a8a8a; margin-top:2px;">Proposta da IA</div></div>
+                    <div style="border:1px solid #e5e5e5; border-radius:8px; padding:10px 12px;"><div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-size:11.5px; font-weight:700; color:#595959;">v2</span><span style="font-size:11px; font-weight:700; color:#e50914; cursor:pointer;">Rollback</span></div><div style="font-size:10.5px; color:#8a8a8a; margin-top:2px;">Vitor F. · 12/06</div></div>
+                    <div style="border:1px solid #e5e5e5; border-radius:8px; padding:10px 12px;"><div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-size:11.5px; font-weight:700; color:#595959;">v1</span><span style="font-size:11px; font-weight:700; color:#e50914; cursor:pointer;">Rollback</span></div><div style="font-size:10.5px; color:#8a8a8a; margin-top:2px;">Ana C. · 02/05</div></div>
+                  </div>
+                  <div style="font-size:10.5px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#8a8a8a; margin-bottom:10px;">Promover para</div>
+                  <div style="display:flex; flex-direction:column; gap:7px;">
+                    <label style="display:flex; align-items:center; gap:9px; font-size:12px; color:#595959; cursor:pointer;"><span style="width:18px; height:18px; border-radius:5px; background:#e50914; display:flex; align-items:center; justify-content:center;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2"><path d="M20 6L9 17l-5-5"/></svg></span>Nicho Energia solar</label>
+                    <label style="display:flex; align-items:center; gap:9px; font-size:12px; color:#595959; cursor:pointer;"><span style="width:18px; height:18px; border-radius:5px; border:1.5px solid #cccccc;"></span>Base global</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- action bar -->
+            <div style="background:#fff; border-top:1px solid #e5e5e5; padding:14px 22px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0;">
+              <button style="background:#fff; border:1px solid #f3b5b9; color:#e50914; border-radius:9px; padding:10px 18px; font-family:'Montserrat'; font-size:13px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e50914" stroke-width="2.4"><path d="M18 6L6 18M6 6l12 12"/></svg>Rejeitar</button>
+              <div style="display:flex; gap:10px;"><button style="background:#fff; border:1px solid #cccccc; border-radius:9px; padding:10px 18px; font-family:'Montserrat'; font-size:13px; font-weight:700; cursor:pointer;">Editar resposta</button><button style="background:#e50914; border:0; color:#fff; border-radius:9px; padding:10px 22px; font-family:'Montserrat'; font-size:13px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 2px 8px rgba(229,9,20,0.25);"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Aprovar &amp; promover</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HSM ===================== -->
+    <section id="hsm" style="scroll-margin-top:64px; margin-bottom:56px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914; margin-bottom:7px;">Templates HSM</div>
+      <h2 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 4px;">Catálogo + status de aprovação</h2>
+      <p style="font-size:13.5px; color:#595959; margin:0 0 18px;">Templates de mensagem (HSM) por nicho, com status de aprovação da Meta.</p>
+
+      <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 18px 50px rgba(0,0,0,0.1); display:flex; min-height:560px; background:#f5f5f6;">
+        <dc-import name="PlatformSidebar" active="hsm" link="#hsm" hint-size="236px,560px"></dc-import>
+        <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+          <header style="height:60px; background:#fff; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; justify-content:space-between; padding:0 24px; flex-shrink:0;"><h1 style="font-size:17px; font-weight:800; margin:0;">Templates HSM</h1><button style="background:#e50914; border:0; color:#fff; border-radius:9px; padding:9px 16px; font-family:'Montserrat'; font-size:12.5px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Novo template</button></header>
+          <div style="flex:1; padding:24px; overflow:hidden;">
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px;">
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:15px 17px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:7px;">Aprovados</div><div style="font-size:24px; font-weight:800; line-height:1; color:#2f8f38;">42</div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:15px 17px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:7px;">Em aprovação</div><div style="font-size:24px; font-weight:800; line-height:1; color:#9a6b00;">5</div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:15px 17px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:7px;">Rejeitados</div><div style="font-size:24px; font-weight:800; line-height:1; color:#c30811;">2</div></div>
+            </div>
+            <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; overflow:hidden;">
+              <table style="width:100%; border-collapse:collapse;">
+                <thead><tr style="background:#fafafa;"><th style="text-align:left; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:12px 22px;">Template</th><th style="text-align:left; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:12px 16px;">Nicho</th><th style="text-align:left; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:12px 16px;">Categoria</th><th style="text-align:left; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:12px 16px;">Status Meta</th><th style="text-align:right; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:12px 22px;">Uso</th></tr></thead>
+                <tbody>
+                  <tr style="border-top:1px solid #f0f0f0;"><td style="padding:13px 22px; font-size:13px; font-weight:600;">Boas-vindas solar</td><td style="padding:13px 16px; font-size:12.5px; color:#595959;">Energia solar</td><td style="padding:13px 16px; font-size:12px; color:#595959;">Marketing</td><td style="padding:13px 16px;"><span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:#2f8f38;"><span style="width:6px;height:6px;border-radius:50%;background:#52cc5a;"></span>Aprovado</span></td><td style="padding:13px 22px; text-align:right; font-size:12.5px; font-weight:700;">42 tenants</td></tr>
+                  <tr style="border-top:1px solid #f0f0f0;"><td style="padding:13px 22px; font-size:13px; font-weight:600;">Lembrete D1</td><td style="padding:13px 16px; font-size:12.5px; color:#595959;">Todos</td><td style="padding:13px 16px; font-size:12px; color:#595959;">Utilidade</td><td style="padding:13px 16px;"><span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:#9a6b00;"><span style="width:6px;height:6px;border-radius:50%;background:#ffc02a; animation:v4dotsoft 1.2s infinite;"></span>Em aprovação</span></td><td style="padding:13px 22px; text-align:right; font-size:12.5px; font-weight:700;">—</td></tr>
+                  <tr style="border-top:1px solid #f0f0f0;"><td style="padding:13px 22px; font-size:13px; font-weight:600;">Confirmação de visita</td><td style="padding:13px 16px; font-size:12.5px; color:#595959;">Energia solar</td><td style="padding:13px 16px; font-size:12px; color:#595959;">Utilidade</td><td style="padding:13px 16px;"><span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:#2f8f38;"><span style="width:6px;height:6px;border-radius:50%;background:#52cc5a;"></span>Aprovado</span></td><td style="padding:13px 22px; text-align:right; font-size:12.5px; font-weight:700;">38 tenants</td></tr>
+                  <tr style="border-top:1px solid #f0f0f0;"><td style="padding:13px 22px; font-size:13px; font-weight:600;">Promoção relâmpago</td><td style="padding:13px 16px; font-size:12.5px; color:#595959;">Clínica</td><td style="padding:13px 16px; font-size:12px; color:#595959;">Marketing</td><td style="padding:13px 16px;"><span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:#c30811;"><span style="width:6px;height:6px;border-radius:50%;background:#e50914;"></span>Rejeitado</span></td><td style="padding:13px 22px; text-align:right; font-size:12.5px; font-weight:700;">—</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== OPERAÇÃO ===================== -->
+    <section id="ops" style="scroll-margin-top:64px; margin-bottom:56px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914; margin-bottom:7px;">Operação &amp; alertas</div>
+      <h2 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 4px;">Filas, outbox e conexões</h2>
+      <p style="font-size:13.5px; color:#595959; margin:0 0 18px;">Saúde operacional em tempo real. Aqui sim aparecem os termos técnicos — é o público interno.</p>
+
+      <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 18px 50px rgba(0,0,0,0.1); display:flex; min-height:560px; background:#f5f5f6;">
+        <dc-import name="PlatformSidebar" active="ops" link="#ops" hint-size="236px,560px"></dc-import>
+        <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+          <header style="height:60px; background:#fff; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; justify-content:space-between; padding:0 24px; flex-shrink:0;"><h1 style="font-size:17px; font-weight:800; margin:0;">Operação &amp; alertas</h1><div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,192,42,0.14); border:1px solid rgba(255,192,42,0.4); border-radius:999px; padding:6px 13px;"><span style="width:8px; height:8px; border-radius:50%; background:#ffc02a; animation:v4dotsoft 1.2s infinite;"></span><span style="font-size:12px; font-weight:700; color:#9a6b00;">3 alertas ativos</span></div></header>
+          <div style="flex:1; padding:24px; overflow:hidden;">
+            <!-- alerts -->
+            <div style="display:flex; flex-direction:column; gap:9px; margin-bottom:18px;">
+              <div style="display:flex; align-items:center; gap:12px; background:#fff; border:1px solid #f3b5b9; border-left:3px solid #e50914; border-radius:11px; padding:13px 16px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#e50914" stroke-width="2.2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><div style="flex:1;"><div style="font-size:12.5px; font-weight:700;">3 conexões WhatsApp caídas</div><div style="font-size:11.5px; color:#595959;">Solar Prime, Clínica Lumi, Imob House</div></div><span style="font-size:10.5px; font-weight:800; color:#c30811;">CRÍTICO</span></div>
+              <div style="display:flex; align-items:center; gap:12px; background:#fff; border:1px solid rgba(255,192,42,0.4); border-left:3px solid #ffc02a; border-radius:11px; padding:13px 16px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9a6b00" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg><div style="flex:1;"><div style="font-size:12.5px; font-weight:700;">Outbox com atraso de 4 min</div><div style="font-size:11.5px; color:#595959;">142 mensagens na fila de envio</div></div><span style="font-size:10.5px; font-weight:800; color:#9a6b00;">ATENÇÃO</span></div>
+            </div>
+            <!-- queues grid -->
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px;">
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:8px;">Fila inbound</div><div style="font-size:22px; font-weight:800; line-height:1;">28</div><div style="font-size:10.5px; color:#2f8f38; font-weight:700; margin-top:6px;">saudável</div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:8px;">Outbox</div><div style="font-size:22px; font-weight:800; line-height:1; color:#9a6b00;">142</div><div style="font-size:10.5px; color:#9a6b00; font-weight:700; margin-top:6px;">atraso 4 min</div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:8px;">Workers IA</div><div style="font-size:22px; font-weight:800; line-height:1;">8/8</div><div style="font-size:10.5px; color:#2f8f38; font-weight:700; margin-top:6px;">ativos</div></div>
+              <div style="background:#fff; border:1px solid #e5e5e5; border-radius:12px; padding:16px;"><div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; margin-bottom:8px;">Latência média</div><div style="font-size:22px; font-weight:800; line-height:1;">1,2s</div><div style="font-size:10.5px; color:#2f8f38; font-weight:700; margin-top:6px;">normal</div></div>
+            </div>
+            <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:20px;">
+              <div style="font-size:13px; font-weight:800; margin-bottom:14px;">Throughput · última hora</div>
+              <div style="display:flex; align-items:flex-end; gap:4px; height:80px;">
+                <div style="flex:1; background:#e5e5e5; border-radius:3px 3px 0 0; height:50%;"></div><div style="flex:1; background:#e5e5e5; border-radius:3px 3px 0 0; height:65%;"></div><div style="flex:1; background:#e5e5e5; border-radius:3px 3px 0 0; height:45%;"></div><div style="flex:1; background:#e5e5e5; border-radius:3px 3px 0 0; height:72%;"></div><div style="flex:1; background:#e5e5e5; border-radius:3px 3px 0 0; height:58%;"></div><div style="flex:1; background:#ffc02a; border-radius:3px 3px 0 0; height:95%;"></div><div style="flex:1; background:#e5e5e5; border-radius:3px 3px 0 0; height:68%;"></div><div style="flex:1; background:#e5e5e5; border-radius:3px 3px 0 0; height:80%;"></div><div style="flex:1; background:#e5e5e5; border-radius:3px 3px 0 0; height:62%;"></div><div style="flex:1; background:#e5e5e5; border-radius:3px 3px 0 0; height:74%;"></div><div style="flex:1; background:#e5e5e5; border-radius:3px 3px 0 0; height:55%;"></div><div style="flex:1; background:#e5e5e5; border-radius:3px 3px 0 0; height:70%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== STAFF ===================== -->
+    <section id="staff" style="scroll-margin-top:64px; margin-bottom:40px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#e50914; margin-bottom:7px;">Staff &amp; permissões</div>
+      <h2 style="font-size:24px; font-weight:800; letter-spacing:-0.02em; margin:0 0 4px;">Equipe interna da V4</h2>
+      <p style="font-size:13.5px; color:#595959; margin:0 0 18px;">Quem opera a plataforma e o que cada papel pode fazer.</p>
+
+      <div style="border:1px solid #d8d8db; border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 18px 50px rgba(0,0,0,0.1); display:flex; min-height:520px; background:#f5f5f6;">
+        <dc-import name="PlatformSidebar" active="staff" link="#staff" hint-size="236px,520px"></dc-import>
+        <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+          <header style="height:60px; background:#fff; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; justify-content:space-between; padding:0 24px; flex-shrink:0;"><h1 style="font-size:17px; font-weight:800; margin:0;">Staff &amp; permissões</h1><button style="background:#e50914; border:0; color:#fff; border-radius:9px; padding:9px 16px; font-family:'Montserrat'; font-size:12.5px; font-weight:700; cursor:pointer;">+ Adicionar membro</button></header>
+          <div style="flex:1; padding:24px; overflow:hidden; display:grid; grid-template-columns:1.4fr 1fr; gap:18px;">
+            <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; overflow:hidden;">
+              <table style="width:100%; border-collapse:collapse;">
+                <thead><tr style="background:#fafafa;"><th style="text-align:left; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:12px 20px;">Membro</th><th style="text-align:left; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:12px 16px;">Papel</th><th style="text-align:right; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#8a8a8a; padding:12px 20px;">Acesso</th></tr></thead>
+                <tbody>
+                  <tr style="border-top:1px solid #f0f0f0;"><td style="padding:13px 20px;"><div style="display:flex; align-items:center; gap:10px;"><div style="width:32px; height:32px; border-radius:50%; background:#e50914; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700;">VF</div><div><div style="font-size:13px; font-weight:600;">Vitor Franco</div><div style="font-size:11px; color:#8a8a8a;">vitor@v4company.com</div></div></div></td><td style="padding:13px 16px;"><span style="font-size:10.5px; font-weight:700; background:rgba(229,9,20,0.1); color:#c30811; border-radius:6px; padding:3px 9px;">Admin</span></td><td style="padding:13px 20px; text-align:right; font-size:12px; color:#595959;">Total</td></tr>
+                  <tr style="border-top:1px solid #f0f0f0;"><td style="padding:13px 20px;"><div style="display:flex; align-items:center; gap:10px;"><div style="width:32px; height:32px; border-radius:50%; background:#1a1a1a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700;">AC</div><div><div style="font-size:13px; font-weight:600;">Ana Costa</div><div style="font-size:11px; color:#8a8a8a;">ana@v4company.com</div></div></div></td><td style="padding:13px 16px;"><span style="font-size:10.5px; font-weight:700; background:rgba(82,204,90,0.16); color:#2f8f38; border-radius:6px; padding:3px 9px;">Curador</span></td><td style="padding:13px 20px; text-align:right; font-size:12px; color:#595959;">Curadoria, Nichos</td></tr>
+                  <tr style="border-top:1px solid #f0f0f0;"><td style="padding:13px 20px;"><div style="display:flex; align-items:center; gap:10px;"><div style="width:32px; height:32px; border-radius:50%; background:#52cc5a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700;">RM</div><div><div style="font-size:13px; font-weight:600;">Rafael Mendes</div><div style="font-size:11px; color:#8a8a8a;">rafael@v4company.com</div></div></div></td><td style="padding:13px 16px;"><span style="font-size:10.5px; font-weight:700; background:#f0f0f0; color:#595959; border-radius:6px; padding:3px 9px;">Suporte</span></td><td style="padding:13px 20px; text-align:right; font-size:12px; color:#595959;">Tenants, Operação</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="background:#fff; border:1px solid #e5e5e5; border-radius:14px; padding:20px;">
+              <div style="font-size:13px; font-weight:800; margin-bottom:14px;">Permissões por papel</div>
+              <div style="display:flex; flex-direction:column; gap:11px;">
+                <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:12.5px; color:#595959;">Impersonar tenant</span><div style="display:flex; gap:6px;"><span style="font-size:10px; font-weight:700; background:rgba(229,9,20,0.1); color:#c30811; border-radius:5px; padding:3px 8px;">Admin</span><span style="font-size:10px; font-weight:700; background:#f0f0f0; color:#595959; border-radius:5px; padding:3px 8px;">Suporte</span></div></div>
+                <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:12.5px; color:#595959;">Aprovar conhecimento</span><div style="display:flex; gap:6px;"><span style="font-size:10px; font-weight:700; background:rgba(229,9,20,0.1); color:#c30811; border-radius:5px; padding:3px 8px;">Admin</span><span style="font-size:10px; font-weight:700; background:rgba(82,204,90,0.16); color:#2f8f38; border-radius:5px; padding:3px 8px;">Curador</span></div></div>
+                <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:12.5px; color:#595959;">Editar nichos</span><div style="display:flex; gap:6px;"><span style="font-size:10px; font-weight:700; background:rgba(229,9,20,0.1); color:#c30811; border-radius:5px; padding:3px 8px;">Admin</span><span style="font-size:10px; font-weight:700; background:rgba(82,204,90,0.16); color:#2f8f38; border-radius:5px; padding:3px 8px;">Curador</span></div></div>
+                <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:12.5px; color:#595959;">Gerenciar staff</span><div style="display:flex; gap:6px;"><span style="font-size:10px; font-weight:700; background:rgba(229,9,20,0.1); color:#c30811; border-radius:5px; padding:3px 8px;">Admin</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- closing -->
+      <div style="background:#000; border-radius:16px; padding:26px 30px; margin-top:44px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+        <div>
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.16em; text-transform:uppercase; color:#ffc02a; margin-bottom:8px;">Fim do Passo 3 · plataforma completa</div>
+          <div style="font-size:19px; font-weight:800; color:#fff; letter-spacing:-0.01em; margin-bottom:6px;">As duas áreas estão desenhadas.</div>
+          <div style="font-size:13px; color:#b3b3b3; max-width:64ch; line-height:1.6;">Sistema de design + Área do Cliente + Área da Plataforma, com a curadoria de conhecimento (fila, versões/rollback, zero PII) como diferencial. Tudo no mesmo sistema visual V4, pronto para servir de referência ao desenvolvimento.</div>
+        </div>
+        <div style="display:flex; gap:24px; flex-shrink:0;">
+          <div style="text-align:center;"><div style="font-size:30px; font-weight:800; color:#fff; line-height:1;">7</div><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#666; margin-top:6px;">telas staff</div></div>
+          <div style="text-align:center;"><div style="font-size:30px; font-weight:800; color:#fff; line-height:1;">3</div><div style="font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#666; margin-top:6px;">passos entregues</div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<template id="__bundler_thumbnail" data-bg-color="#000000">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#000000"/>
+    <rect x="470" y="300" width="260" height="200" rx="40" fill="#e50914"/>
+    <text x="600" y="440" font-family="Montserrat, sans-serif" font-size="150" font-weight="800" fill="#ffffff" text-anchor="middle">V4</text>
+  </svg>
+</template></x-dc>
+</body>
+</html>

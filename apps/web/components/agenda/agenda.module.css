@@ -1,0 +1,668 @@
+/* Agenda do tenant — estilo Google Agenda com a pele do design V4. */
+
+/* ── Layout geral: coluna lateral (Criar + mini-mês) + área principal ── */
+.layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.side {
+  width: 236px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.mainCol {
+  flex: 1;
+  min-width: 0;
+}
+@media (max-width: 960px) {
+  .side {
+    display: none;
+  }
+}
+
+/* ── Toolbar (Hoje, setas, título, troca de visão) ── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.navArrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.navArrow:hover {
+  background: var(--border-200);
+  color: var(--ink-900);
+}
+.periodTitle {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink-900);
+  margin: 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1;
+}
+.viewSwitch {
+  display: inline-flex;
+  border: 1px solid var(--border-300);
+  border-radius: var(--r-btn);
+  overflow: hidden;
+  background: var(--surface);
+  flex: none;
+}
+.viewBtn {
+  border: none;
+  background: transparent;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.viewBtn + .viewBtn {
+  border-left: 1px solid var(--border-200);
+}
+.viewBtn:hover {
+  background: var(--surface-subtle);
+}
+.viewBtnOn {
+  background: var(--ink-900);
+  color: #fff;
+}
+.viewBtnOn:hover {
+  background: var(--ink-800);
+}
+
+/* ── Mini-calendário do mês (lateral) ── */
+.mini {
+  background: var(--surface);
+  border: 1px solid var(--border-200);
+  border-radius: var(--r-card);
+  padding: 12px;
+}
+.miniHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.miniTitle {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink-900);
+  text-transform: capitalize;
+}
+.miniNavBtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.miniNavBtn:hover {
+  background: var(--border-200);
+  color: var(--ink-900);
+}
+.miniGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+.miniDow {
+  text-align: center;
+  font-size: 9.5px;
+  font-weight: 800;
+  color: var(--text-subtle);
+  padding: 3px 0;
+}
+.miniDay {
+  border: none;
+  background: transparent;
+  width: 26px;
+  height: 26px;
+  margin: 0 auto;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-body);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s ease;
+}
+.miniDay:hover {
+  background: var(--border-200);
+}
+.miniDayOut {
+  color: var(--neutral-dot);
+}
+.miniDaySel {
+  background: rgba(229, 9, 20, 0.12);
+  color: var(--red-700);
+  font-weight: 800;
+}
+.miniDayToday {
+  background: var(--red-600);
+  color: #fff;
+  font-weight: 800;
+}
+.miniDayToday:hover {
+  background: var(--red-700);
+}
+
+/* ── Grade de semana/dia ── */
+.gridCard {
+  background: var(--surface);
+  border: 1px solid var(--border-200);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+.weekScroll {
+  overflow-y: auto;
+  height: calc(100vh - 248px);
+  min-height: 420px;
+  position: relative;
+}
+/* Cabeçalho dos dias + faixa "dia inteiro" num único bloco sticky */
+.stickyTop {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  background: var(--surface);
+}
+.weekHead {
+  display: grid;
+  border-bottom: 1px solid var(--border-200);
+}
+.gutterHead {
+  border-right: 1px solid var(--border-200);
+}
+.dayHead {
+  border: none;
+  background: transparent;
+  padding: 8px 0 6px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.dayHead + .dayHead {
+  border-left: 1px solid #f0f0f0;
+}
+.dayHeadStatic {
+  cursor: default;
+}
+.dayHeadStatic:hover .dayNum {
+  background: transparent;
+}
+.dayHeadStatic:hover .dayNumToday {
+  background: var(--red-600);
+}
+.dowName {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+.dayNum {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink-900);
+}
+.dayHead:hover .dayNum {
+  background: var(--border-200);
+}
+.dayNumToday {
+  background: var(--red-600);
+  color: #fff;
+}
+.dayHead:hover .dayNumToday {
+  background: var(--red-700);
+}
+/* Faixa de eventos de dia inteiro (abaixo do cabeçalho, também sticky) */
+.allDayRow {
+  display: grid;
+  border-bottom: 1px solid var(--border-200);
+}
+.allDayGutter {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-subtle);
+  text-align: right;
+  padding: 4px 6px 4px 0;
+  border-right: 1px solid var(--border-200);
+}
+.allDayCell {
+  padding: 3px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-height: 24px;
+}
+.allDayCell + .allDayCell {
+  border-left: 1px solid #f0f0f0;
+}
+.allDayChip {
+  border: none;
+  text-align: left;
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: inherit;
+}
+
+/* Corpo da grade: gutter de horas + colunas de dia */
+.gridBody {
+  display: grid;
+}
+.gutterCol {
+  border-right: 1px solid var(--border-200);
+}
+.hourCell {
+  height: 48px;
+  border-top: 1px solid #f0f0f0;
+}
+.hourCell:first-child {
+  border-top: none;
+}
+.hourLabel {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-subtle);
+  text-align: right;
+  padding-right: 6px;
+  transform: translateY(-6px);
+}
+.dayCol {
+  position: relative;
+  cursor: pointer;
+}
+.dayCol + .dayCol {
+  border-left: 1px solid #f0f0f0;
+}
+
+/* Bloco de evento na grade */
+.eventBlock {
+  position: absolute;
+  z-index: 3;
+  border: none;
+  border-radius: 6px;
+  padding: 3px 7px;
+  font-family: inherit;
+  font-size: 11px;
+  text-align: left;
+  color: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  transition: filter 0.12s ease;
+}
+.eventBlock:hover {
+  filter: brightness(1.12);
+  z-index: 4;
+}
+.evManual {
+  background: var(--ink-800);
+}
+.evSdr {
+  background: var(--red-600);
+}
+.eventTitle {
+  font-weight: 700;
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.eventTime {
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+.sdrTag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 4px;
+  padding: 0 4px;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin-right: 4px;
+  vertical-align: 1px;
+}
+
+/* Linha vermelha do horário atual (no fuso do calendário) */
+.nowLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 2px solid var(--red-600);
+  z-index: 5;
+  pointer-events: none;
+}
+.nowDot {
+  position: absolute;
+  left: -5px;
+  top: -6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--red-600);
+}
+
+/* ── Visão de mês ── */
+.monthWrap {
+  background: var(--surface);
+  border: 1px solid var(--border-200);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+.monthDows {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-bottom: 1px solid var(--border-200);
+}
+.monthDow {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  padding: 8px 0;
+}
+.monthGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.mCell {
+  min-height: 104px;
+  padding: 4px;
+  border-top: 1px solid #f0f0f0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.mCell:nth-child(7n + 1) {
+  border-left: none;
+}
+.mCell:not(:nth-child(7n + 1)) {
+  border-left: 1px solid #f0f0f0;
+}
+.mCell:hover {
+  background: var(--surface-subtle);
+}
+.mCellOut {
+  background: var(--surface-subtle);
+}
+.mDayNum {
+  border: none;
+  background: transparent;
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: inherit;
+  color: var(--ink-900);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+.mDayNum:hover {
+  background: var(--border-200);
+}
+.mDayNumOut {
+  color: var(--neutral-dot);
+}
+.mDayNumToday {
+  background: var(--red-600);
+  color: #fff;
+}
+.mDayNumToday:hover {
+  background: var(--red-700);
+}
+.mChip {
+  border: none;
+  text-align: left;
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-size: 10.5px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #fff;
+  flex: none;
+}
+/* Evento com hora na visão mês: chip claro com dot colorido */
+.mChipTimed {
+  background: transparent;
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.mChipTimed:hover {
+  background: var(--border-200);
+}
+.mChipDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+}
+.mChipTime {
+  color: var(--text-muted);
+  font-weight: 600;
+  flex: none;
+}
+.mMore {
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 700;
+  font-family: inherit;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 1px 6px;
+  border-radius: 5px;
+}
+.mMore:hover {
+  background: var(--border-200);
+  color: var(--ink-900);
+}
+
+/* ── Modais (novo evento / detalhes) — mesma pele do modal do DS ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.modal {
+  width: 100%;
+  max-width: 460px;
+  background: var(--surface);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-modal);
+  padding: 22px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+.modalTitle {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+  margin-bottom: 14px;
+}
+.formGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.formRow {
+  display: flex;
+  gap: 10px;
+}
+.formRow > * {
+  flex: 1;
+  min-width: 0;
+}
+.checkRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-body);
+  cursor: pointer;
+  user-select: none;
+}
+.checkRow input {
+  accent-color: var(--red-600);
+  width: 15px;
+  height: 15px;
+}
+.formError {
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  color: var(--error-text);
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+.modalActionsLeft {
+  margin-right: auto;
+}
+
+/* Detalhes do evento */
+.detHead {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.detDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  flex: none;
+  margin-top: 4px;
+}
+.detTitle {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink-900);
+  line-height: 1.3;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.detWhen {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+.detDesc {
+  font-size: 13px;
+  color: var(--text-body);
+  background: var(--surface-subtle);
+  border: 1px solid var(--border-200);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  margin: 12px 0 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* ── Estados ── */
+.loadingBar {
+  height: 3px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--border-200);
+  margin-bottom: 10px;
+}
+.loadingBarFill {
+  height: 100%;
+  width: 40%;
+  border-radius: 999px;
+  background: var(--red-600);
+  animation: agendaSlide 1.1s infinite ease-in-out;
+}
+@keyframes agendaSlide {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(280%);
+  }
+}

@@ -1,0 +1,366 @@
+/* Primitivos de UI — design V4 (tokens em globals.css). */
+
+/* ── Button ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  border: 1px solid transparent;
+  border-radius: var(--r-btn);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease,
+    box-shadow 0.15s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.btnMd {
+  padding: 10px 16px;
+}
+.btnSm {
+  padding: 7px 12px;
+  font-size: 12px;
+  border-radius: var(--r-sm);
+}
+.btnPrimary {
+  background: var(--red-600);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(229, 9, 20, 0.25);
+}
+.btnPrimary:hover:not(:disabled) {
+  background: var(--red-700);
+  box-shadow: 0 4px 16px rgba(229, 9, 20, 0.35);
+}
+.btnSecondary {
+  background: var(--surface);
+  color: var(--ink-900);
+  border-color: var(--border-300);
+}
+.btnSecondary:hover:not(:disabled) {
+  background: var(--surface-subtle);
+}
+.btnGhost {
+  background: transparent;
+  color: var(--text-muted);
+}
+.btnGhost:hover:not(:disabled) {
+  background: var(--surface-subtle);
+  color: var(--ink-900);
+}
+.btnDanger {
+  background: var(--error-bg);
+  color: var(--error-text);
+  border-color: var(--error-border);
+}
+
+/* ── Card ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border-200);
+  border-radius: var(--r-card);
+}
+.cardPad {
+  padding: 20px;
+}
+/* Card clicável (hub de configuração etc.) */
+.cardHover {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.cardHover:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-float);
+  border-color: var(--border-300);
+}
+
+/* ── Badge / Pill ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.badgeNeutral {
+  background: #f0f0f0;
+  color: var(--text-muted);
+}
+.badgeSuccess {
+  background: var(--success-tint);
+  color: var(--success-text);
+}
+.badgeWarning {
+  background: var(--warning-tint);
+  color: var(--warning-text);
+}
+.badgeDanger {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+.badgeBrand {
+  background: rgba(229, 9, 20, 0.1);
+  color: var(--red-700);
+}
+
+/* ── StatusPill (status do lead: tinta + dot) ── */
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.pillDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--r-pill);
+  flex: none;
+}
+
+/* ── Input / Field ── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-subtle);
+}
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-300);
+  border-radius: var(--r-sm);
+  font-size: 14px;
+  color: var(--text-body);
+  background: var(--surface);
+  font-family: inherit;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--red-600);
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.12);
+}
+.input::placeholder {
+  color: var(--text-subtle);
+}
+/* Select com chevron próprio (mesma pele do input) */
+.select {
+  width: 100%;
+  padding: 9px 34px 9px 12px;
+  border: 1px solid var(--border-300);
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  color: var(--text-body);
+  background-color: var(--surface);
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23595959' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+.select:focus {
+  outline: none;
+  border-color: var(--red-600);
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.12);
+}
+/* Textarea (mesma pele do input) */
+.textarea {
+  min-height: 80px;
+  resize: vertical;
+  line-height: 1.5;
+  font-size: 13.5px;
+}
+
+/* ── Table ── */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.table thead th {
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  background: var(--surface-subtle);
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border-200);
+}
+.table tbody td {
+  padding: 13px 14px;
+  border-top: 1px solid #f0f0f0;
+  color: var(--text-body);
+}
+.rowClickable {
+  cursor: pointer;
+}
+.rowClickable:hover td {
+  background: var(--surface-subtle);
+}
+/* Células avulsas (para tabelas fora de .table) */
+.th {
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  background: var(--surface-subtle);
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border-200);
+}
+.td {
+  padding: 12px 14px;
+  border-top: 1px solid #f0f0f0;
+  color: var(--text-body);
+  font-size: 13px;
+}
+
+/* ── KPI denso ── */
+.kpiDense {
+  padding: 15px 16px;
+}
+.kpiNumDense {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ink-900);
+}
+
+/* ── Estados ── */
+.state {
+  text-align: center;
+  padding: 44px 24px;
+  color: var(--text-muted);
+}
+.stateIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f5f5f6;
+  color: #b3b3b3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.errCard {
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: var(--r-card);
+  padding: 20px 22px;
+  text-align: center;
+}
+.errTitle {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--error-text);
+  margin-bottom: 4px;
+}
+.errText {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.skel {
+  height: 14px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #eee 25%, #f5f5f5 37%, #eee 63%);
+  background-size: 480px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+/* ── Mini-modal de confirmação (substitui confirm()) ── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.modal {
+  width: 100%;
+  max-width: 400px;
+  background: var(--surface);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-modal);
+  padding: 22px;
+}
+.modalTitle {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+  margin-bottom: 6px;
+}
+.modalText {
+  margin: 0 0 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* ── Paginação ── */
+.pager {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 14px;
+}
+.pageBtn {
+  min-width: 30px;
+  height: 30px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border-200);
+  background: var(--surface);
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.pageBtn:hover:not(:disabled):not(.pageBtnOn) {
+  background: var(--surface-subtle);
+  border-color: var(--border-300);
+  color: var(--ink-900);
+}
+.pageBtnOn {
+  background: var(--red-600);
+  border-color: var(--red-600);
+  color: #fff;
+}
+.pageBtn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

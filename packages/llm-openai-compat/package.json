@@ -1,0 +1,21 @@
+{
+  "name": "@sdr/llm-openai-compat",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "lint": "echo \"(lint placeholder)\""
+  },
+  "dependencies": {
+    "@sdr/core": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4",
+    "@types/node": "^22.8.6"
+  }
+}

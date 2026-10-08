@@ -1,0 +1,192 @@
+/* Topbar da área do cliente — design V4. */
+.topbar {
+  height: var(--topbar-h);
+  flex: none;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-200);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 22px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.tenant {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--border-200);
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-900);
+  cursor: pointer;
+  background: var(--surface);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.tenant:hover {
+  background: var(--surface-subtle);
+  border-color: var(--border-300);
+}
+.tenantMark {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--red-600);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Indicador de estado da SDR (3 estados) — SEM termos técnicos */
+.sdr {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 13px;
+  border-radius: var(--r-pill);
+  font-size: 12.5px;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+.sdrConnected {
+  background: rgba(82, 204, 90, 0.12);
+  border-color: rgba(82, 204, 90, 0.35);
+  color: var(--success-text);
+}
+.sdrAnswering {
+  background: rgba(82, 204, 90, 0.12);
+  border-color: rgba(82, 204, 90, 0.35);
+  color: var(--success-text);
+}
+.sdrDown {
+  background: rgba(229, 9, 20, 0.14);
+  border-color: rgba(229, 9, 20, 0.4);
+  color: #ff6b73;
+}
+.sdrDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-pill);
+  flex: none;
+}
+.dotGreen {
+  background: var(--success);
+}
+.dotRed {
+  background: var(--red-600);
+}
+.pulse {
+  animation: pulse 1.6s ease-out infinite;
+}
+.pulseRed {
+  animation: pulseRed 1.6s ease-out infinite;
+}
+/* 3 pontinhos "digitando" (estado respondendo) */
+.typing {
+  display: inline-flex;
+  gap: 3px;
+  margin-left: 2px;
+}
+.typing span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: typing 1.2s infinite;
+}
+.typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.reconnect {
+  margin-left: 4px;
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  background: var(--red-600);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  border: none;
+}
+
+.spacer {
+  flex: 1;
+}
+.search {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border: 1px solid var(--border-200);
+  border-radius: var(--r-sm);
+  color: var(--text-subtle);
+  background: var(--surface-subtle);
+  min-width: 220px;
+  font-size: 13px;
+}
+.search input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text-body);
+  width: 100%;
+}
+.iconBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border-200);
+  background: var(--surface);
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.iconBtn:hover {
+  background: var(--surface-subtle);
+  border-color: var(--border-300);
+  color: var(--ink-900);
+}
+.notifDot {
+  position: absolute;
+  top: 7px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--red-600);
+  border: 1.5px solid var(--surface);
+}
+.userAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-pill);
+  background: var(--ink-900);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.userAvatar:hover {
+  box-shadow: 0 0 0 3px var(--border-200);
+  transform: translateY(-1px);
+}

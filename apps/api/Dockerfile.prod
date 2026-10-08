@@ -1,0 +1,26 @@
+# Imagem de PRODUÇÃO — multi-stage, usuário não-root. A MESMA imagem roda em
+# qualquer role (APP_ROLE: api|worker|scheduler) — o comportamento muda por env.
+
+# ── build (toolchain para módulos nativos como argon2) ──
+FROM node:24.19.0-bookworm AS build
+RUN npm install --global pnpm@9.15.9
+WORKDIR /repo
+COPY . .
+RUN pnpm install --frozen-lockfile
+# build dos pacotes + api (project references)
+RUN pnpm -r --filter './packages/**' build && pnpm --filter @sdr/api build
+# remove devDependencies do node_modules (imagem menor, sem toolchain)
+RUN pnpm -r --prod install --frozen-lockfile || pnpm install --prod --frozen-lockfile
+
+# ── runtime (slim, não-root) ──
+FROM node:24.19.0-bookworm-slim AS runtime
+RUN npm install --global pnpm@9.15.9
+ENV NODE_ENV=production
+WORKDIR /repo
+COPY --from=build --chown=node:node /repo /repo
+USER node
+WORKDIR /repo/apps/api
+EXPOSE 3001
+# Healthcheck fica no compose APENAS no serviço `api` (worker/scheduler não fazem
+# listen — teriam healthcheck HTTP sempre unhealthy).
+CMD ["node", "dist/main.js"]

@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-07",
+  "node": "24.19.0",
+  "pnpm": "9.15.9",
+  "original_source_sha256": "22726693187d326136b007973642d71d79276eddcba8c6ea09a610694cdd3132",
+  "scope": ["D00", "D01", "D04", "D05", "D06 (initial implementation)"],
+  "migration_files_applied_to_fresh_database": 42,
+  "checks": {
+    "frozen_install": {
+      "exit_code": 0,
+      "mode": "offline"
+    },
+    "build_server": {
+      "exit_code": 0,
+      "incremental_caches_cleared": true
+    },
+    "workspace_typecheck": {
+      "exit_code": 0
+    },
+    "test_ci": {
+      "exit_code": 0,
+      "passed": 672,
+      "skipped": 0,
+      "test_files": 102,
+      "other_packages": 177,
+      "db": 110,
+      "api": 385
+    },
+    "test_http": {
+      "exit_code": 0,
+      "passed": 16,
+      "skipped": 0,
+      "test_files": 1
+    },
+    "build_web": {
+      "exit_code": 0,
+      "pages": 26
+    },
+    "web_smoke": {
+      "login_status": 200,
+      "local_font_status": 200,
+      "font_license_status": 200
+    }
+  },
+  "total_passed": 688,
+  "infrastructure": "Isolated PostgreSQL 16 + pgvector/btree_gist and Redis 7; distinct app/migrator roles without BYPASSRLS",
+  "external_providers": "Simulated WhatsApp/LLM/CRM/Calendar; no production credentials or customers",
+  "not_executed": [
+    "Docker image build/start",
+    "Remote GitHub Actions",
+    "Representative load test",
+    "Real provider and commercial pilot",
+    "Automated web navigation tests"
+  ],
+  "remaining_durability_limits": [
+    "Before plan persistence, original-event retry may regenerate LLM/tools",
+    "Uncertain delivery needs operator reconciliation; no resolution UI",
+    "External effects still require idempotency at destination",
+    "Metrics remain best-effort"
+  ]
+}

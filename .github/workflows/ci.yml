@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push: { branches: [main] }
+  pull_request: {}
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sdr_ci
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres -d sdr_ci" --health-interval 5s
+          --health-timeout 5s --health-retries 15
+      redis:
+        image: redis:7-alpine
+        ports: ["6379:6379"]
+        options: --health-cmd "redis-cli ping" --health-interval 5s --health-timeout 3s --health-retries 15
+
+    env:
+      # Banco descartável do job. Nunca carrega .env nem env.imob.sh.
+      APP_DB_USER: sdr_app
+      APP_DB_PASSWORD: ci_app_pw
+      MIGRATOR_DB_USER: sdr_migrator
+      MIGRATOR_DB_PASSWORD: ci_migrator_pw
+      DATABASE_URL: postgres://sdr_app:ci_app_pw@127.0.0.1:5432/sdr_ci
+      MIGRATION_DATABASE_URL: postgres://sdr_migrator:ci_migrator_pw@127.0.0.1:5432/sdr_ci
+      REDIS_URL: redis://127.0.0.1:6379
+      NEXT_TELEMETRY_DISABLED: "1"
+      NEXT_PUBLIC_API_URL: http://localhost:3101
+
+    steps:
+      - uses: actions/checkout@v4
+      # pnpm/action-setup usa packageManager do package.json (9.15.9).
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+
+      - name: Instalação com lockfile congelado
+        run: pnpm install --frozen-lockfile
+
+      - name: Build dos pacotes e da API
+        run: pnpm build:server
+
+      - name: Typecheck de todo o workspace
+        run: pnpm typecheck
+
+      - name: Roles sem BYPASSRLS e extensões
+        env:
+          PGPASSWORD: postgres
+        run: |
+          for f in packages/db/sql/init/*.sql; do
+            psql -h 127.0.0.1 -U postgres -d sdr_ci -v ON_ERROR_STOP=1 -f "$f"
+          done
+
+      - name: Migrações com configuração sintética
+        run: pnpm db:migrate:ci
+
+      - name: Testes unitários e de integração com banco e Redis
+        run: pnpm test:ci
+
+      - name: HTTP E2E com AppModule real e configuração SWC
+        run: pnpm test:http
+
+      - name: Build da interface com Montserrat local
+        run: pnpm build:web
